@@ -1,8 +1,59 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createHash } from "crypto";
+import { db } from "@/db";
+import { searchLogs } from "@/db/schema";
+import { buildCheckoutUrl, checkProAccess } from "@/lib/stripe";
+import { sql } from "drizzle-orm";
+
+const FREE_LIMIT = 10;
+const WINDOW_MS = 24 * 60 * 60 * 1000;
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
+  let body: Record<string, unknown>;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
   const { naics, agency, minAmount, maxAmount, year, setAside, recipient, psc } = body;
+
+  // Check Pro status
+  const proEmail = req.cookies.get("fct_pro_email")?.value;
+  let isPro = false;
+  if (proEmail) {
+    isPro = await checkProAccess(proEmail);
+  }
+
+  // Rate limiting
+  const forwarded = req.headers.get("x-forwarded-for");
+  const ip = forwarded?.split(",")[0]?.trim() || "unknown";
+  const ipHash = createHash("sha256").update(ip).digest("hex");
+
+  let used = 0;
+  if (!isPro) {
+    const windowStart = new Date(Date.now() - WINDOW_MS);
+    const [countResult] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(searchLogs)
+      .where(
+        sql`${searchLogs.ipHash} = ${ipHash} AND ${searchLogs.searchedAt} >= ${windowStart}`
+      );
+
+    used = countResult?.count ?? 0;
+
+    if (used >= FREE_LIMIT) {
+      return NextResponse.json(
+        {
+          error: "Daily search limit reached. Upgrade to Pro for unlimited searches.",
+          remaining: 0,
+          limit: FREE_LIMIT,
+          upgradeUrl: buildCheckoutUrl(),
+        },
+        { status: 429 }
+      );
+    }
+  }
 
   const filters: Record<string, unknown> = {
     award_type_codes: ["A", "B", "C", "D"],
@@ -37,7 +88,7 @@ export async function POST(req: NextRequest) {
     filters.award_amounts = [amounts];
   }
 
-  const selectedYear = year || new Date().getFullYear().toString();
+  const selectedYear = (year as string) || new Date().getFullYear().toString();
   filters.time_period = [
     {
       start_date: `${selectedYear}-01-01`,
@@ -82,8 +133,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Log the search
+    await db.insert(searchLogs).values({ ipHash });
+
     const data = await res.json();
-    return NextResponse.json(data);
+    const remaining = isPro ? -1 : FREE_LIMIT - used - 1;
+
+    return NextResponse.json({
+      ...data,
+      remaining,
+      limit: isPro ? -1 : FREE_LIMIT,
+      isPro,
+    });
   } catch {
     return NextResponse.json(
       { error: "Failed to connect to USASpending API" },
