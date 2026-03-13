@@ -15,6 +15,13 @@ interface Contract {
   internal_id: string;
 }
 
+interface AgencySpending {
+  name: string;
+  id: number;
+  code: string;
+  amount: number;
+}
+
 function formatDollars(amount: number) {
   if (amount >= 1_000_000_000) return `$${(amount / 1_000_000_000).toFixed(1)}B`;
   if (amount >= 1_000_000) return `$${(amount / 1_000_000).toFixed(1)}M`;
@@ -32,7 +39,14 @@ const SET_ASIDE_OPTIONS = [
   { value: "ESB", label: "Economically Disadvantaged WOSB" },
 ];
 
+const inputClass = "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50";
+const selectClass = "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-blue-900/50";
+const labelClass = "text-xs font-medium text-slate-700 dark:text-slate-300";
+
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<"search" | "agency">("search");
+
+  // Contract search state
   const [naics, setNaics] = useState("");
   const [agency, setAgency] = useState("");
   const [minAmount, setMinAmount] = useState("");
@@ -47,6 +61,16 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [searched, setSearched] = useState(false);
+
+  // Spending by agency state
+  const [agencyNaics, setAgencyNaics] = useState("");
+  const [agencyKeyword, setAgencyKeyword] = useState("");
+  const [agencyYear, setAgencyYear] = useState(new Date().getFullYear().toString());
+  const [agencySetAside, setAgencySetAside] = useState("");
+  const [agencyResults, setAgencyResults] = useState<AgencySpending[]>([]);
+  const [agencyLoading, setAgencyLoading] = useState(false);
+  const [agencyError, setAgencyError] = useState("");
+  const [agencySearched, setAgencySearched] = useState(false);
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -75,6 +99,40 @@ export default function Home() {
       setLoading(false);
     }
   }
+
+  async function handleAgencySearch(e: React.FormEvent) {
+    e.preventDefault();
+    setAgencyError("");
+    setAgencyLoading(true);
+    setAgencySearched(true);
+
+    try {
+      const res = await fetch("/api/spending-by-agency", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          naics: agencyNaics,
+          keyword: agencyKeyword,
+          year: agencyYear,
+          setAside: agencySetAside,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Search failed. Try again.");
+      }
+
+      const data = await res.json();
+      setAgencyResults(data.results || []);
+    } catch (err) {
+      setAgencyError(err instanceof Error ? err.message : "Something went wrong.");
+      setAgencyResults([]);
+    } finally {
+      setAgencyLoading(false);
+    }
+  }
+
+  const maxAgencyAmount = agencyResults.length > 0 ? Math.max(...agencyResults.map((a) => a.amount)) : 0;
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
@@ -112,206 +170,271 @@ export default function Home() {
             </p>
           </div>
 
-          <form onSubmit={handleSearch} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="naics" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  NAICS Code
-                </label>
-                <input
-                  id="naics"
-                  type="text"
-                  value={naics}
-                  onChange={(e) => setNaics(e.target.value)}
-                  placeholder="e.g. 541512"
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="agency" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  Awarding Agency
-                </label>
-                <input
-                  id="agency"
-                  type="text"
-                  value={agency}
-                  onChange={(e) => setAgency(e.target.value)}
-                  placeholder="e.g. Department of Defense"
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="recipient" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  Recipient / Company
-                </label>
-                <input
-                  id="recipient"
-                  type="text"
-                  value={recipient}
-                  onChange={(e) => setRecipient(e.target.value)}
-                  placeholder="e.g. Lockheed Martin"
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="setAside" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  Set-Aside Type
-                </label>
-                <select
-                  id="setAside"
-                  value={setAside}
-                  onChange={(e) => setSetAside(e.target.value)}
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-blue-900/50"
-                >
-                  {SET_ASIDE_OPTIONS.map((o) => (
-                    <option key={o.value} value={o.value}>{o.label}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="minAmount" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  Min Amount ($)
-                </label>
-                <input
-                  id="minAmount"
-                  type="number"
-                  value={minAmount}
-                  onChange={(e) => setMinAmount(e.target.value)}
-                  placeholder="e.g. 100000"
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="maxAmount" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  Max Amount ($)
-                </label>
-                <input
-                  id="maxAmount"
-                  type="number"
-                  value={maxAmount}
-                  onChange={(e) => setMaxAmount(e.target.value)}
-                  placeholder="e.g. 1000000"
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50"
-                />
-              </div>
-            </div>
+          {/* Tab navigation */}
+          <div className="flex gap-1 rounded-lg border border-slate-200 bg-slate-100 p-1 dark:border-slate-800 dark:bg-slate-900">
+            <button
+              type="button"
+              onClick={() => setActiveTab("search")}
+              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-all ${
+                activeTab === "search"
+                  ? "bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white"
+                  : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+              }`}
+            >
+              Contract Search
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("agency")}
+              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-all ${
+                activeTab === "agency"
+                  ? "bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white"
+                  : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+              }`}
+            >
+              Spending by Agency
+            </button>
+          </div>
 
-            {showAdvanced && (
-              <div className="grid grid-cols-1 gap-4 border-t border-slate-100 pt-4 sm:grid-cols-2 dark:border-slate-800">
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="psc" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                    PSC Code
-                  </label>
-                  <input
-                    id="psc"
-                    type="text"
-                    value={psc}
-                    onChange={(e) => setPsc(e.target.value)}
-                    placeholder="e.g. D306"
-                    className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50"
-                  />
+          {/* Contract Search Tab */}
+          {activeTab === "search" && (
+            <>
+              <form onSubmit={handleSearch} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="naics" className={labelClass}>NAICS Code</label>
+                    <input id="naics" type="text" value={naics} onChange={(e) => setNaics(e.target.value)} placeholder="e.g. 541512" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="agency" className={labelClass}>Awarding Agency</label>
+                    <input id="agency" type="text" value={agency} onChange={(e) => setAgency(e.target.value)} placeholder="e.g. Department of Defense" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="recipient" className={labelClass}>Recipient / Company</label>
+                    <input id="recipient" type="text" value={recipient} onChange={(e) => setRecipient(e.target.value)} placeholder="e.g. Lockheed Martin" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="setAside" className={labelClass}>Set-Aside Type</label>
+                    <select id="setAside" value={setAside} onChange={(e) => setSetAside(e.target.value)} className={selectClass}>
+                      {SET_ASIDE_OPTIONS.map((o) => (
+                        <option key={o.value} value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="minAmount" className={labelClass}>Min Amount ($)</label>
+                    <input id="minAmount" type="number" value={minAmount} onChange={(e) => setMinAmount(e.target.value)} placeholder="e.g. 100000" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="maxAmount" className={labelClass}>Max Amount ($)</label>
+                    <input id="maxAmount" type="number" value={maxAmount} onChange={(e) => setMaxAmount(e.target.value)} placeholder="e.g. 1000000" className={inputClass} />
+                  </div>
                 </div>
-              </div>
-            )}
 
-            <div className="flex items-end gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="year" className="text-xs font-medium text-slate-700 dark:text-slate-300">
-                  Year
-                </label>
-                <select
-                  id="year"
-                  value={year}
-                  onChange={(e) => setYear(e.target.value)}
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-blue-900/50"
-                >
-                  {Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i).map((y) => (
-                    <option key={y} value={y}>{y}</option>
-                  ))}
-                </select>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowAdvanced(!showAdvanced)}
-                className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-all hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
-              >
-                {showAdvanced ? "Less filters" : "More filters"}
-              </button>
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex-1 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400"
-              >
-                {loading ? "Searching..." : "Search Contracts"}
-              </button>
-            </div>
-          </form>
-
-          {error && (
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
-          )}
-
-          {loading && (
-            <div className="flex items-center justify-center gap-3 py-8">
-              <div className="h-5 w-5 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600 dark:border-blue-800 dark:border-t-blue-400" />
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                Searching USASpending.gov...
-              </p>
-            </div>
-          )}
-
-          {!loading && searched && results.length === 0 && !error && (
-            <div className="rounded-xl border border-slate-200 bg-white p-8 text-center dark:border-slate-800 dark:bg-slate-900">
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                No contracts found matching your criteria. Try broadening your search.
-              </p>
-            </div>
-          )}
-
-          {!loading && results.length > 0 && (
-            <div className="flex flex-col gap-4">
-              {totalCount !== null && (
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {totalCount.toLocaleString()} contracts found — showing top 20 by award amount
-                </p>
-              )}
-              <div className="flex flex-col gap-3">
-                {results.map((c, i) => (
-                  <div
-                    key={c.internal_id || i}
-                    className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex flex-col gap-1">
-                        <p className="text-sm font-semibold text-slate-900 dark:text-white">
-                          {c["Recipient Name"] || "Undisclosed"}
-                        </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
-                          {c["Awarding Agency"]}{c["Awarding Sub Agency"] ? ` — ${c["Awarding Sub Agency"]}` : ""}
-                        </p>
-                      </div>
-                      <span className="shrink-0 rounded-lg bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
-                        {formatDollars(c["Award Amount"])}
-                      </span>
-                    </div>
-                    {c.Description && (
-                      <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-                        {c.Description.length > 200 ? c.Description.slice(0, 200) + "..." : c.Description}
-                      </p>
-                    )}
-                    <div className="flex flex-wrap gap-3 text-xs text-slate-400 dark:text-slate-500">
-                      <span>Award: {c["Award ID"]}</span>
-                      <span>Type: {c["Award Type"]}</span>
-                      {c["Start Date"] && <span>Start: {c["Start Date"]}</span>}
-                      {c["End Date"] && <span>End: {c["End Date"]}</span>}
+                {showAdvanced && (
+                  <div className="grid grid-cols-1 gap-4 border-t border-slate-100 pt-4 sm:grid-cols-2 dark:border-slate-800">
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="psc" className={labelClass}>PSC Code</label>
+                      <input id="psc" type="text" value={psc} onChange={(e) => setPsc(e.target.value)} placeholder="e.g. D306" className={inputClass} />
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
+                )}
+
+                <div className="flex items-end gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="year" className={labelClass}>Year</label>
+                    <select id="year" value={year} onChange={(e) => setYear(e.target.value)} className={selectClass}>
+                      {Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i).map((y) => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <button type="button" onClick={() => setShowAdvanced(!showAdvanced)} className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-all hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800">
+                    {showAdvanced ? "Less filters" : "More filters"}
+                  </button>
+                  <button type="submit" disabled={loading} className="flex-1 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400">
+                    {loading ? "Searching..." : "Search Contracts"}
+                  </button>
+                </div>
+              </form>
+
+              {error && (
+                <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+              )}
+
+              {loading && (
+                <div className="flex items-center justify-center gap-3 py-8">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600 dark:border-blue-800 dark:border-t-blue-400" />
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Searching USASpending.gov...</p>
+                </div>
+              )}
+
+              {!loading && searched && results.length === 0 && !error && (
+                <div className="rounded-xl border border-slate-200 bg-white p-8 text-center dark:border-slate-800 dark:bg-slate-900">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    No contracts found matching your criteria. Try broadening your search.
+                  </p>
+                </div>
+              )}
+
+              {!loading && results.length > 0 && (
+                <div className="flex flex-col gap-4">
+                  {totalCount !== null && (
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                      {totalCount.toLocaleString()} contracts found — showing top 20 by award amount
+                    </p>
+                  )}
+                  <div className="flex flex-col gap-3">
+                    {results.map((c, i) => (
+                      <div
+                        key={c.internal_id || i}
+                        className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex flex-col gap-1">
+                            <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                              {c["Recipient Name"] || "Undisclosed"}
+                            </p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                              {c["Awarding Agency"]}{c["Awarding Sub Agency"] ? ` — ${c["Awarding Sub Agency"]}` : ""}
+                            </p>
+                          </div>
+                          <span className="shrink-0 rounded-lg bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
+                            {formatDollars(c["Award Amount"])}
+                          </span>
+                        </div>
+                        {c.Description && (
+                          <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                            {c.Description.length > 200 ? c.Description.slice(0, 200) + "..." : c.Description}
+                          </p>
+                        )}
+                        <div className="flex flex-wrap gap-3 text-xs text-slate-400 dark:text-slate-500">
+                          <span>Award: {c["Award ID"]}</span>
+                          <span>Type: {c["Award Type"]}</span>
+                          {c["Start Date"] && <span>Start: {c["Start Date"]}</span>}
+                          {c["End Date"] && <span>End: {c["End Date"]}</span>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
-          {!searched && (
+          {/* Spending by Agency Tab */}
+          {activeTab === "agency" && (
+            <>
+              <form onSubmit={handleAgencySearch} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="agencyNaics" className={labelClass}>NAICS Code</label>
+                    <input id="agencyNaics" type="text" value={agencyNaics} onChange={(e) => setAgencyNaics(e.target.value)} placeholder="e.g. 541512" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="agencyKeyword" className={labelClass}>Keyword</label>
+                    <input id="agencyKeyword" type="text" value={agencyKeyword} onChange={(e) => setAgencyKeyword(e.target.value)} placeholder="e.g. cybersecurity" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="agencySetAside" className={labelClass}>Set-Aside Type</label>
+                    <select id="agencySetAside" value={agencySetAside} onChange={(e) => setAgencySetAside(e.target.value)} className={selectClass}>
+                      {SET_ASIDE_OPTIONS.map((o) => (
+                        <option key={o.value} value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="agencyYear" className={labelClass}>Year</label>
+                    <select id="agencyYear" value={agencyYear} onChange={(e) => setAgencyYear(e.target.value)} className={selectClass}>
+                      {Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i).map((y) => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" disabled={agencyLoading} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400">
+                  {agencyLoading ? "Loading..." : "Show Spending by Agency"}
+                </button>
+              </form>
+
+              {agencyError && (
+                <p className="text-sm text-red-600 dark:text-red-400">{agencyError}</p>
+              )}
+
+              {agencyLoading && (
+                <div className="flex items-center justify-center gap-3 py-8">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600 dark:border-blue-800 dark:border-t-blue-400" />
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Loading agency spending data...</p>
+                </div>
+              )}
+
+              {!agencyLoading && agencySearched && agencyResults.length === 0 && !agencyError && (
+                <div className="rounded-xl border border-slate-200 bg-white p-8 text-center dark:border-slate-800 dark:bg-slate-900">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    No spending data found. Try a different NAICS code or keyword.
+                  </p>
+                </div>
+              )}
+
+              {!agencyLoading && agencyResults.length > 0 && (
+                <div className="flex flex-col gap-4">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    Top 10 agencies by contract spending
+                    {agencyNaics && ` for NAICS ${agencyNaics}`}
+                    {agencyKeyword && ` matching "${agencyKeyword}"`}
+                    {` in ${agencyYear}`}
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    {agencyResults.map((a, i) => (
+                      <div
+                        key={a.id || i}
+                        className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
+                              {i + 1}
+                            </span>
+                            <div className="flex flex-col gap-0.5">
+                              <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                                {a.name}
+                              </p>
+                              <p className="text-xs text-slate-400 dark:text-slate-500">
+                                {a.code}
+                              </p>
+                            </div>
+                          </div>
+                          <span className="shrink-0 rounded-lg bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
+                            {formatDollars(a.amount)}
+                          </span>
+                        </div>
+                        <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                          <div
+                            className="h-full rounded-full bg-blue-500 transition-all duration-500 dark:bg-blue-400"
+                            style={{ width: `${maxAgencyAmount > 0 ? (a.amount / maxAgencyAmount) * 100 : 0}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {!agencySearched && (
+                <div className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    See which federal agencies spend the most on contracts in your industry.
+                    Enter a NAICS code or keyword to see the top 10 agencies ranked by total
+                    contract spending. Use this to identify which agencies to target in your
+                    business development efforts.
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* SEO content — shown only when no search has been performed on either tab */}
+          {!searched && !agencySearched && (
             <>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {[
