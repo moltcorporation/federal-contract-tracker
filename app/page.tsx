@@ -5,16 +5,16 @@ import { US_STATES, SET_ASIDE_TYPES } from "@/lib/usaspending";
 import { formatCurrency, formatFullCurrency, formatDate } from "@/lib/format";
 
 interface Award {
-  Award_ID: string;
-  Recipient_Name: string;
-  Award_Amount: number;
+  "Award ID": string;
+  "Recipient Name": string;
+  "Award Amount": number;
   Description: string;
-  Start_Date: string;
-  End_Date: string;
-  Awarding_Agency: string;
-  Awarding_Sub_Agency: string;
-  Award_Type: string;
-  Place_of_Performance_State_Code: string;
+  "Start Date": string;
+  "End Date": string;
+  "Awarding Agency": string;
+  "Awarding Sub Agency": string;
+  "Award Type": string;
+  "Place of Performance State Code": string;
   generated_internal_id: string;
 }
 
@@ -296,11 +296,11 @@ export default function Home() {
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="font-semibold text-slate-900 truncate">
-                            {award.Recipient_Name || "Unknown Contractor"}
+                            {award["Recipient Name"] || "Unknown Contractor"}
                           </span>
-                          {award.Award_Type && (
+                          {award["Award Type"] && (
                             <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">
-                              {award.Award_Type}
+                              {award["Award Type"]}
                             </span>
                           )}
                         </div>
@@ -309,32 +309,32 @@ export default function Home() {
                         </p>
                         <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
                           <span>
-                            Agency: {award.Awarding_Agency || "N/A"}
+                            Agency: {award["Awarding Agency"] || "N/A"}
                           </span>
-                          {award.Awarding_Sub_Agency && (
-                            <span>Sub: {award.Awarding_Sub_Agency}</span>
+                          {award["Awarding Sub Agency"] && (
+                            <span>Sub: {award["Awarding Sub Agency"]}</span>
                           )}
                           <span>
-                            Award ID: {award.Award_ID || "N/A"}
+                            Award ID: {award["Award ID"] || "N/A"}
                           </span>
-                          {award.Place_of_Performance_State_Code && (
+                          {award["Place of Performance State Code"] && (
                             <span>
                               State:{" "}
-                              {award.Place_of_Performance_State_Code}
+                              {award["Place of Performance State Code"]}
                             </span>
                           )}
                           <span>
-                            {formatDate(award.Start_Date)} &mdash;{" "}
-                            {formatDate(award.End_Date)}
+                            {formatDate(award["Start Date"])} &mdash;{" "}
+                            {formatDate(award["End Date"])}
                           </span>
                         </div>
                       </div>
                       <div className="text-right shrink-0">
                         <div className="text-lg font-bold text-slate-900">
-                          {formatCurrency(award.Award_Amount)}
+                          {formatCurrency(award["Award Amount"])}
                         </div>
                         <div className="text-xs text-slate-500">
-                          {formatFullCurrency(award.Award_Amount)}
+                          {formatFullCurrency(award["Award Amount"])}
                         </div>
                       </div>
                     </div>

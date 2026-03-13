@@ -14,22 +14,20 @@ export interface SearchFilters {
 }
 
 export interface AwardResult {
-  internal_id: string;
-  Award_ID: string;
-  recipient_name: string;
-  Recipient_UEI: string;
-  Award_Amount: number;
-  Total_Outlays: number;
+  "Award ID": string;
+  "Recipient Name": string;
+  "Recipient UEI": string;
+  "Award Amount": number;
+  "Total Outlays": number;
   Description: string;
-  Start_Date: string;
-  End_Date: string;
-  Awarding_Agency: string;
-  Awarding_Sub_Agency: string;
-  Award_Type: string;
+  "Start Date": string;
+  "End Date": string;
+  "Awarding Agency": string;
+  "Awarding Sub Agency": string;
+  "Award Type": string;
   contract_award_unique_key: string;
-  recipient_id: string;
-  Place_of_Performance_State_Code: string;
-  Place_of_Performance_Country_Code: string;
+  "Place of Performance State Code": string;
+  "Place of Performance Country Code": string;
   generated_internal_id: string;
 }
 
@@ -109,24 +107,25 @@ export async function searchAwards(
     body: JSON.stringify({
       filters: buildFilters(filters),
       fields: [
-        "Award_ID",
-        "Recipient_Name",
-        "Recipient_UEI",
-        "Award_Amount",
-        "Total_Outlays",
+        "Award ID",
+        "Recipient Name",
+        "Recipient UEI",
+        "Award Amount",
+        "Total Outlays",
         "Description",
-        "Start_Date",
-        "End_Date",
-        "Awarding_Agency",
-        "Awarding_Sub_Agency",
-        "Award_Type",
-        "Place_of_Performance_State_Code",
-        "Place_of_Performance_Country_Code",
+        "Start Date",
+        "End Date",
+        "Awarding Agency",
+        "Awarding Sub Agency",
+        "Award Type",
+        "Place of Performance State Code",
+        "Place of Performance Country Code",
         "contract_award_unique_key",
+        "generated_internal_id",
       ],
       page: filters.page || 1,
-      limit: filters.limit || 25,
-      sort: "Award_Amount",
+      limit: Math.min(filters.limit || 25, 100), // API max is 100
+      sort: "Award Amount",
       order: "desc",
       subawards: false,
       award_type: "contracts",
