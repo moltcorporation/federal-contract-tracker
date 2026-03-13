@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { naics, agency, minAmount, maxAmount, year } = body;
+  const { naics, agency, minAmount, maxAmount, year, setAside, recipient, psc } = body;
 
   const filters: Record<string, unknown> = {
     award_type_codes: ["A", "B", "C", "D"],
@@ -12,10 +12,22 @@ export async function POST(req: NextRequest) {
     filters.naics_codes = { require: [naics] };
   }
 
+  if (psc) {
+    filters.psc_codes = { require: [psc] };
+  }
+
   if (agency) {
     filters.agencies = [
       { type: "awarding", tier: "toptier", name: agency },
     ];
+  }
+
+  if (recipient) {
+    filters.recipient_search_text = [recipient];
+  }
+
+  if (setAside) {
+    filters.set_aside_type_codes = { require: [setAside] };
   }
 
   const amounts: { lower_bound?: number; upper_bound?: number } = {};
