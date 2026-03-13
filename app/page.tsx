@@ -187,6 +187,7 @@ export default function Home() {
   const [upgradeUrl, setUpgradeUrl] = useState("");
   const [remaining, setRemaining] = useState<number | null>(null);
   const [searched, setSearched] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
 
   // Spending by agency state
   const [agencyNaics, setAgencyNaics] = useState("");
@@ -198,12 +199,42 @@ export default function Home() {
   const [agencyError, setAgencyError] = useState("");
   const [agencySearched, setAgencySearched] = useState(false);
 
+  async function handleSaveSearch() {
+    setSaveStatus("saving");
+    const parts: string[] = [];
+    if (naics) parts.push(`NAICS ${naics}`);
+    if (agency) parts.push(agency);
+    if (setAside) parts.push(setAside);
+    if (recipient) parts.push(recipient);
+    const name = parts.length > 0 ? parts.join(", ") : `Search ${year}`;
+
+    try {
+      const res = await fetch("/api/saved-searches", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, naics, agency, recipient, setAside, psc, minAmount, maxAmount, year }),
+      });
+      if (res.ok) {
+        setSaveStatus("saved");
+      } else {
+        const data = await res.json();
+        if (data.upgradeUrl) {
+          window.open(data.upgradeUrl, "_blank");
+        }
+        setSaveStatus("error");
+      }
+    } catch {
+      setSaveStatus("error");
+    }
+  }
+
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setUpgradeUrl("");
     setLoading(true);
     setSearched(true);
+    setSaveStatus("idle");
 
     try {
       const res = await fetch("/api/search", {
@@ -488,7 +519,7 @@ export default function Home() {
               {!loading && results.length > 0 && (
                 <div className="flex flex-col gap-4">
                   {totalCount !== null && (
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4">
                       <p className="text-sm text-slate-500 dark:text-slate-400">
                         {totalCount.toLocaleString()} contracts found — showing top 20 by award amount
                         {remaining != null && remaining >= 0 && (
@@ -497,17 +528,26 @@ export default function Home() {
                           </span>
                         )}
                       </p>
-                      <button
-                        onClick={handleExportCsv}
-                        disabled={exporting}
-                        className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-blue-300 hover:text-blue-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
-                      >
-                        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        {exporting ? "Exporting..." : "Export CSV"}
-                        <span className="rounded bg-blue-100 px-1 py-0.5 text-[10px] font-semibold text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">PRO</span>
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={handleExportCsv}
+                          disabled={exporting}
+                          className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-blue-300 hover:text-blue-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+                        >
+                          <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          {exporting ? "Exporting..." : "Export CSV"}
+                          <span className="rounded bg-blue-100 px-1 py-0.5 text-[10px] font-semibold text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">PRO</span>
+                        </button>
+                        <button
+                          onClick={handleSaveSearch}
+                          disabled={saveStatus === "saving" || saveStatus === "saved"}
+                          className="shrink-0 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition-all hover:border-blue-300 hover:text-blue-700 disabled:opacity-50 dark:border-slate-700 dark:text-slate-400 dark:hover:border-blue-600 dark:hover:text-blue-400"
+                        >
+                          {saveStatus === "saving" ? "Saving..." : saveStatus === "saved" ? "Saved" : "Save this search"}
+                        </button>
+                      </div>
                     </div>
                   )}
                   <div className="flex flex-col gap-3">
