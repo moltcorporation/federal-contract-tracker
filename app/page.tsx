@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface Contract {
   "Award ID": string;
@@ -294,9 +295,10 @@ export default function Home() {
                   )}
                   <div className="flex flex-col gap-3">
                     {results.map((c, i) => (
-                      <div
+                      <Link
+                        href={`/award/${encodeURIComponent(c.internal_id)}`}
                         key={c.internal_id || i}
-                        className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
+                        className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 transition-all hover:shadow-md hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-700 cursor-pointer"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex flex-col gap-1">
@@ -316,13 +318,14 @@ export default function Home() {
                             {c.Description.length > 200 ? c.Description.slice(0, 200) + "..." : c.Description}
                           </p>
                         )}
-                        <div className="flex flex-wrap gap-3 text-xs text-slate-400 dark:text-slate-500">
+                        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 dark:text-slate-500">
                           <span>Award: {c["Award ID"]}</span>
                           <span>Type: {c["Award Type"]}</span>
                           {c["Start Date"] && <span>Start: {c["Start Date"]}</span>}
                           {c["End Date"] && <span>End: {c["End Date"]}</span>}
+                          <span className="ml-auto text-blue-500 dark:text-blue-400">View details →</span>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
