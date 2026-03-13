@@ -287,6 +287,12 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-4">
           <a
+            href="/trends"
+            className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+          >
+            Trends
+          </a>
+          <a
             href="/pricing"
             className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
           >
