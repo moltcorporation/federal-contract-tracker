@@ -184,6 +184,8 @@ export default function Home() {
   const [totalCount, setTotalCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [upgradeUrl, setUpgradeUrl] = useState("");
+  const [remaining, setRemaining] = useState<number | null>(null);
   const [searched, setSearched] = useState(false);
 
   // Spending by agency state
@@ -199,6 +201,7 @@ export default function Home() {
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    setUpgradeUrl("");
     setLoading(true);
     setSearched(true);
 
@@ -209,13 +212,24 @@ export default function Home() {
         body: JSON.stringify({ naics, agency, minAmount, maxAmount, year, setAside, recipient, psc }),
       });
 
-      if (!res.ok) {
-        throw new Error("Search failed. Try again.");
+      const data = await res.json();
+
+      if (res.status === 429) {
+        setError(data.error || "Daily search limit reached.");
+        setUpgradeUrl(data.upgradeUrl || "");
+        setResults([]);
+        return;
       }
 
-      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Search failed. Try again.");
+      }
+
       setResults(data.results || []);
       setTotalCount(data.page_metadata?.total ?? null);
+      if (data.remaining != null && data.remaining >= 0) {
+        setRemaining(data.remaining);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
       setResults([]);
@@ -391,7 +405,19 @@ export default function Home() {
               </form>
 
               {error && (
-                <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                <div className="rounded-xl border border-red-200 bg-red-50 p-5 dark:border-red-800 dark:bg-red-900/20">
+                  <p className="text-sm font-medium text-red-700 dark:text-red-400">{error}</p>
+                  {upgradeUrl && (
+                    <a
+                      href={upgradeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+                    >
+                      Upgrade to Pro — $49/mo
+                    </a>
+                  )}
+                </div>
               )}
 
               {loading && (
@@ -414,6 +440,11 @@ export default function Home() {
                   {totalCount !== null && (
                     <p className="text-sm text-slate-500 dark:text-slate-400">
                       {totalCount.toLocaleString()} contracts found — showing top 20 by award amount
+                      {remaining != null && remaining >= 0 && (
+                        <span className="ml-2 text-slate-400 dark:text-slate-500">
+                          · {remaining} searches remaining today
+                        </span>
+                      )}
                     </p>
                   )}
                   <div className="flex flex-col gap-3">
