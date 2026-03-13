@@ -2,21 +2,68 @@ import type { Metadata } from "next";
 import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
 
 export const metadata: Metadata = {
-  title: "Pricing — Federal Contract Tracker",
+  title: "Pricing — Federal Contract Tracker | Government Contract Search",
   description:
-    "Track federal contracts and get competitive intelligence. Free tier available, Pro at $49/mo.",
+    "Search government contracts for free or upgrade to Pro for unlimited searches, spending trends, and export to CSV. Starting at $49/mo.",
+  keywords: [
+    "government contract search pricing",
+    "federal contract tracker",
+    "USASpending search tool",
+    "contract intelligence pricing",
+  ],
 };
 
+const FAQ_ITEMS = [
+  {
+    question: "Where does the data come from?",
+    answer:
+      "All contract data comes from USASpending.gov, the official source for federal spending data maintained by the U.S. Department of the Treasury. Data is updated daily.",
+  },
+  {
+    question: "How is this different from SAM.gov?",
+    answer:
+      "SAM.gov lists open solicitations (things to bid on). We focus on awarded contracts — who won, how much, and spending trends. This gives you competitive intelligence to win future bids.",
+  },
+  {
+    question: "What's a NAICS code?",
+    answer:
+      'NAICS (North American Industry Classification System) codes categorize businesses by industry. For example, 541512 is "Computer Systems Design Services." The government uses NAICS codes on every contract.',
+  },
+  {
+    question: "How many searches do I get on the free tier?",
+    answer:
+      "Free users get 10 searches per 24 hours with 25 results per search. Pro users get unlimited searches with 100 results per search, plus spending trends and CSV export.",
+  },
+];
+
 export default function PricingPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
           Simple, transparent pricing
         </h1>
         <p className="mt-3 text-lg text-slate-600">
-          Start free. Upgrade when you need saved searches, alerts, and deeper
-          competitive intel.
+          Start free. Upgrade when you need unlimited searches, trends, and
+          export.
         </p>
       </div>
 
@@ -34,7 +81,11 @@ export default function PricingPage() {
           <ul className="mt-6 space-y-3 text-sm text-slate-700">
             <li className="flex items-start gap-2">
               <span className="text-green-600 mt-0.5">&#10003;</span>
-              Contract award search
+              10 searches per day
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-green-600 mt-0.5">&#10003;</span>
+              25 results per search
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-600 mt-0.5">&#10003;</span>
@@ -42,15 +93,7 @@ export default function PricingPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-600 mt-0.5">&#10003;</span>
-              Spending trends (quarterly)
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-0.5">&#10003;</span>
-              Top contractors &amp; agencies
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-0.5">&#10003;</span>
-              25 results per search
+              Basic results table
             </li>
           </ul>
           <a
@@ -72,7 +115,7 @@ export default function PricingPage() {
             <span className="text-slate-500">/mo</span>
           </div>
           <p className="mt-3 text-sm text-slate-600">
-            Competitive intelligence and opportunity alerts.
+            Unlimited searches, trends, and competitive intel.
           </p>
           <ul className="mt-6 space-y-3 text-sm text-slate-700">
             <li className="flex items-start gap-2">
@@ -81,28 +124,28 @@ export default function PricingPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-600 mt-0.5">&#10003;</span>
+              Unlimited searches
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-green-600 mt-0.5">&#10003;</span>
               100 results per search
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-600 mt-0.5">&#10003;</span>
-              Saved searches (up to 20)
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-0.5">&#10003;</span>
-              Email alerts on new awards
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-0.5">&#10003;</span>
-              Contractor deep profiles
+              Spending trends &amp; analytics
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-600 mt-0.5">&#10003;</span>
               Export to CSV
             </li>
             <li className="flex items-start gap-2">
+              <span className="text-green-600 mt-0.5">&#10003;</span>
+              Top contractors &amp; agencies
+            </li>
+            <li className="flex items-start gap-2">
               <span className="text-slate-400 mt-0.5">&#8987;</span>
               <span className="text-slate-500">
-                Coming soon: Open opportunity search (SAM.gov)
+                Coming soon: Saved searches, alerts, SAM.gov opportunities
               </span>
             </li>
           </ul>
@@ -121,47 +164,12 @@ export default function PricingPage() {
           Frequently Asked Questions
         </h2>
         <div className="space-y-6">
-          <div>
-            <h3 className="font-medium text-slate-900">
-              Where does the data come from?
-            </h3>
-            <p className="mt-1 text-sm text-slate-600">
-              All contract data comes from USASpending.gov, the official source
-              for federal spending data maintained by the U.S. Department of the
-              Treasury. Data is updated daily.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-medium text-slate-900">
-              How is this different from SAM.gov?
-            </h3>
-            <p className="mt-1 text-sm text-slate-600">
-              SAM.gov lists open solicitations (things to bid on). We focus on
-              awarded contracts — who won, how much, and spending trends. This
-              gives you competitive intelligence to win future bids.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-medium text-slate-900">
-              What&apos;s a NAICS code?
-            </h3>
-            <p className="mt-1 text-sm text-slate-600">
-              NAICS (North American Industry Classification System) codes
-              categorize businesses by industry. For example, 541512 is
-              &quot;Computer Systems Design Services.&quot; The government uses
-              NAICS codes on every contract.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-medium text-slate-900">
-              How much does the free tier include?
-            </h3>
-            <p className="mt-1 text-sm text-slate-600">
-              The free tier gives you full access to contract award search with
-              all filters, spending trend analysis, and top contractor/agency
-              breakdowns. You get 25 results per search with no daily limit.
-            </p>
-          </div>
+          {FAQ_ITEMS.map((item, i) => (
+            <div key={i}>
+              <h3 className="font-medium text-slate-900">{item.question}</h3>
+              <p className="mt-1 text-sm text-slate-600">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

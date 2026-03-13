@@ -74,3 +74,15 @@ export const searchLog = pgTable("search_log", {
   resultCount: integer("result_count"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+// Rate limiting - track searches per IP for free tier limits
+export const searches = pgTable(
+  "searches",
+  {
+    id: serial("id").primaryKey(),
+    keywords: text("keywords"),
+    ipHash: text("ip_hash").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [index("idx_searches_ip_hash").on(table.ipHash)]
+);
