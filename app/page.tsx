@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+
+interface NaicsSuggestion {
+  code: string;
+  description: string;
+}
 
 interface Contract {
   "Award ID": string;
@@ -43,6 +48,124 @@ const SET_ASIDE_OPTIONS = [
 const inputClass = "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50";
 const selectClass = "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-blue-900/50";
 const labelClass = "text-xs font-medium text-slate-700 dark:text-slate-300";
+
+function NaicsAutocomplete({
+  id,
+  value,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  const [suggestions, setSuggestions] = useState<NaicsSuggestion[]>([]);
+  const [open, setOpen] = useState(false);
+  const [highlightIndex, setHighlightIndex] = useState(-1);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const fetchSuggestions = useCallback((text: string) => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (text.length < 2) {
+      setSuggestions([]);
+      setOpen(false);
+      return;
+    }
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch("/api/autocomplete/naics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ search_text: text }),
+        });
+        const data = await res.json();
+        setSuggestions(data.results || []);
+        setOpen((data.results || []).length > 0);
+        setHighlightIndex(-1);
+      } catch {
+        setSuggestions([]);
+        setOpen(false);
+      }
+    }, 300);
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (!open || suggestions.length === 0) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setHighlightIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : 0));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setHighlightIndex((prev) => (prev > 0 ? prev - 1 : suggestions.length - 1));
+    } else if (e.key === "Enter" && highlightIndex >= 0) {
+      e.preventDefault();
+      onChange(suggestions[highlightIndex].code);
+      setOpen(false);
+    } else if (e.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  return (
+    <div ref={containerRef} className="relative">
+      <input
+        id={id}
+        type="text"
+        value={value}
+        onChange={(e) => {
+          onChange(e.target.value);
+          fetchSuggestions(e.target.value);
+        }}
+        onFocus={() => { if (suggestions.length > 0) setOpen(true); }}
+        onKeyDown={handleKeyDown}
+        placeholder="e.g. 541512 or computer"
+        className={inputClass}
+        autoComplete="off"
+        role="combobox"
+        aria-expanded={open}
+        aria-autocomplete="list"
+        aria-controls={`${id}-listbox`}
+      />
+      {open && suggestions.length > 0 && (
+        <ul
+          id={`${id}-listbox`}
+          role="listbox"
+          className="absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800"
+        >
+          {suggestions.map((s, i) => (
+            <li
+              key={s.code}
+              role="option"
+              aria-selected={i === highlightIndex}
+              className={`cursor-pointer px-3 py-2 text-sm ${
+                i === highlightIndex
+                  ? "bg-blue-50 text-blue-900 dark:bg-blue-950/50 dark:text-blue-200"
+                  : "text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-700/50"
+              }`}
+              onMouseDown={() => {
+                onChange(s.code);
+                setOpen(false);
+              }}
+            >
+              <span className="font-mono font-medium">{s.code}</span>
+              <span className="ml-2 text-slate-500 dark:text-slate-400">— {s.description}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"search" | "agency">("search");
@@ -212,7 +335,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="naics" className={labelClass}>NAICS Code</label>
-                    <input id="naics" type="text" value={naics} onChange={(e) => setNaics(e.target.value)} placeholder="e.g. 541512" className={inputClass} />
+                    <NaicsAutocomplete id="naics" value={naics} onChange={setNaics} />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="agency" className={labelClass}>Awarding Agency</label>
@@ -340,7 +463,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="agencyNaics" className={labelClass}>NAICS Code</label>
-                    <input id="agencyNaics" type="text" value={agencyNaics} onChange={(e) => setAgencyNaics(e.target.value)} placeholder="e.g. 541512" className={inputClass} />
+                    <NaicsAutocomplete id="agencyNaics" value={agencyNaics} onChange={setAgencyNaics} />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="agencyKeyword" className={labelClass}>Keyword</label>
