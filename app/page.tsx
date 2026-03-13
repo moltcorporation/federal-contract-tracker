@@ -238,6 +238,50 @@ export default function Home() {
     }
   }
 
+  const [exporting, setExporting] = useState(false);
+
+  async function handleExportCsv() {
+    setExporting(true);
+    try {
+      const res = await fetch("/api/export", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          naics,
+          agency,
+          minAmount: minAmount || undefined,
+          maxAmount: maxAmount || undefined,
+          year,
+          setAside,
+          recipient,
+          psc,
+        }),
+      });
+
+      if (res.status === 403) {
+        const data = await res.json();
+        if (data.upgradeUrl) {
+          window.open(data.upgradeUrl, "_blank");
+        }
+        return;
+      }
+
+      if (!res.ok) return;
+
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `contracts-${year}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } finally {
+      setExporting(false);
+    }
+  }
+
   async function handleAgencySearch(e: React.FormEvent) {
     e.preventDefault();
     setAgencyError("");
@@ -444,14 +488,27 @@ export default function Home() {
               {!loading && results.length > 0 && (
                 <div className="flex flex-col gap-4">
                   {totalCount !== null && (
-                    <p className="text-sm text-slate-500 dark:text-slate-400">
-                      {totalCount.toLocaleString()} contracts found — showing top 20 by award amount
-                      {remaining != null && remaining >= 0 && (
-                        <span className="ml-2 text-slate-400 dark:text-slate-500">
-                          · {remaining} searches remaining today
-                        </span>
-                      )}
-                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                        {totalCount.toLocaleString()} contracts found — showing top 20 by award amount
+                        {remaining != null && remaining >= 0 && (
+                          <span className="ml-2 text-slate-400 dark:text-slate-500">
+                            · {remaining} searches remaining today
+                          </span>
+                        )}
+                      </p>
+                      <button
+                        onClick={handleExportCsv}
+                        disabled={exporting}
+                        className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-blue-300 hover:text-blue-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+                      >
+                        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        {exporting ? "Exporting..." : "Export CSV"}
+                        <span className="rounded bg-blue-100 px-1 py-0.5 text-[10px] font-semibold text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">PRO</span>
+                      </button>
+                    </div>
                   )}
                   <div className="flex flex-col gap-3">
                     {results.map((c, i) => (
