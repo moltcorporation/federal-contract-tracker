@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   title: "Pricing — Federal Contract Tracker",
@@ -106,10 +107,10 @@ export default function PricingPage() {
             </li>
           </ul>
           <a
-            href="#"
+            href={STRIPE_PAYMENT_LINK_URL}
             className="mt-8 block rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 transition-colors"
           >
-            Coming soon
+            Get Pro
           </a>
         </div>
       </div>
