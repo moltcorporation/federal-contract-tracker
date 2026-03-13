@@ -2,67 +2,67 @@ import Link from "next/link";
 
 const steps = [
   {
-    title: "Know your NAICS code",
-    body: "Every federal contract is tagged with a NAICS code that identifies the industry. If you do IT consulting, your code might be 541512 (Computer Systems Design Services). If you do janitorial services, it's 561720. You need to know your code to find relevant contracts. The Federal Contract Tracker has NAICS autocomplete — start typing your industry and it suggests matching codes.",
+    title: "Confirm your WOSB or EDWOSB certification",
+    body: "To bid on WOSB set-aside contracts, your business must be certified through the SBA. As of 2023, self-certification is no longer accepted — you need third-party certification through an SBA-approved certifier or directly through certify.sba.gov. EDWOSB (Economically Disadvantaged Women-Owned Small Business) certification unlocks additional set-aside contracts in specific NAICS codes.",
   },
   {
-    title: "Search for awarded 8(a) contracts",
-    body: "Go to the Federal Contract Tracker, enter your NAICS code, and select \"8(a) Business Development\" from the set-aside filter. This shows you every 8(a) contract that has already been awarded in your industry. You'll see who won, which agency awarded it, and the dollar amount.",
+    title: "Find your NAICS code",
+    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'janitorial', 'consulting', 'construction') and select the matching code. WOSB set-asides are available in specific NAICS codes where women-owned businesses are underrepresented. The SBA maintains the list of eligible codes.",
   },
   {
-    title: "Identify which agencies buy your services",
-    body: "Look at the awarding agencies in your search results. If the Department of Veterans Affairs awarded 15 contracts in your NAICS code last year, that's a warm lead. Switch to the Spending by Agency tab to see which agencies spend the most on 8(a) contracts in your industry.",
+    title: "Search for awarded WOSB contracts",
+    body: "On the Federal Contract Tracker, enter your NAICS code and select \"Women-Owned Small Business\" from the set-aside filter. This shows every WOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. This is your competitive landscape.",
   },
   {
-    title: "Research your competitors",
-    body: "The search results show which companies are winning 8(a) contracts. Click any contract to see the full award detail — financial summary, business categories, competition status, and place of performance. This is your competitive intelligence. Know who's winning, how much they're winning, and where.",
+    title: "Compare WOSB and EDWOSB awards",
+    body: "Run two searches: one with WOSB and one with EDWOSB (Economically Disadvantaged WOSB). EDWOSB set-asides are available in more NAICS codes and may have less competition. If you qualify for EDWOSB, you can bid on both WOSB and EDWOSB set-asides, doubling your opportunities.",
   },
   {
-    title: "Track spending trends",
-    body: "Visit the Trends page and filter by your NAICS code with the 8(a) set-aside. You'll see quarterly spending patterns — is spending going up or down? Which contractors are getting the most awards? This helps you time your proposals and focus on growing markets.",
+    title: "Track agency spending patterns",
+    body: "Use the Spending by Agency tab to see which agencies award the most WOSB contracts in your NAICS code. Some agencies have stronger small business programs than others. The Trends page shows quarterly spending over time — look for agencies increasing their WOSB spending.",
   },
 ];
 
 const faqs = [
   {
-    question: "What is an 8(a) set-aside contract?",
+    question: "What is a WOSB set-aside contract?",
     answer:
-      "An 8(a) set-aside is a federal contract reserved exclusively for small businesses participating in the SBA's 8(a) Business Development program. The program helps socially and economically disadvantaged businesses compete for federal contracts. Only certified 8(a) firms can bid on these contracts, reducing competition and giving participants a real advantage.",
+      "A WOSB (Women-Owned Small Business) set-aside is a federal contract reserved exclusively for certified women-owned small businesses. The program was created to help women-owned businesses compete in industries where they are underrepresented. Only businesses with current WOSB certification through the SBA can bid on these contracts.",
   },
   {
-    question: "How do I get 8(a) certification?",
+    question: "What is the difference between WOSB and EDWOSB?",
     answer:
-      "Apply through the SBA's certify.sba.gov portal. You must be a small business that is at least 51% owned by a U.S. citizen who is socially and economically disadvantaged. The business must have been in operation for at least two years. The 8(a) program lasts nine years — four in the developmental stage and five in the transitional stage.",
+      "WOSB is for any certified women-owned small business. EDWOSB (Economically Disadvantaged Women-Owned Small Business) is for women-owned businesses where the woman owner's personal net worth is below $750,000 (excluding home and business equity). EDWOSB set-asides are available in more NAICS codes, giving qualifying businesses access to more opportunities.",
   },
   {
-    question: "How much are 8(a) contracts worth?",
+    question: "How do I get WOSB certification?",
     answer:
-      "8(a) contracts range from a few thousand dollars to tens of millions. Sole-source 8(a) contracts (awarded without competition) can be up to $4.5 million for goods and services or $8 million for manufacturing. Competitive 8(a) contracts have no dollar limit. Use the Federal Contract Tracker to see actual awarded amounts in your NAICS code.",
+      "Apply through certify.sba.gov or an SBA-approved third-party certifier. Your business must be at least 51% owned and controlled by one or more women who are U.S. citizens. The women owners must manage day-to-day operations and make long-term decisions. Self-certification is no longer accepted as of January 2023.",
   },
   {
-    question: "What's the difference between 8(a) and other set-asides?",
+    question: "What are the contract dollar limits for WOSB set-asides?",
     answer:
-      "8(a) is for socially and economically disadvantaged businesses. HUBZone is for businesses in Historically Underutilized Business Zones. WOSB is for Women-Owned Small Businesses. SDVOSB is for Service-Disabled Veteran-Owned Small Businesses. Each program has different eligibility requirements and the contracts are reserved for different groups.",
+      "Sole-source WOSB contracts can be up to $4.5 million for services or $8 million for manufacturing. Competitive WOSB set-asides have no dollar limit. Agencies can also set aside contracts below the simplified acquisition threshold ($250,000) for WOSBs.",
   },
   {
-    question: "Can I see 8(a) contracts from specific agencies?",
+    question: "Which NAICS codes are eligible for WOSB set-asides?",
     answer:
-      "Yes. In the Federal Contract Tracker, select \"8(a) Business Development\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most 8(a) contracts in your NAICS code.",
+      "WOSB set-asides are available in NAICS codes where women-owned businesses are substantially underrepresented. The SBA maintains the official list, which includes industries like construction, manufacturing, IT services, and professional services. EDWOSB set-asides cover additional NAICS codes where women-owned businesses are underrepresented (a broader category).",
   },
   {
-    question: "Where does this data come from?",
+    question: "Can I search for WOSB contracts from a specific agency?",
     answer:
-      "All contract data comes from USASpending.gov, the U.S. government's official source for federal spending data. It is updated daily and covers all awarded federal contracts including set-aside designations.",
+      "Yes. In the Federal Contract Tracker, select \"Women-Owned Small Business\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most WOSB contracts.",
   },
 ];
 
-export default function EightAGuide() {
+export default function WosbGuide() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Find 8(a) Set-Aside Federal Contracts",
+    name: "How to Find WOSB Set-Aside Federal Contracts",
     description:
-      "Step-by-step guide to searching for 8(a) set-aside federal contract awards using the Federal Contract Tracker.",
+      "Step-by-step guide to finding WOSB and EDWOSB set-aside federal contract awards for women-owned small businesses.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -139,17 +139,17 @@ export default function EightAGuide() {
             Guide
           </p>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            How to Find 8(a) Set-Aside
+            How to Find WOSB Set-Aside
             <span className="block text-blue-600 dark:text-blue-400">
               Federal Contracts
             </span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            If you&apos;re in the SBA 8(a) Business Development program, the
-            federal government sets aside contracts specifically for your
-            business. The challenge is finding them. Here&apos;s how to search
-            awarded 8(a) contracts, identify which agencies buy your services,
-            and research your competitors.
+            The Women-Owned Small Business (WOSB) program sets aside federal
+            contracts for certified women-owned businesses. If you have WOSB or
+            EDWOSB certification, here&apos;s how to find awarded contracts in
+            your industry, identify the agencies spending the most, and research
+            your competitors.
           </p>
         </div>
 
@@ -178,10 +178,10 @@ export default function EightAGuide() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-200 bg-blue-50 p-8 text-center dark:border-blue-900/30 dark:bg-blue-950/20">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-            Search 8(a) contracts now
+            Search WOSB contracts now
           </h2>
           <p className="max-w-md text-sm text-slate-600 dark:text-slate-400">
-            Enter your NAICS code, select the 8(a) set-aside filter, and see
+            Enter your NAICS code, select the WOSB or EDWOSB filter, and see
             every awarded contract in your industry. Free — 10 searches per day,
             no registration.
           </p>
@@ -189,7 +189,7 @@ export default function EightAGuide() {
             href="/"
             className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
           >
-            Search 8(a) contracts free
+            Search WOSB contracts free
           </Link>
         </div>
 
@@ -199,35 +199,44 @@ export default function EightAGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types.
-            Use the same search process for any of these:
+            The Federal Contract Tracker supports all major set-aside types:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
               {
-                name: "HUBZone",
-                desc: "Businesses in Historically Underutilized Business Zones",
+                name: "8(a) Business Development",
+                desc: "For socially and economically disadvantaged businesses",
+                href: "/guides/8a-set-aside-contracts",
               },
               {
-                name: "WOSB",
-                desc: "Women-Owned Small Businesses",
+                name: "HUBZone",
+                desc: "Businesses in Historically Underutilized Business Zones",
+                href: null,
               },
               {
                 name: "SDVOSB",
                 desc: "Service-Disabled Veteran-Owned Small Businesses",
+                href: null,
               },
               {
                 name: "SBA Small Business",
                 desc: "General small business set-asides",
+                href: null,
               },
             ].map((type) => (
               <div
                 key={type.name}
                 className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white">
-                  {type.name}
-                </h3>
+                {type.href ? (
+                  <Link href={type.href} className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    {type.name}
+                  </Link>
+                ) : (
+                  <h3 className="font-semibold text-slate-900 dark:text-white">
+                    {type.name}
+                  </h3>
+                )}
                 <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                   {type.desc}
                 </p>
@@ -265,10 +274,10 @@ export default function EightAGuide() {
           </h2>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/guides/wosb-contracts"
+              href="/guides/8a-set-aside-contracts"
               className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
             >
-              WOSB Contracts Guide
+              8(a) Set-Aside Guide
             </Link>
             <Link
               href="/compare/sam-gov"
@@ -277,22 +286,10 @@ export default function EightAGuide() {
               FCT vs SAM.gov
             </Link>
             <Link
-              href="/compare/govwin"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
-            >
-              FCT vs GovWin
-            </Link>
-            <Link
               href="/trends"
               className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
             >
               Spending Trends
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
-            >
-              Pricing
             </Link>
           </div>
         </div>
