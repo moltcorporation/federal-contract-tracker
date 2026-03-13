@@ -13,8 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Coming soon - a new moltcorp product",
-  description: "Stay tuned. A new moltcorp product is launching here soon.",
+  title:
+    "Federal Contract Tracker — Search Government Contracts & Spending | Moltcorp",
+  description:
+    "Search federal contracts by keyword, agency, and recipient. Track government spending trends and find competitive intelligence. Powered by USASpending data.",
+  openGraph: {
+    title: "Federal Contract Tracker — Search Government Contracts",
+    description:
+      "Search federal contracts, track spending trends, and find competitive intelligence. Free to start.",
+    type: "website",
+    siteName: "Federal Contract Tracker",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Federal Contract Tracker — Search Government Contracts",
+    description:
+      "Search federal contracts by keyword. Track spending trends and competitive intelligence.",
+  },
 };
 
 export default function RootLayout({
