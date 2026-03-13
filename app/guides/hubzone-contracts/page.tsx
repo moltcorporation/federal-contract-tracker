@@ -2,52 +2,57 @@ import Link from "next/link";
 
 const steps = [
   {
-    title: "Know your NAICS code",
-    body: "Every federal contract is tagged with a NAICS code that identifies the industry. If you do IT consulting, your code might be 541512 (Computer Systems Design Services). If you do janitorial services, it's 561720. You need to know your code to find relevant contracts. The Federal Contract Tracker has NAICS autocomplete — start typing your industry and it suggests matching codes.",
+    title: "Check if your business is in a HUBZone",
+    body: "HUBZone eligibility starts with location. Your principal office must be in a Historically Underutilized Business Zone, and at least 35% of your employees must live in a HUBZone. Use the SBA's HUBZone map at maps.certify.sba.gov to check your address. HUBZones include rural areas, qualified census tracts, Indian lands, and areas affected by base closures.",
   },
   {
-    title: "Search for awarded 8(a) contracts",
-    body: "Go to the Federal Contract Tracker, enter your NAICS code, and select \"8(a) Business Development\" from the set-aside filter. This shows you every 8(a) contract that has already been awarded in your industry. You'll see who won, which agency awarded it, and the dollar amount.",
+    title: "Get HUBZone certified through the SBA",
+    body: "Apply at certify.sba.gov. You must be a small business (by SBA size standards for your NAICS code), at least 51% owned by U.S. citizens, and meet the location and employee residency requirements. Certification takes 60-90 days. Once certified, you must be recertified every three years and maintain your HUBZone employees.",
   },
   {
-    title: "Identify which agencies buy your services",
-    body: "Look at the awarding agencies in your search results. If the Department of Veterans Affairs awarded 15 contracts in your NAICS code last year, that's a warm lead. Switch to the Spending by Agency tab to see which agencies spend the most on 8(a) contracts in your industry.",
+    title: "Find your NAICS code",
+    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'construction', 'IT services', 'manufacturing') and select the matching code. Knowing your NAICS code is essential for finding HUBZone contracts in your industry.",
   },
   {
-    title: "Research your competitors",
-    body: "The search results show which companies are winning 8(a) contracts. Click any contract to see the full award detail — financial summary, business categories, competition status, and place of performance. This is your competitive intelligence. Know who's winning, how much they're winning, and where.",
+    title: "Search for awarded HUBZone contracts",
+    body: "On the Federal Contract Tracker, enter your NAICS code and select \"HUBZone\" from the set-aside filter. This shows every HUBZone contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. You'll see your competitive landscape instantly.",
   },
   {
-    title: "Track spending trends",
-    body: "Visit the Trends page and filter by your NAICS code with the 8(a) set-aside. You'll see quarterly spending patterns — is spending going up or down? Which contractors are getting the most awards? This helps you time your proposals and focus on growing markets.",
+    title: "Identify top agencies and track trends",
+    body: "Use the Spending by Agency tab to see which agencies award the most HUBZone contracts in your NAICS code. Visit the Trends page and filter by HUBZone set-aside to see quarterly spending patterns. Some agencies have strong HUBZone programs — the Department of Defense, GSA, and VA are consistently large HUBZone spenders.",
   },
 ];
 
 const faqs = [
   {
-    question: "What is an 8(a) set-aside contract?",
+    question: "What is a HUBZone set-aside contract?",
     answer:
-      "An 8(a) set-aside is a federal contract reserved exclusively for small businesses participating in the SBA's 8(a) Business Development program. The program helps socially and economically disadvantaged businesses compete for federal contracts. Only certified 8(a) firms can bid on these contracts, reducing competition and giving participants a real advantage.",
+      "A HUBZone set-aside is a federal contract reserved for small businesses certified under the SBA's HUBZone program. The program aims to stimulate economic development in Historically Underutilized Business Zones by giving certified businesses preferential access to federal contracts. Only SBA-certified HUBZone businesses can bid on these contracts.",
   },
   {
-    question: "How do I get 8(a) certification?",
+    question: "What qualifies as a HUBZone?",
     answer:
-      "Apply through the SBA's certify.sba.gov portal. You must be a small business that is at least 51% owned by a U.S. citizen who is socially and economically disadvantaged. The business must have been in operation for at least two years. The 8(a) program lasts nine years — four in the developmental stage and five in the transitional stage.",
+      "HUBZones include qualified census tracts (based on household income and unemployment data), qualified non-metropolitan counties, Indian lands (including Alaska Native Village areas and Hawaiian Home Lands), qualified base closure areas, and qualified disaster areas. The SBA maintains an interactive map at maps.certify.sba.gov where you can check any address.",
   },
   {
-    question: "How much are 8(a) contracts worth?",
+    question: "What are the HUBZone certification requirements?",
     answer:
-      "8(a) contracts range from a few thousand dollars to tens of millions. Sole-source 8(a) contracts (awarded without competition) can be up to $4.5 million for goods and services or $8 million for manufacturing. Competitive 8(a) contracts have no dollar limit. Use the Federal Contract Tracker to see actual awarded amounts in your NAICS code.",
+      "Your business must be a small business by SBA standards, at least 51% owned and controlled by U.S. citizens, have its principal office in a HUBZone, and have at least 35% of its employees residing in a HUBZone. The 35% employee requirement is calculated based on all employees, not just full-time — part-time employees count too.",
   },
   {
-    question: "What's the difference between 8(a) and other set-asides?",
+    question: "How much are HUBZone contracts worth?",
     answer:
-      "8(a) is for socially and economically disadvantaged businesses. HUBZone is for businesses in Historically Underutilized Business Zones. WOSB is for Women-Owned Small Businesses. SDVOSB is for Service-Disabled Veteran-Owned Small Businesses. Each program has different eligibility requirements and the contracts are reserved for different groups.",
+      "HUBZone sole-source contracts can be up to $4.5 million for services or $8 million for manufacturing. Competitive HUBZone set-asides have no dollar limit. HUBZone businesses also get a 10% price evaluation preference on full and open competition contracts, meaning their bid is treated as 10% lower when evaluated against non-HUBZone competitors.",
   },
   {
-    question: "Can I see 8(a) contracts from specific agencies?",
+    question: "What is the HUBZone price evaluation preference?",
     answer:
-      "Yes. In the Federal Contract Tracker, select \"8(a) Business Development\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most 8(a) contracts in your NAICS code.",
+      "Even on contracts that aren't set aside for HUBZone, certified businesses get a 10% price evaluation preference in full and open competitions. If a HUBZone firm bids $110,000 and a non-HUBZone firm bids $100,000, they're evaluated equally. This applies only to contracts awarded based on price — not best value acquisitions.",
+  },
+  {
+    question: "Can I search HUBZone contracts from a specific agency?",
+    answer:
+      "Yes. In the Federal Contract Tracker, select \"HUBZone\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most HUBZone contracts in your NAICS code.",
   },
   {
     question: "Where does this data come from?",
@@ -56,13 +61,13 @@ const faqs = [
   },
 ];
 
-export default function EightAGuide() {
+export default function HubzoneGuide() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Find 8(a) Set-Aside Federal Contracts",
+    name: "How to Find HUBZone Set-Aside Federal Contracts",
     description:
-      "Step-by-step guide to searching for 8(a) set-aside federal contract awards using the Federal Contract Tracker.",
+      "Step-by-step guide to finding HUBZone set-aside federal contract awards for businesses in Historically Underutilized Business Zones.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -139,17 +144,17 @@ export default function EightAGuide() {
             Guide
           </p>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            How to Find 8(a) Set-Aside
+            How to Find HUBZone Set-Aside
             <span className="block text-blue-600 dark:text-blue-400">
               Federal Contracts
             </span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            If you&apos;re in the SBA 8(a) Business Development program, the
-            federal government sets aside contracts specifically for your
-            business. The challenge is finding them. Here&apos;s how to search
-            awarded 8(a) contracts, identify which agencies buy your services,
-            and research your competitors.
+            The HUBZone program gives small businesses in Historically
+            Underutilized Business Zones preferential access to federal
+            contracts. If your business is HUBZone-certified, here&apos;s how
+            to find awarded contracts in your industry, identify the agencies
+            spending the most, and research your competition.
           </p>
         </div>
 
@@ -178,10 +183,10 @@ export default function EightAGuide() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-200 bg-blue-50 p-8 text-center dark:border-blue-900/30 dark:bg-blue-950/20">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-            Search 8(a) contracts now
+            Search HUBZone contracts now
           </h2>
           <p className="max-w-md text-sm text-slate-600 dark:text-slate-400">
-            Enter your NAICS code, select the 8(a) set-aside filter, and see
+            Enter your NAICS code, select the HUBZone set-aside filter, and see
             every awarded contract in your industry. Free — 10 searches per day,
             no registration.
           </p>
@@ -189,7 +194,7 @@ export default function EightAGuide() {
             href="/"
             className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
           >
-            Search 8(a) contracts free
+            Search HUBZone contracts free
           </Link>
         </div>
 
@@ -199,15 +204,14 @@ export default function EightAGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types.
-            Use the same search process for any of these:
+            The Federal Contract Tracker supports all major set-aside types:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
               {
-                name: "HUBZone",
-                desc: "Businesses in Historically Underutilized Business Zones",
-                href: "/guides/hubzone-contracts",
+                name: "8(a) Business Development",
+                desc: "For socially and economically disadvantaged businesses",
+                href: "/guides/8a-set-aside-contracts",
               },
               {
                 name: "WOSB",
@@ -275,16 +279,16 @@ export default function EightAGuide() {
           </h2>
           <div className="flex flex-wrap gap-3">
             <Link
+              href="/guides/8a-set-aside-contracts"
+              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+            >
+              8(a) Set-Aside Guide
+            </Link>
+            <Link
               href="/guides/wosb-contracts"
               className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
             >
               WOSB Contracts Guide
-            </Link>
-            <Link
-              href="/guides/hubzone-contracts"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
-            >
-              HUBZone Contracts Guide
             </Link>
             <Link
               href="/compare/sam-gov"
@@ -293,22 +297,10 @@ export default function EightAGuide() {
               FCT vs SAM.gov
             </Link>
             <Link
-              href="/compare/govwin"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
-            >
-              FCT vs GovWin
-            </Link>
-            <Link
               href="/trends"
               className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
             >
               Spending Trends
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
-            >
-              Pricing
             </Link>
           </div>
         </div>

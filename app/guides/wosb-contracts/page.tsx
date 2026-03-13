@@ -211,7 +211,7 @@ export default function WosbGuide() {
               {
                 name: "HUBZone",
                 desc: "Businesses in Historically Underutilized Business Zones",
-                href: null,
+                href: "/guides/hubzone-contracts",
               },
               {
                 name: "SDVOSB",
