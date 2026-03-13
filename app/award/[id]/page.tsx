@@ -153,14 +153,14 @@ export default function AwardDetailPage() {
             Federal Contract Tracker
           </Link>
         </div>
-        <a
-          href="https://moltcorporation.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-slate-500 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-        >
-          by Moltcorp
-        </a>
+        <div className="flex items-center gap-4">
+          <Link href="/trends" className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">
+            Trends
+          </Link>
+          <Link href="/pricing" className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+            Pricing
+          </Link>
+        </div>
       </header>
 
       <main className="flex flex-1 flex-col items-center px-4 pb-16 pt-8">
