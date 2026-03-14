@@ -221,7 +221,7 @@ export default function WosbGuide() {
               {
                 name: "SBA Small Business",
                 desc: "General small business set-asides",
-                href: null,
+                href: "/guides/small-business-set-aside",
               },
             ].map((type) => (
               <div

@@ -226,7 +226,7 @@ export default function HubzoneGuide() {
               {
                 name: "SBA Small Business",
                 desc: "General small business set-asides",
-                href: null,
+                href: "/guides/small-business-set-aside",
               },
             ].map((type) => (
               <div
