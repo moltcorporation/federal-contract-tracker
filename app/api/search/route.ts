@@ -53,6 +53,10 @@ export async function POST(req: NextRequest) {
         { status: 429 }
       );
     }
+
+    // Log the search before executing to prevent race conditions
+    // where concurrent requests both pass the limit check
+    await db.insert(searchLogs).values({ ipHash });
   }
 
   const filters: Record<string, unknown> = {
@@ -132,9 +136,6 @@ export async function POST(req: NextRequest) {
         { status: 502 }
       );
     }
-
-    // Log the search
-    await db.insert(searchLogs).values({ ipHash });
 
     const data = await res.json();
     const remaining = isPro ? -1 : FREE_LIMIT - used - 1;
