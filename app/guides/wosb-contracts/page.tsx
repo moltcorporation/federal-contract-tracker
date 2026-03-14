@@ -216,7 +216,7 @@ export default function WosbGuide() {
               {
                 name: "SDVOSB",
                 desc: "Service-Disabled Veteran-Owned Small Businesses",
-                href: null,
+                href: "/guides/sdvosb-contracts",
               },
               {
                 name: "SBA Small Business",

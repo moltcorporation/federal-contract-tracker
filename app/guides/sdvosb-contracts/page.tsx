@@ -2,72 +2,67 @@ import Link from "next/link";
 
 const steps = [
   {
-    title: "Check if your business is in a HUBZone",
-    body: "HUBZone eligibility starts with location. Your principal office must be in a Historically Underutilized Business Zone, and at least 35% of your employees must live in a HUBZone. Use the SBA's HUBZone map at maps.certify.sba.gov to check your address. HUBZones include rural areas, qualified census tracts, Indian lands, and areas affected by base closures.",
-  },
-  {
-    title: "Get HUBZone certified through the SBA",
-    body: "Apply at certify.sba.gov. You must be a small business (by SBA size standards for your NAICS code), at least 51% owned by U.S. citizens, and meet the location and employee residency requirements. Certification takes 60-90 days. Once certified, you must be recertified every three years and maintain your HUBZone employees.",
+    title: "Verify your SDVOSB status through VetCert",
+    body: "To bid on SDVOSB set-aside contracts, your business must be verified through the SBA's VetCert system (formerly the VA's VIP database). You need a service-connected disability rating from the VA. The business must be at least 51% owned and controlled by one or more service-disabled veterans. Apply at vetcert.sba.gov — verification typically takes 60–90 days.",
   },
   {
     title: "Find your NAICS code",
-    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'construction', 'IT services', 'manufacturing') and select the matching code. Knowing your NAICS code is essential for finding HUBZone contracts in your industry.",
+    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'janitorial', 'IT services', 'construction') and select the matching code. SDVOSB set-asides are available across all NAICS codes, giving you broad access to opportunities regardless of industry.",
   },
   {
-    title: "Search for awarded HUBZone contracts",
-    body: "On the Federal Contract Tracker, enter your NAICS code and select \"HUBZone\" from the set-aside filter. This shows every HUBZone contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. You'll see your competitive landscape instantly.",
+    title: "Search for awarded SDVOSB contracts",
+    body: "On the Federal Contract Tracker, enter your NAICS code and select the SDVOSB set-aside filter. This shows every SDVOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. Study the winners to understand your competitive landscape.",
   },
   {
-    title: "Identify top agencies and track trends",
-    body: "Use the Spending by Agency tab to see which agencies award the most HUBZone contracts in your NAICS code. Visit the Trends page and filter by HUBZone set-aside to see quarterly spending patterns. Some agencies have strong HUBZone programs — the Department of Defense, GSA, and VA are consistently large HUBZone spenders.",
+    title: "Check VA-specific opportunities",
+    body: "The Department of Veterans Affairs has its own Veterans First Contracting Program, which prioritizes SDVOSBs and VOSBs for VA contracts specifically. Search with the VA as the awarding agency to see these opportunities. VA contracts are often the largest source of SDVOSB set-aside awards.",
+  },
+  {
+    title: "Track agency spending patterns",
+    body: "Use the Spending by Agency tab to see which agencies award the most SDVOSB contracts in your NAICS code. The government-wide goal is 3% of prime contract dollars to SDVOSBs. The Trends page shows quarterly spending over time — look for agencies increasing their SDVOSB spending or falling short of their goals.",
   },
 ];
 
 const faqs = [
   {
-    question: "What is a HUBZone set-aside contract?",
+    question: "What is an SDVOSB set-aside contract?",
     answer:
-      "A HUBZone set-aside is a federal contract reserved for small businesses certified under the SBA's HUBZone program. The program aims to stimulate economic development in Historically Underutilized Business Zones by giving certified businesses preferential access to federal contracts. Only SBA-certified HUBZone businesses can bid on these contracts.",
+      "An SDVOSB (Service-Disabled Veteran-Owned Small Business) set-aside is a federal contract reserved exclusively for verified service-disabled veteran-owned small businesses. The program helps veterans with service-connected disabilities compete for government contracts. The government-wide goal is to award at least 3% of all federal prime contracting dollars to SDVOSBs.",
   },
   {
-    question: "What qualifies as a HUBZone?",
+    question: "How do I get SDVOSB verification?",
     answer:
-      "HUBZones include qualified census tracts (based on household income and unemployment data), qualified non-metropolitan counties, Indian lands (including Alaska Native Village areas and Hawaiian Home Lands), qualified base closure areas, and qualified disaster areas. The SBA maintains an interactive map at maps.certify.sba.gov where you can check any address.",
+      "Apply through the SBA's VetCert system at vetcert.sba.gov. You must provide proof of your service-connected disability rating from the VA, documentation of at least 51% ownership by the service-disabled veteran, and evidence that the veteran controls day-to-day management and long-term decision-making. The process moved from the VA to SBA on January 1, 2023.",
   },
   {
-    question: "What are the HUBZone certification requirements?",
+    question: "What is the difference between SDVOSB and VOSB?",
     answer:
-      "Your business must be a small business by SBA standards, at least 51% owned and controlled by U.S. citizens, have its principal office in a HUBZone, and have at least 35% of its employees residing in a HUBZone. The 35% employee requirement is calculated based on all employees, not just full-time — part-time employees count too.",
+      "SDVOSB is for veteran-owned businesses where the veteran has a service-connected disability rating from the VA (any percentage). VOSB (Veteran-Owned Small Business) is for any veteran-owned business, regardless of disability status. SDVOSB set-asides are more common and the government has a specific 3% spending goal for SDVOSBs. Both require VetCert verification.",
   },
   {
-    question: "How much are HUBZone contracts worth?",
+    question: "What are the sole-source contract limits for SDVOSBs?",
     answer:
-      "HUBZone sole-source contracts can be up to $4.5 million for services or $8 million for manufacturing. Competitive HUBZone set-asides have no dollar limit. HUBZone businesses also get a 10% price evaluation preference on full and open competition contracts, meaning their bid is treated as 10% lower when evaluated against non-HUBZone competitors.",
+      "Agencies can award sole-source contracts to SDVOSBs up to $4.5 million for services and $8 million for manufacturing. Sole-source means the agency awards directly to your business without competitive bidding. For competitive SDVOSB set-asides, there is no dollar limit.",
   },
   {
-    question: "What is the HUBZone price evaluation preference?",
+    question: "What is the VA's Veterans First Contracting Program?",
     answer:
-      "Even on contracts that aren't set aside for HUBZone, certified businesses get a 10% price evaluation preference in full and open competitions. If a HUBZone firm bids $110,000 and a non-HUBZone firm bids $100,000, they're evaluated equally. This applies only to contracts awarded based on price — not best value acquisitions.",
+      "Veterans First is the VA's own contracting program that goes beyond the government-wide SDVOSB program. The VA is required to set aside contracts for SDVOSBs and VOSBs before considering other small business programs. This means SDVOSBs get priority at the VA even over 8(a), HUBZone, and WOSB set-asides — making VA contracts especially valuable for veteran-owned businesses.",
   },
   {
-    question: "Can I search HUBZone contracts from a specific agency?",
+    question: "Can I hold both SDVOSB and 8(a) certification?",
     answer:
-      "Yes. In the Federal Contract Tracker, select \"HUBZone\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most HUBZone contracts in your NAICS code.",
-  },
-  {
-    question: "Where does this data come from?",
-    answer:
-      "All contract data comes from USASpending.gov, the U.S. government's official source for federal spending data. It is updated daily and covers all awarded federal contracts including set-aside designations.",
+      "Yes. SDVOSB verification and 8(a) Business Development certification are separate programs. If you qualify for both, you can bid on SDVOSB set-asides, 8(a) set-asides, and general small business set-asides — significantly expanding your opportunities. Use the Federal Contract Tracker to compare award volumes across both set-aside types in your NAICS code.",
   },
 ];
 
-export default function HubzoneGuide() {
+export default function SdvosbGuide() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Find HUBZone Set-Aside Federal Contracts",
+    name: "How to Find SDVOSB Set-Aside Federal Contracts",
     description:
-      "Step-by-step guide to finding HUBZone set-aside federal contract awards for businesses in Historically Underutilized Business Zones.",
+      "Step-by-step guide to finding SDVOSB set-aside federal contract awards for service-disabled veteran-owned small businesses.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -144,17 +139,17 @@ export default function HubzoneGuide() {
             Guide
           </p>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            How to Find HUBZone Set-Aside
+            How to Find SDVOSB Set-Aside
             <span className="block text-blue-600 dark:text-blue-400">
               Federal Contracts
             </span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            The HUBZone program gives small businesses in Historically
-            Underutilized Business Zones preferential access to federal
-            contracts. If your business is HUBZone-certified, here&apos;s how
-            to find awarded contracts in your industry, identify the agencies
-            spending the most, and research your competition.
+            The Service-Disabled Veteran-Owned Small Business (SDVOSB) program
+            sets aside federal contracts for businesses owned by veterans with
+            service-connected disabilities. If you have SDVOSB verification,
+            here&apos;s how to find awarded contracts in your industry, identify
+            the agencies spending the most, and research your competitors.
           </p>
         </div>
 
@@ -183,18 +178,18 @@ export default function HubzoneGuide() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-200 bg-blue-50 p-8 text-center dark:border-blue-900/30 dark:bg-blue-950/20">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-            Search HUBZone contracts now
+            Search SDVOSB contracts now
           </h2>
           <p className="max-w-md text-sm text-slate-600 dark:text-slate-400">
-            Enter your NAICS code, select the HUBZone set-aside filter, and see
-            every awarded contract in your industry. Free — 10 searches per day,
-            no registration.
+            Enter your NAICS code, select the SDVOSB filter, and see every
+            awarded contract in your industry. Free — 10 searches per day, no
+            registration.
           </p>
           <Link
             href="/"
             className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
           >
-            Search HUBZone contracts free
+            Search SDVOSB contracts free
           </Link>
         </div>
 
@@ -214,14 +209,14 @@ export default function HubzoneGuide() {
                 href: "/guides/8a-set-aside-contracts",
               },
               {
+                name: "HUBZone",
+                desc: "Businesses in Historically Underutilized Business Zones",
+                href: "/guides/hubzone-contracts",
+              },
+              {
                 name: "WOSB",
                 desc: "Women-Owned Small Businesses",
                 href: "/guides/wosb-contracts",
-              },
-              {
-                name: "SDVOSB",
-                desc: "Service-Disabled Veteran-Owned Small Businesses",
-                href: "/guides/sdvosb-contracts",
               },
               {
                 name: "SBA Small Business",
@@ -288,7 +283,13 @@ export default function HubzoneGuide() {
               href="/guides/wosb-contracts"
               className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
             >
-              WOSB Contracts Guide
+              WOSB Guide
+            </Link>
+            <Link
+              href="/guides/hubzone-contracts"
+              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+            >
+              HUBZone Guide
             </Link>
             <Link
               href="/compare/sam-gov"
