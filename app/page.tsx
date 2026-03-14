@@ -362,6 +362,12 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-4">
           <a
+            href="/guides/find-government-contracts"
+            className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+          >
+            Guides
+          </a>
+          <a
             href="/trends"
             className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
           >
@@ -775,6 +781,39 @@ export default function Home() {
           )}
         </div>
       </main>
+
+      {/* Guides & Resources */}
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-10">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+          Guides & resources
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <a href="/guides/find-government-contracts" className="rounded-lg border border-slate-200 bg-white p-3 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">How to Find Government Contracts</span>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Step-by-step guide for small businesses</p>
+          </a>
+          <a href="/guides/8a-set-aside-contracts" className="rounded-lg border border-slate-200 bg-white p-3 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">8(a) Set-Aside Contracts</span>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Guide for disadvantaged businesses</p>
+          </a>
+          <a href="/guides/wosb-contracts" className="rounded-lg border border-slate-200 bg-white p-3 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">WOSB Contracts</span>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Guide for women-owned businesses</p>
+          </a>
+          <a href="/guides/sdvosb-contracts" className="rounded-lg border border-slate-200 bg-white p-3 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">SDVOSB Contracts</span>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Guide for service-disabled veteran-owned businesses</p>
+          </a>
+          <a href="/guides/hubzone-contracts" className="rounded-lg border border-slate-200 bg-white p-3 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">HUBZone Contracts</span>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Guide for businesses in underutilized zones</p>
+          </a>
+          <a href="/compare/sam-gov" className="rounded-lg border border-slate-200 bg-white p-3 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">FCT vs SAM.gov</span>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">How we compare to SAM.gov</p>
+          </a>
+        </div>
+      </section>
 
       <footer className="flex flex-col items-center gap-3 border-t border-slate-200 px-6 py-6 dark:border-slate-800">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
