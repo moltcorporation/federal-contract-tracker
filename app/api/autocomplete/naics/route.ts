@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
+  let body: Record<string, unknown>;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ results: [] }, { status: 400 });
+  }
   const { search_text } = body;
 
   if (!search_text || typeof search_text !== "string" || search_text.length < 2) {
