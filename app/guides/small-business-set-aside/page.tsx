@@ -2,67 +2,71 @@ import Link from "next/link";
 
 const steps = [
   {
-    title: "Verify your SDVOSB status through VetCert",
-    body: "To bid on SDVOSB set-aside contracts, your business must be verified through the SBA's VetCert system (formerly the VA's VIP database). You need a service-connected disability rating from the VA. The business must be at least 51% owned and controlled by one or more service-disabled veterans. Apply at vetcert.sba.gov — verification typically takes 60–90 days.",
+    title: "Confirm your small business size status",
+    body: "The SBA defines 'small' differently for each industry using NAICS-based size standards. For most service industries, the threshold is average annual receipts (typically $9M\u2013$47.5M). For manufacturing, it\u2019s usually employee count (typically 500\u20131,500). Check your size standard at sba.gov/size-standards \u2014 if your business is under the threshold for your primary NAICS code, you qualify as a small business for federal contracting.",
   },
   {
-    title: "Find your NAICS code",
-    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'janitorial', 'IT services', 'construction') and select the matching code. SDVOSB set-asides are available across all NAICS codes, giving you broad access to opportunities regardless of industry.",
+    title: "Register on SAM.gov",
+    body: "Every business bidding on federal contracts must register in the System for Award Management (SAM.gov). Registration is free and takes 7\u201310 business days. You\u2019ll need your EIN, UEI number, bank account information, and NAICS codes. During registration, you\u2019ll self-certify as a small business under your NAICS codes. Keep your registration active \u2014 it must be renewed annually.",
   },
   {
-    title: "Search for awarded SDVOSB contracts",
-    body: "On the Federal Contract Tracker, enter your NAICS code and select the SDVOSB set-aside filter. This shows every SDVOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. Study the winners to understand your competitive landscape.",
+    title: "Find your NAICS codes",
+    body: "Federal contracts are categorized by NAICS code \u2014 6-digit codes describing what your business does. For example, 541511 is Custom Computer Programming Services. Most businesses qualify under 2\u20135 codes. Use the Federal Contract Tracker\u2019s autocomplete to search by keyword and find codes matching your services. Your NAICS codes also determine your SBA size standard.",
   },
   {
-    title: "Check VA-specific opportunities",
-    body: "The Department of Veterans Affairs has its own Veterans First Contracting Program, which prioritizes SDVOSBs and VOSBs for VA contracts specifically. Search with the VA as the awarding agency to see these opportunities. VA contracts are often the largest source of SDVOSB set-aside awards.",
+    title: "Search for small business set-aside contracts",
+    body: "On the Federal Contract Tracker, enter your NAICS code and select the SBA Small Business set-aside filter. This shows every small business set-aside contract awarded in your industry \u2014 who won, which agency awarded it, and the dollar amount. Small business set-asides are the most common type, with the highest total dollar volume of any set-aside program.",
   },
   {
-    title: "Track agency spending patterns",
-    body: "Use the Spending by Agency tab to see which agencies award the most SDVOSB contracts in your NAICS code. The government-wide goal is 3% of prime contract dollars to SDVOSBs. The Trends page shows quarterly spending over time — look for agencies increasing their SDVOSB spending or falling short of their goals.",
+    title: "Identify top agencies for small business contracts",
+    body: "Use the Spending by Agency view to find which agencies award the most small business set-aside contracts in your NAICS codes. Agencies are required to meet small business contracting goals \u2014 the government-wide target is 23% of prime contract dollars to small businesses. Agencies that consistently fall short of their goals are more likely to increase small business set-asides.",
+  },
+  {
+    title: "Explore specialized set-aside programs",
+    body: "If your business qualifies for additional certifications \u2014 8(a), WOSB, SDVOSB, or HUBZone \u2014 you can access contracts with even less competition. These programs reserve contracts specifically for their categories and have sole-source provisions. Getting certified for multiple programs significantly expands your opportunities.",
   },
 ];
 
 const faqs = [
   {
-    question: "What is an SDVOSB set-aside contract?",
+    question: "What is a small business set-aside contract?",
     answer:
-      "An SDVOSB (Service-Disabled Veteran-Owned Small Business) set-aside is a federal contract reserved exclusively for verified service-disabled veteran-owned small businesses. The program helps veterans with service-connected disabilities compete for government contracts. The government-wide goal is to award at least 3% of all federal prime contracting dollars to SDVOSBs.",
+      "A small business set-aside is a federal contract reserved exclusively for small businesses. Contracting officers are required to set aside contracts for small business competition when they expect at least two qualified small businesses will submit offers at fair market prices. The government-wide goal is to award at least 23% of all federal prime contracting dollars to small businesses.",
   },
   {
-    question: "How do I get SDVOSB verification?",
+    question: "How does the SBA determine if my business is small?",
     answer:
-      "Apply through the SBA's VetCert system at vetcert.sba.gov. You must provide proof of your service-connected disability rating from the VA, documentation of at least 51% ownership by the service-disabled veteran, and evidence that the veteran controls day-to-day management and long-term decision-making. The process moved from the VA to SBA on January 1, 2023.",
+      "The SBA uses size standards that vary by NAICS code. For most service industries, the standard is based on average annual receipts over the past 5 years (typically $9M\u2013$47.5M depending on industry). For manufacturing, it\u2019s based on average number of employees (typically 500\u20131,500). Check your specific standard at sba.gov/size-standards by entering your NAICS code.",
   },
   {
-    question: "What is the difference between SDVOSB and VOSB?",
+    question: "Do I need SBA certification for small business set-asides?",
     answer:
-      "SDVOSB is for veteran-owned businesses where the veteran has a service-connected disability rating from the VA (any percentage). VOSB (Veteran-Owned Small Business) is for any veteran-owned business, regardless of disability status. SDVOSB set-asides are more common and the government has a specific 3% spending goal for SDVOSBs. Both require VetCert verification.",
+      "No. General small business set-asides only require self-certification through your SAM.gov registration. You declare your small business status when registering. However, specialized programs like 8(a), WOSB, SDVOSB, and HUBZone do require formal SBA certification or verification. If you qualify for those programs, the additional certification is worth pursuing.",
   },
   {
-    question: "What are the sole-source contract limits for SDVOSBs?",
+    question: "What is the difference between a small business set-aside and an 8(a) set-aside?",
     answer:
-      "Agencies can award sole-source contracts to SDVOSBs up to $4.5 million for services and $8 million for manufacturing. Sole-source means the agency awards directly to your business without competitive bidding. For competitive SDVOSB set-asides, there is no dollar limit.",
+      "A general small business set-aside is open to any SBA-qualified small business. An 8(a) set-aside is reserved specifically for businesses in the SBA\u2019s 8(a) Business Development program, which serves socially and economically disadvantaged entrepreneurs. 8(a) set-asides have less competition but require formal certification. Small business set-asides have higher volume but more bidders.",
   },
   {
-    question: "What is the VA's Veterans First Contracting Program?",
+    question: "What are the sole-source limits for small business contracts?",
     answer:
-      "Veterans First is the VA's own contracting program that goes beyond the government-wide SDVOSB program. The VA is required to set aside contracts for SDVOSBs and VOSBs before considering other small business programs. This means SDVOSBs get priority at the VA even over 8(a), HUBZone, and WOSB set-asides — making VA contracts especially valuable for veteran-owned businesses.",
+      "For general small business set-asides, there are no sole-source provisions \u2014 they must be competitively bid. However, specialized programs have sole-source limits: 8(a) up to $4.5M services/$8M manufacturing, SDVOSB up to $4.5M/$8M, WOSB up to $4.5M/$8M, and HUBZone up to $4.5M/$8M. If you qualify for any of these, sole-source contracts are a significant advantage.",
   },
   {
-    question: "Can I hold both SDVOSB and 8(a) certification?",
+    question: "How much of federal spending goes to small businesses?",
     answer:
-      "Yes. SDVOSB verification and 8(a) Business Development certification are separate programs. If you qualify for both, you can bid on SDVOSB set-asides, 8(a) set-asides, and general small business set-asides — significantly expanding your opportunities. Use the Federal Contract Tracker to compare award volumes across both set-aside types in your NAICS code.",
+      "The government-wide goal is 23% of prime contract dollars to small businesses. In recent years, the actual percentage has exceeded this target \u2014 over $178 billion was awarded to small businesses in FY2023. Use the Federal Contract Tracker\u2019s Trends page to see quarterly spending patterns and identify which agencies are the biggest small business spenders in your NAICS codes.",
   },
 ];
 
-export default function SdvosbGuide() {
+export default function SmallBusinessSetAsideGuide() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Find SDVOSB Set-Aside Federal Contracts",
+    name: "How to Find SBA Small Business Set-Aside Federal Contracts",
     description:
-      "Step-by-step guide to finding SDVOSB set-aside federal contract awards for service-disabled veteran-owned small businesses.",
+      "Step-by-step guide to finding SBA small business set-aside federal contracts, including size standards, SAM.gov registration, and competitive research.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -139,17 +143,18 @@ export default function SdvosbGuide() {
             Guide
           </p>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            How to Find SDVOSB Set-Aside
+            Small Business Set-Aside
             <span className="block text-blue-600 dark:text-blue-400">
               Federal Contracts
             </span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            The Service-Disabled Veteran-Owned Small Business (SDVOSB) program
-            sets aside federal contracts for businesses owned by veterans with
-            service-connected disabilities. If you have SDVOSB verification,
-            here&apos;s how to find awarded contracts in your industry, identify
-            the agencies spending the most, and research your competitors.
+            The federal government is required to award at least 23% of prime
+            contract dollars to small businesses. General small business
+            set-asides are the most common type of reserved contract &mdash; any
+            SBA-qualified small business can compete. Here&apos;s how to confirm
+            your eligibility, find set-aside contracts, and identify the
+            agencies spending the most in your industry.
           </p>
         </div>
 
@@ -178,18 +183,18 @@ export default function SdvosbGuide() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-200 bg-blue-50 p-8 text-center dark:border-blue-900/30 dark:bg-blue-950/20">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-            Search SDVOSB contracts now
+            Search small business set-aside contracts
           </h2>
           <p className="max-w-md text-sm text-slate-600 dark:text-slate-400">
-            Enter your NAICS code, select the SDVOSB filter, and see every
-            awarded contract in your industry. Free — 10 searches per day, no
-            registration.
+            Enter your NAICS code, select the SBA Small Business filter, and see
+            every awarded set-aside contract in your industry. Free &mdash; 10
+            searches per day, no registration.
           </p>
           <Link
             href="/"
             className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
           >
-            Search SDVOSB contracts free
+            Search small business contracts free
           </Link>
         </div>
 
@@ -199,7 +204,8 @@ export default function SdvosbGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types:
+            If your business qualifies for additional certifications, these
+            specialized programs offer contracts with less competition:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
@@ -209,38 +215,33 @@ export default function SdvosbGuide() {
                 href: "/guides/8a-set-aside-contracts",
               },
               {
-                name: "HUBZone",
-                desc: "Businesses in Historically Underutilized Business Zones",
-                href: "/guides/hubzone-contracts",
-              },
-              {
                 name: "WOSB",
                 desc: "Women-Owned Small Businesses",
                 href: "/guides/wosb-contracts",
               },
               {
-                name: "SBA Small Business",
-                desc: "General small business set-asides",
-                href: "/guides/small-business-set-aside",
+                name: "SDVOSB",
+                desc: "Service-Disabled Veteran-Owned Small Businesses",
+                href: "/guides/sdvosb-contracts",
+              },
+              {
+                name: "HUBZone",
+                desc: "Businesses in Historically Underutilized Business Zones",
+                href: "/guides/hubzone-contracts",
               },
             ].map((type) => (
-              <div
+              <Link
                 key={type.name}
-                className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+                href={type.href}
+                className="rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-600"
               >
-                {type.href ? (
-                  <Link href={type.href} className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-                    {type.name}
-                  </Link>
-                ) : (
-                  <h3 className="font-semibold text-slate-900 dark:text-white">
-                    {type.name}
-                  </h3>
-                )}
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
+                  {type.name}
+                </span>
                 <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                   {type.desc}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -284,6 +285,12 @@ export default function SdvosbGuide() {
               className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
             >
               WOSB Guide
+            </Link>
+            <Link
+              href="/guides/sdvosb-contracts"
+              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+            >
+              SDVOSB Guide
             </Link>
             <Link
               href="/guides/hubzone-contracts"
