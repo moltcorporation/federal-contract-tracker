@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
-import { db } from "@/db";
-import { searchLogs } from "@/db/schema";
 import { buildCheckoutUrl, checkProAccess } from "@/lib/stripe";
-import { sql } from "drizzle-orm";
 
 const FREE_LIMIT = 10;
 const WINDOW_MS = 24 * 60 * 60 * 1000;
+
+// Lazy-load DB to avoid module-level side effects that may
+// interfere with global fetch (Neon serverless driver).
+async function getDb() {
+  const { db } = await import("@/db");
+  const { searchLogs } = await import("@/db/schema");
+  return { db, searchLogs };
+}
 
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
@@ -25,33 +30,46 @@ export async function POST(req: NextRequest) {
     isPro = await checkProAccess(proEmail);
   }
 
-  // Rate limiting
+  // Rate limiting — wrapped in try-catch so DB failures don't break search
   const forwarded = req.headers.get("x-forwarded-for");
   const ip = forwarded?.split(",")[0]?.trim() || "unknown";
   const ipHash = createHash("sha256").update(ip).digest("hex");
 
   let used = 0;
+  let dbAvailable = false;
   if (!isPro) {
-    const windowStart = new Date(Date.now() - WINDOW_MS);
-    const [countResult] = await db
-      .select({ count: sql<number>`count(*)::int` })
-      .from(searchLogs)
-      .where(
-        sql`${searchLogs.ipHash} = ${ipHash} AND ${searchLogs.searchedAt} >= ${windowStart}`
-      );
+    try {
+      const { db, searchLogs } = await getDb();
+      const { sql } = await import("drizzle-orm");
+      const windowStart = new Date(Date.now() - WINDOW_MS);
+      const [countResult] = await db
+        .select({ count: sql<number>`count(*)::int` })
+        .from(searchLogs)
+        .where(
+          sql`${searchLogs.ipHash} = ${ipHash} AND ${searchLogs.searchedAt} >= ${windowStart}`
+        );
 
-    used = countResult?.count ?? 0;
+      used = countResult?.count ?? 0;
+      dbAvailable = true;
 
-    if (used >= FREE_LIMIT) {
-      return NextResponse.json(
-        {
-          error: "Daily search limit reached. Upgrade to Pro for unlimited searches.",
-          remaining: 0,
-          limit: FREE_LIMIT,
-          upgradeUrl: buildCheckoutUrl(),
-        },
-        { status: 429 }
-      );
+      if (used >= FREE_LIMIT) {
+        return NextResponse.json(
+          {
+            error: "Daily search limit reached. Upgrade to Pro for unlimited searches.",
+            remaining: 0,
+            limit: FREE_LIMIT,
+            upgradeUrl: buildCheckoutUrl(),
+          },
+          { status: 429 }
+        );
+      }
+
+      // Log the search before executing to prevent race conditions
+      await db.insert(searchLogs).values({ ipHash });
+    } catch {
+      // DB is unavailable — allow the search anyway (fail open)
+      // Rate limiting is a nice-to-have, not worth blocking the core feature
+      console.error("Rate limit DB unavailable, allowing search");
     }
   }
 
@@ -127,14 +145,13 @@ export async function POST(req: NextRequest) {
     );
 
     if (!res.ok) {
+      const errorBody = await res.text().catch(() => "");
+      console.error(`USASpending API returned ${res.status}: ${errorBody.slice(0, 500)}`);
       return NextResponse.json(
-        { error: "Failed to fetch from USASpending API" },
+        { error: "Failed to fetch from USASpending API", status: res.status },
         { status: 502 }
       );
     }
-
-    // Log the search
-    await db.insert(searchLogs).values({ ipHash });
 
     const data = await res.json();
     const remaining = isPro ? -1 : FREE_LIMIT - used - 1;
@@ -145,7 +162,8 @@ export async function POST(req: NextRequest) {
       limit: isPro ? -1 : FREE_LIMIT,
       isPro,
     });
-  } catch {
+  } catch (err) {
+    console.error("USASpending fetch error:", err);
     return NextResponse.json(
       { error: "Failed to connect to USASpending API" },
       { status: 502 }
