@@ -32,26 +32,31 @@ export async function POST(req: NextRequest) {
 
   let used = 0;
   if (!isPro) {
-    const windowStart = new Date(Date.now() - WINDOW_MS);
-    const [countResult] = await db
-      .select({ count: sql<number>`count(*)::int` })
-      .from(searchLogs)
-      .where(
-        sql`${searchLogs.ipHash} = ${ipHash} AND ${searchLogs.searchedAt} >= ${windowStart}`
-      );
+    try {
+      const windowStart = new Date(Date.now() - WINDOW_MS);
+      const [countResult] = await db
+        .select({ count: sql<number>`count(*)::int` })
+        .from(searchLogs)
+        .where(
+          sql`${searchLogs.ipHash} = ${ipHash} AND ${searchLogs.searchedAt} >= ${windowStart}`
+        );
 
-    used = countResult?.count ?? 0;
+      used = countResult?.count ?? 0;
 
-    if (used >= FREE_LIMIT) {
-      return NextResponse.json(
-        {
-          error: "Daily search limit reached. Upgrade to Pro for unlimited searches.",
-          remaining: 0,
-          limit: FREE_LIMIT,
-          upgradeUrl: buildCheckoutUrl(),
-        },
-        { status: 429 }
-      );
+      if (used >= FREE_LIMIT) {
+        return NextResponse.json(
+          {
+            error: "Daily search limit reached. Upgrade to Pro for unlimited searches.",
+            remaining: 0,
+            limit: FREE_LIMIT,
+            upgradeUrl: buildCheckoutUrl(),
+          },
+          { status: 429 }
+        );
+      }
+    } catch {
+      // DB unavailable — fail open so searches still work
+      console.error("Rate limit DB query failed, allowing search");
     }
   }
 
@@ -133,8 +138,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Log the search
-    await db.insert(searchLogs).values({ ipHash });
+    // Log the search (non-blocking — don't let DB errors break search)
+    try {
+      await db.insert(searchLogs).values({ ipHash });
+    } catch {
+      console.error("Failed to log search, continuing");
+    }
 
     const data = await res.json();
     const remaining = isPro ? -1 : FREE_LIMIT - used - 1;
