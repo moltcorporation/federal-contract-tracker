@@ -3,86 +3,76 @@ import Link from "next/link";
 const comparisonRows = [
   {
     feature: "Pricing",
-    ours: "$0 (10 searches/day) or $49/month for unlimited",
-    theirs: "$2,000–$12,000/year depending on modules and seats",
+    ours: "$0 (10 searches/day) or $49/mo unlimited",
+    theirs: "$6,000–$12,000/year",
   },
   {
     feature: "Primary purpose",
     ours: "Research awarded contracts — who won, how much, which agency",
-    theirs: "Full pipeline intelligence — pre-solicitation tracking, forecasts, competitor intel",
+    theirs: "Full government intelligence — legislation, regulation, contracts, lobbying",
   },
   {
     feature: "Data source",
-    ours: "USASpending.gov (official government data, updated daily)",
-    theirs: "Proprietary research + government data, curated by analysts",
+    ours: "USASpending.gov (official, updated daily)",
+    theirs: "Proprietary research + government data, curated by analysts and journalists",
+  },
+  {
+    feature: "Contract search",
+    ours: "NAICS code, set-aside type, agency, keyword — instant results",
+    theirs: "Contract search within broader legislative/regulatory intelligence suite",
   },
   {
     feature: "Set-aside filtering",
-    ours: "One-click: 8(a), HUBZone, WOSB, SDVOSB, SBA — front and center",
-    theirs: "Available within opportunity search and filtering tools",
+    ours: "One-click: 8(a), HUBZone, WOSB, SDVOSB, SBA",
+    theirs: "Available within contract search tools",
   },
   {
-    feature: "NAICS code entry",
-    ours: "Autocomplete — type a keyword and pick from matching codes",
-    theirs: "NAICS filtering available in opportunity search",
+    feature: "Legislative tracking",
+    ours: "Not available — focused on contracts only",
+    theirs: "Core feature — bill tracking, floor votes, committee markups",
+  },
+  {
+    feature: "Regulatory analysis",
+    ours: "Not available",
+    theirs: "Core feature — regulatory filings, comment periods, agency actions",
   },
   {
     feature: "Agency spending view",
-    ours: "Top agencies ranked by spending, filterable by NAICS and set-aside",
-    theirs: "Agency profiles and spending data available in higher tiers",
-  },
-  {
-    feature: "Pre-solicitation tracking",
-    ours: "Not available — focused on awarded contracts only",
-    theirs: "Core feature — tracks opportunities from forecast through award",
-  },
-  {
-    feature: "Competitor intelligence",
-    ours: "See who wins contracts in your NAICS codes and set-aside categories",
-    theirs: "Detailed competitor profiles, win rates, teaming relationships",
+    ours: "Top agencies by spending, filterable by NAICS and set-aside",
+    theirs: "Agency profiles with spending, workforce, and budget data",
   },
   {
     feature: "Onboarding",
-    ours: "No signup required — start searching immediately",
-    theirs: "Enterprise sales process, demos, and contract negotiation",
-  },
-  {
-    feature: "Contract detail pages",
-    ours: "Financial summary, recipient info, business categories, competition status — one page",
-    theirs: "Detailed opportunity and award records with analyst annotations",
+    ours: "No signup required — search immediately",
+    theirs: "Enterprise sales process and subscription",
   },
 ];
 
 const faqs = [
   {
-    question: "Is Federal Contract Tracker a replacement for GovWin?",
+    question: "Is Federal Contract Tracker a replacement for Bloomberg Government?",
     answer:
-      "Not entirely. GovWin is a full pipeline intelligence platform — it tracks pre-solicitation opportunities, agency forecasts, and competitor intel across the entire procurement lifecycle. Federal Contract Tracker focuses on awarded contracts: who won, for how much, and from which agency. If you need pipeline tracking and bid intelligence, GovWin is the more complete tool. If you need affordable awarded contract research, Federal Contract Tracker does that job at 1/40th the price.",
+      "No. BGOV covers legislation, regulation, and contracts. Federal Contract Tracker focuses on awarded contracts only — who won, how much, and which agency. They are different tools for different needs.",
   },
   {
-    question: "Why is GovWin so expensive?",
+    question: "Why is Bloomberg Government so expensive?",
     answer:
-      "GovWin employs analysts who manually research and curate opportunity intelligence, agency forecasts, and competitive landscape reports. That human research labor is what drives the $2,000–$12,000/year price tag. Federal Contract Tracker uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
+      "BGOV employs journalists, analysts, and researchers who produce original intelligence on legislation, regulation, and procurement. That human research labor drives the $6,000–$12,000/year price tag. Federal Contract Tracker uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
   },
   {
-    question: "Where does Federal Contract Tracker get its data?",
+    question: "Can I use both Bloomberg Government and Federal Contract Tracker?",
     answer:
-      "All data comes from USASpending.gov, the U.S. government's official source for federal spending data. It covers all awarded federal contracts and is updated daily. We use the public API — no scraping, no proprietary data sources.",
-  },
-  {
-    question: "Can I use both GovWin and Federal Contract Tracker?",
-    answer:
-      "Yes, and many small businesses should. Use GovWin (or a similar pipeline tool) to find and track upcoming opportunities. Use Federal Contract Tracker to research the competitive landscape — who's winning contracts in your NAICS codes, which agencies are spending, and what set-aside contracts are being awarded. The awarded contract research from Federal Contract Tracker complements GovWin's forward-looking pipeline intelligence.",
+      "Yes. Use BGOV for legislative and regulatory intelligence. Use Federal Contract Tracker for affordable awarded contract research — who wins contracts in your NAICS codes, which agencies spend the most, and what set-aside contracts are being awarded.",
   },
   {
     question:
-      "I'm a small business and can't afford GovWin. Is Federal Contract Tracker enough?",
+      "I'm a small business. Is Federal Contract Tracker enough to get started?",
     answer:
-      "It depends on what you need. If your primary goal is understanding who wins contracts in your space — which agencies spend the most, what set-aside awards look like, and who your competitors are — Federal Contract Tracker covers that for $49/month or even free (10 searches/day). You won't get pre-solicitation tracking or bid intelligence, but for competitive research on awarded contracts, it's a practical starting point.",
+      "If your goal is understanding who wins contracts in your space, yes. $49/month or free (10 searches/day). You won't get legislative tracking, but for competitive contract research it's a practical starting point.",
   },
 ];
 
-export default function GovWinComparison() {
+export default function BGOVComparison() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
       <header className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
@@ -136,17 +126,16 @@ export default function GovWinComparison() {
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-12">
         <div className="flex flex-col items-center gap-5 text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            GovWin Alternative
+            Bloomberg Government Alternative
             <span className="block text-blue-600 dark:text-blue-400">
-              At 1/40th the Price
+              At a Fraction of the Cost
             </span>
           </h1>
           <p className="mx-auto max-w-xl text-lg text-slate-600 dark:text-slate-400">
-            GovWin by Deltek is the gold standard for federal pipeline
-            intelligence — and it costs $2,000–$12,000 per year. If you just
-            need to research{" "}
+            BGOV charges $6,000–$12,000/year for government intelligence. If
+            you just need to research{" "}
             <strong className="text-slate-900 dark:text-white">
-              who is winning awarded contracts
+              awarded federal contracts
             </strong>
             , Federal Contract Tracker gets you there for $49/month.
           </p>
@@ -158,18 +147,20 @@ export default function GovWinComparison() {
             An honest comparison
           </h2>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-            GovWin is a comprehensive business development platform. It tracks
-            opportunities from agency forecast through solicitation to award,
-            with analyst-curated intelligence, competitor profiling, and teaming
-            partner discovery. If your BD team relies on pipeline tracking,
-            GovWin earns its price.
+            Bloomberg Government is a comprehensive government intelligence
+            platform. It covers legislation, regulation, and contracts — with
+            analyst-curated research, journalist-written stories, and tools for
+            tracking bills, regulatory filings, and agency actions. If your work
+            spans the full legislative and regulatory landscape, BGOV earns its
+            price.
           </p>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-            Federal Contract Tracker does one thing: awarded contract research.
-            Who won contracts in your NAICS code? Which agencies spend the most
-            on your services? What set-aside contracts were awarded last year?
-            For small businesses that need competitive intelligence without a
-            five-figure annual commitment, that one thing goes a long way.
+            Federal Contract Tracker focuses specifically on awarded federal
+            contracts. Who won contracts in your NAICS code? Which agencies
+            spend the most on your services? What set-aside contracts were
+            awarded last year? We don&apos;t cover legislative or regulatory
+            analysis — but for small businesses that need contract research
+            without a five-figure annual commitment, that focus goes a long way.
           </p>
         </div>
 
@@ -192,7 +183,7 @@ export default function GovWinComparison() {
             </span>
             <div className="flex flex-col">
               <span className="text-3xl font-extrabold text-slate-400 line-through dark:text-slate-500">
-                $2K–$12K
+                $6K–$12K
               </span>
               <span className="text-xs text-slate-500 dark:text-slate-400">
                 /year
@@ -207,7 +198,7 @@ export default function GovWinComparison() {
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-            Federal Contract Tracker vs GovWin
+            Federal Contract Tracker vs Bloomberg Government
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
             <table className="w-full text-sm">
@@ -220,7 +211,7 @@ export default function GovWinComparison() {
                     Contract Tracker
                   </th>
                   <th className="px-4 py-3 text-left font-medium text-slate-500 dark:text-slate-500">
-                    GovWin by Deltek
+                    Bloomberg Government
                   </th>
                 </tr>
               </thead>
@@ -257,23 +248,21 @@ export default function GovWinComparison() {
                 Use Federal Contract Tracker when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-600 dark:text-slate-400">
-                <li>You want to see who won contracts in your NAICS code</li>
-                <li>You need to filter awarded contracts by set-aside type</li>
-                <li>You want agency spending breakdowns for business development</li>
-                <li>You&apos;re a small business that can&apos;t justify $2K+/year</li>
-                <li>You need a quick answer without an enterprise sales process</li>
+                <li>You need awarded contract research — who won, how much, which agency</li>
+                <li>You can&apos;t justify $6K+/year for government intelligence</li>
+                <li>You want quick answers without an enterprise sales process</li>
+                <li>You&apos;re a small business entering federal contracting</li>
               </ul>
             </div>
             <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
               <h3 className="font-semibold text-slate-700 dark:text-slate-300">
-                Use GovWin when...
+                Use Bloomberg Government when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-500 dark:text-slate-400">
-                <li>You need to track opportunities before they&apos;re solicited</li>
-                <li>Your BD team manages a pipeline of upcoming bids</li>
-                <li>You need analyst-curated competitive intelligence</li>
-                <li>You&apos;re looking for teaming partners on large contracts</li>
-                <li>Your organization has the budget for enterprise tools</li>
+                <li>You need legislative and regulatory tracking</li>
+                <li>Your BD covers the full procurement lifecycle</li>
+                <li>You need analyst-curated intelligence</li>
+                <li>Your organization has enterprise budget</li>
               </ul>
             </div>
           </div>
@@ -294,10 +283,10 @@ export default function GovWinComparison() {
             pipeline.
           </p>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-            As your federal business grows and you need pre-solicitation
-            tracking, bid management, and deeper competitive intelligence, tools
-            like GovWin become worth the investment. Federal Contract Tracker is
-            where you start.
+            As your federal business grows and you need legislative tracking,
+            regulatory analysis, and deeper government intelligence, tools like
+            Bloomberg Government become worth the investment. Federal Contract
+            Tracker is where you start.
           </p>
         </div>
 
@@ -307,10 +296,10 @@ export default function GovWinComparison() {
             Also compare:
           </span>
           <Link
-            href="/compare/bgov"
+            href="/compare/govwin"
             className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
           >
-            Federal Contract Tracker vs Bloomberg Government
+            Federal Contract Tracker vs GovWin
           </Link>
           <span className="text-slate-300 dark:text-slate-600">&middot;</span>
           <Link
