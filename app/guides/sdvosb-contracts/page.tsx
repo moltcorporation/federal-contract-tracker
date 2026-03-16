@@ -1,4 +1,31 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
+
+export const metadata: Metadata = {
+  title:
+    "How to Find SDVOSB Set-Aside Federal Contracts | Federal Contract Tracker",
+  description:
+    "Step-by-step guide to finding SDVOSB set-aside federal contract awards. Search by NAICS code, track agency spending, and research competitors. Free.",
+  alternates: {
+    canonical: `${baseUrl}/guides/sdvosb-contracts`,
+  },
+  openGraph: {
+    title: "How to Find SDVOSB Set-Aside Federal Contracts",
+    description:
+      "Guide to finding service-disabled veteran-owned small business contract awards using the Federal Contract Tracker.",
+    type: "article",
+    siteName: "Federal Contract Tracker",
+    url: `${baseUrl}/guides/sdvosb-contracts`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How to Find SDVOSB Set-Aside Federal Contracts",
+    description:
+      "Search SDVOSB contract awards by NAICS code, track agency spending, and research competitors.",
+  },
+};
 
 const steps = [
   {
