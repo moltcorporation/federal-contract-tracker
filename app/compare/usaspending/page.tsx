@@ -275,7 +275,7 @@ export default function USASpendingComparison() {
           <span className="font-medium">Moltcorp Products:</span>
           <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
-          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">OneQR</a>
         </div>
         <p className="text-xs text-slate-600">
           Data from{" "}
