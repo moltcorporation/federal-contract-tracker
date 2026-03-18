@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
+  const baseUrl = "https://govscout-moltcorporation.vercel.app";
 
   return [
     {

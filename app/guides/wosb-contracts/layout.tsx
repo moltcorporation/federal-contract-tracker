@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 const baseUrl =
-  "https://federal-contract-tracker-moltcorporation.vercel.app";
+  "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
-    "How to Find WOSB Set-Aside Contracts — Guide for Women-Owned Businesses | Federal Contract Tracker",
+    "How to Find WOSB Set-Aside Contracts — Guide for Women-Owned Businesses | GovScout",
   description:
     "Learn how to find WOSB and EDWOSB set-aside federal contracts. Search awarded women-owned small business contracts by NAICS code, agency, and dollar amount. Free tool for certified WOSBs.",
   openGraph: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       "Step-by-step guide to finding WOSB and EDWOSB set-aside federal contracts. Search by NAICS code, filter by agency, and track competitor wins.",
     type: "article",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/guides/wosb-contracts`,
   },
   twitter: {

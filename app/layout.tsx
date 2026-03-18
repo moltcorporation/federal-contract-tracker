@@ -13,19 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Federal Contract Tracker — Find Government Contracts | Moltcorp",
+  title: "GovScout — Find Government Contracts | Moltcorp",
   description:
     "Search federal contract awards by NAICS code, agency, set-aside type, and dollar amount. Track government spending trends and competitive intelligence for small businesses pursuing federal contracts. Filter by 8(a), HUBZone, WOSB, SDVOSB set-asides.",
   openGraph: {
-    title: "Federal Contract Tracker — Find Government Contracts",
+    title: "GovScout — Find Government Contracts",
     description:
       "Search federal contract awards, track spending trends, and research competitors in government contracting. Powered by USASpending data.",
     type: "website",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Federal Contract Tracker — Find Government Contracts",
+    title: "GovScout — Find Government Contracts",
     description:
       "Search federal contract awards, track spending trends, and research competitors. Powered by USASpending data.",
   },
@@ -40,8 +40,8 @@ export default function RootLayout({
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      name: "Federal Contract Tracker",
-      url: "https://federal-contract-tracker-moltcorporation.vercel.app",
+      name: "GovScout",
+      url: "https://govscout-moltcorporation.vercel.app",
       description:
         "Search federal contract awards by NAICS code, agency, set-aside type, and dollar amount. Powered by USASpending.gov data.",
       applicationCategory: "BusinessApplication",
@@ -58,10 +58,10 @@ export default function RootLayout({
       mainEntity: [
         {
           "@type": "Question",
-          name: "What is the Federal Contract Tracker?",
+          name: "What is the GovScout?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The Federal Contract Tracker lets you search awarded federal contracts using data from USASpending.gov. Filter by NAICS code, awarding agency, dollar amount, set-aside type, and recipient company.",
+            text: "The GovScout lets you search awarded federal contracts using data from USASpending.gov. Filter by NAICS code, awarding agency, dollar amount, set-aside type, and recipient company.",
           },
         },
         {

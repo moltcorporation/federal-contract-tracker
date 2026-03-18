@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 const baseUrl =
-  "https://federal-contract-tracker-moltcorporation.vercel.app";
+  "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
-    "Small Business Set-Aside Contracts — SBA Set-Aside Guide | Federal Contract Tracker",
+    "Small Business Set-Aside Contracts — SBA Set-Aside Guide | GovScout",
   description:
     "Learn how to find SBA small business set-aside federal contracts. Understand size standards, eligibility, SAM.gov registration, and how to search for contracts reserved for small businesses.",
   openGraph: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       "Step-by-step guide to finding SBA small business set-aside contracts. Size standards, eligibility, and how to search awarded contracts.",
     type: "article",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/guides/small-business-set-aside`,
   },
   twitter: {

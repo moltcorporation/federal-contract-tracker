@@ -45,14 +45,14 @@ const comparisonRows = [
 
 const faqs = [
   {
-    question: "Does Federal Contract Tracker use USASpending data?",
+    question: "Does GovScout use USASpending data?",
     answer:
       "Yes. All contract data comes directly from the USASpending.gov API, the official U.S. government source for federal spending data. We display the same awarded contract records — we just make them easier to search and filter.",
   },
   {
     question: "Why not just use USASpending.gov directly?",
     answer:
-      "USASpending.gov covers all federal spending — contracts, grants, loans, direct payments, and more. That breadth means the interface serves many audiences. If you specifically need to research awarded contracts by NAICS code, set-aside type, or agency, Federal Contract Tracker gives you a focused, faster path to those answers.",
+      "USASpending.gov covers all federal spending — contracts, grants, loans, direct payments, and more. That breadth means the interface serves many audiences. If you specifically need to research awarded contracts by NAICS code, set-aside type, or agency, GovScout gives you a focused, faster path to those answers.",
   },
   {
     question: "What data does USASpending have that you don't?",
@@ -62,10 +62,10 @@ const faqs = [
   {
     question: "How fresh is the data compared to USASpending?",
     answer:
-      "Our data comes from the same USASpending.gov API, so freshness is identical. USASpending updates daily from agency submissions. When a new contract award appears on USASpending.gov, it appears in Federal Contract Tracker at the same time.",
+      "Our data comes from the same USASpending.gov API, so freshness is identical. USASpending updates daily from agency submissions. When a new contract award appears on USASpending.gov, it appears in GovScout at the same time.",
   },
   {
-    question: "Is Federal Contract Tracker free?",
+    question: "Is GovScout free?",
     answer:
       "Free users get 10 searches per day with access to all filters and features. Pro ($49/month) adds unlimited searches, spending trends, and CSV export. USASpending.gov is completely free with no limits — the trade-off is usability.",
   },
@@ -82,7 +82,7 @@ export default function USASpendingComparison() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -107,7 +107,7 @@ export default function USASpendingComparison() {
             <strong className="text-white">
               awarded contracts in your industry
             </strong>
-            , Federal Contract Tracker gets you there in one search.
+            , GovScout gets you there in one search.
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default function USASpendingComparison() {
             don&apos;t try to.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            Federal Contract Tracker uses the same data (via the USASpending API)
+            GovScout uses the same data (via the USASpending API)
             but focuses entirely on one use case: helping government contractors
             research awarded contracts. We trade breadth for speed — fewer data
             types, but faster answers to the questions small businesses actually
@@ -137,7 +137,7 @@ export default function USASpendingComparison() {
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            Federal Contract Tracker vs USASpending.gov
+            GovScout vs USASpending.gov
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
@@ -184,7 +184,7 @@ export default function USASpendingComparison() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-2 rounded-lg border border-blue-900/30 bg-blue-950/20 p-5">
               <h3 className="font-semibold text-blue-400">
-                Use Federal Contract Tracker when...
+                Use GovScout when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
                 <li>You need to quickly find who won contracts in your NAICS code</li>
@@ -273,7 +273,7 @@ export default function USASpendingComparison() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

@@ -11,11 +11,11 @@ const steps = [
   },
   {
     title: "Find your NAICS code",
-    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'construction', 'IT services', 'manufacturing') and select the matching code. Knowing your NAICS code is essential for finding HUBZone contracts in your industry.",
+    body: "Federal contracts are categorized by NAICS code. Use the GovScout's autocomplete — type your industry (e.g., 'construction', 'IT services', 'manufacturing') and select the matching code. Knowing your NAICS code is essential for finding HUBZone contracts in your industry.",
   },
   {
     title: "Search for awarded HUBZone contracts",
-    body: "On the Federal Contract Tracker, enter your NAICS code and select \"HUBZone\" from the set-aside filter. This shows every HUBZone contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. You'll see your competitive landscape instantly.",
+    body: "On the GovScout, enter your NAICS code and select \"HUBZone\" from the set-aside filter. This shows every HUBZone contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. You'll see your competitive landscape instantly.",
   },
   {
     title: "Identify top agencies and track trends",
@@ -52,7 +52,7 @@ const faqs = [
   {
     question: "Can I search HUBZone contracts from a specific agency?",
     answer:
-      "Yes. In the Federal Contract Tracker, select \"HUBZone\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most HUBZone contracts in your NAICS code.",
+      "Yes. In the GovScout, select \"HUBZone\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most HUBZone contracts in your NAICS code.",
   },
   {
     question: "Where does this data come from?",
@@ -108,7 +108,7 @@ export default function HubzoneGuide() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -184,7 +184,7 @@ export default function HubzoneGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types:
+            The GovScout supports all major set-aside types:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
@@ -289,7 +289,7 @@ export default function HubzoneGuide() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

@@ -7,7 +7,7 @@ const steps = [
   },
   {
     title: "Find your NAICS codes",
-    body: "Federal contracts are categorized by North American Industry Classification System (NAICS) codes. These 6-digit codes describe what your business does — for example, 541511 is Custom Computer Programming Services. Most businesses qualify under 2–5 NAICS codes. Use the Federal Contract Tracker's autocomplete to search by keyword and find the codes that match your services.",
+    body: "Federal contracts are categorized by North American Industry Classification System (NAICS) codes. These 6-digit codes describe what your business does — for example, 541511 is Custom Computer Programming Services. Most businesses qualify under 2–5 NAICS codes. Use the GovScout's autocomplete to search by keyword and find the codes that match your services.",
   },
   {
     title: "Understand set-aside programs",
@@ -15,7 +15,7 @@ const steps = [
   },
   {
     title: "Research who is winning contracts",
-    body: "Before you bid on anything, study the competitive landscape. Use the Federal Contract Tracker to search awarded contracts by your NAICS code. See which companies are winning, which agencies are buying, how much they're spending, and whether contracts are set aside for small businesses. This research tells you where the opportunities are and who you're competing against.",
+    body: "Before you bid on anything, study the competitive landscape. Use the GovScout to search awarded contracts by your NAICS code. See which companies are winning, which agencies are buying, how much they're spending, and whether contracts are set aside for small businesses. This research tells you where the opportunities are and who you're competing against.",
   },
   {
     title: "Identify your target agencies",
@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "How do I find government contracts for my small business?",
     answer:
-      "Start by registering on SAM.gov (free, required for all federal contractors). Then identify your NAICS codes — these determine which contracts match your services. Use the Federal Contract Tracker to research awarded contracts in your NAICS codes, see which agencies are buying, and identify set-aside opportunities. If you qualify for a set-aside program (8(a), WOSB, SDVOSB, HUBZone), get certified to access reserved contracts with less competition.",
+      "Start by registering on SAM.gov (free, required for all federal contractors). Then identify your NAICS codes — these determine which contracts match your services. Use the GovScout to research awarded contracts in your NAICS codes, see which agencies are buying, and identify set-aside opportunities. If you qualify for a set-aside program (8(a), WOSB, SDVOSB, HUBZone), get certified to access reserved contracts with less competition.",
   },
   {
     question: "What are the main set-aside programs for small businesses?",
@@ -41,22 +41,22 @@ const faqs = [
   {
     question: "Is it free to bid on government contracts?",
     answer:
-      "Yes. SAM.gov registration is free. Accessing contract opportunities on SAM.gov is free. There is no fee to submit a bid or proposal. Be cautious of any service that charges for basic access to government contract listings — the data is publicly available. Tools like the Federal Contract Tracker charge for enhanced research features, but basic contract search is free (10 searches/day).",
+      "Yes. SAM.gov registration is free. Accessing contract opportunities on SAM.gov is free. There is no fee to submit a bid or proposal. Be cautious of any service that charges for basic access to government contract listings — the data is publicly available. Tools like the GovScout charge for enhanced research features, but basic contract search is free (10 searches/day).",
   },
   {
     question: "What is a NAICS code and how do I find mine?",
     answer:
-      "NAICS (North American Industry Classification System) codes are 6-digit codes that describe business activities. They determine which contracts you can bid on and which SBA size standards apply to your business. To find yours, search by keyword on the Federal Contract Tracker — type your industry (e.g., 'janitorial', 'IT consulting', 'construction') and the autocomplete will show matching codes with descriptions.",
+      "NAICS (North American Industry Classification System) codes are 6-digit codes that describe business activities. They determine which contracts you can bid on and which SBA size standards apply to your business. To find yours, search by keyword on the GovScout — type your industry (e.g., 'janitorial', 'IT consulting', 'construction') and the autocomplete will show matching codes with descriptions.",
   },
   {
     question: "How much are government contracts worth?",
     answer:
-      "Federal contracts range from a few thousand dollars (micro-purchases under $10,000 don't even require competitive bidding) to billions for major defense programs. Most small business contracts fall in the $25,000 to $250,000 range. Set-aside sole-source contracts can go up to $4.5 million for services or $8 million for manufacturing. Use the Federal Contract Tracker to see actual award amounts in your NAICS codes — this gives you realistic expectations for your industry.",
+      "Federal contracts range from a few thousand dollars (micro-purchases under $10,000 don't even require competitive bidding) to billions for major defense programs. Most small business contracts fall in the $25,000 to $250,000 range. Set-aside sole-source contracts can go up to $4.5 million for services or $8 million for manufacturing. Use the GovScout to see actual award amounts in your NAICS codes — this gives you realistic expectations for your industry.",
   },
   {
-    question: "What is the difference between SAM.gov and the Federal Contract Tracker?",
+    question: "What is the difference between SAM.gov and the GovScout?",
     answer:
-      "SAM.gov is the government's official system — you register there and can search for upcoming solicitations (opportunities to bid). The Federal Contract Tracker searches awarded contracts — contracts that have already been won. SAM.gov tells you what's available to bid on. The Federal Contract Tracker tells you who's winning, how much they're getting, and from which agencies. Both are useful for different stages of business development.",
+      "SAM.gov is the government's official system — you register there and can search for upcoming solicitations (opportunities to bid). The GovScout searches awarded contracts — contracts that have already been won. SAM.gov tells you what's available to bid on. The GovScout tells you who's winning, how much they're getting, and from which agencies. Both are useful for different stages of business development.",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function FindGovernmentContractsGuide() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -231,7 +231,7 @@ export default function FindGovernmentContractsGuide() {
             Compare contract research tools
           </h2>
           <p className="text-sm text-slate-400">
-            See how the Federal Contract Tracker compares to other platforms:
+            See how the GovScout compares to other platforms:
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -281,7 +281,7 @@ export default function FindGovernmentContractsGuide() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

@@ -3,11 +3,11 @@ import Link from "next/link";
 const steps = [
   {
     title: "Know your NAICS code",
-    body: "Every federal contract is tagged with a NAICS code that identifies the industry. If you do IT consulting, your code might be 541512 (Computer Systems Design Services). If you do janitorial services, it's 561720. You need to know your code to find relevant contracts. The Federal Contract Tracker has NAICS autocomplete — start typing your industry and it suggests matching codes.",
+    body: "Every federal contract is tagged with a NAICS code that identifies the industry. If you do IT consulting, your code might be 541512 (Computer Systems Design Services). If you do janitorial services, it's 561720. You need to know your code to find relevant contracts. The GovScout has NAICS autocomplete — start typing your industry and it suggests matching codes.",
   },
   {
     title: "Search for awarded 8(a) contracts",
-    body: "Go to the Federal Contract Tracker, enter your NAICS code, and select \"8(a) Business Development\" from the set-aside filter. This shows you every 8(a) contract that has already been awarded in your industry. You'll see who won, which agency awarded it, and the dollar amount.",
+    body: "Go to the GovScout, enter your NAICS code, and select \"8(a) Business Development\" from the set-aside filter. This shows you every 8(a) contract that has already been awarded in your industry. You'll see who won, which agency awarded it, and the dollar amount.",
   },
   {
     title: "Identify which agencies buy your services",
@@ -37,7 +37,7 @@ const faqs = [
   {
     question: "How much are 8(a) contracts worth?",
     answer:
-      "8(a) contracts range from a few thousand dollars to tens of millions. Sole-source 8(a) contracts (awarded without competition) can be up to $4.5 million for goods and services or $8 million for manufacturing. Competitive 8(a) contracts have no dollar limit. Use the Federal Contract Tracker to see actual awarded amounts in your NAICS code.",
+      "8(a) contracts range from a few thousand dollars to tens of millions. Sole-source 8(a) contracts (awarded without competition) can be up to $4.5 million for goods and services or $8 million for manufacturing. Competitive 8(a) contracts have no dollar limit. Use the GovScout to see actual awarded amounts in your NAICS code.",
   },
   {
     question: "What's the difference between 8(a) and other set-asides?",
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: "Can I see 8(a) contracts from specific agencies?",
     answer:
-      "Yes. In the Federal Contract Tracker, select \"8(a) Business Development\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most 8(a) contracts in your NAICS code.",
+      "Yes. In the GovScout, select \"8(a) Business Development\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most 8(a) contracts in your NAICS code.",
   },
   {
     question: "Where does this data come from?",
@@ -62,7 +62,7 @@ export default function EightAGuide() {
     "@type": "HowTo",
     name: "How to Find 8(a) Set-Aside Federal Contracts",
     description:
-      "Step-by-step guide to searching for 8(a) set-aside federal contract awards using the Federal Contract Tracker.",
+      "Step-by-step guide to searching for 8(a) set-aside federal contract awards using the GovScout.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -103,7 +103,7 @@ export default function EightAGuide() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -179,7 +179,7 @@ export default function EightAGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types.
+            The GovScout supports all major set-aside types.
             Use the same search process for any of these:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -297,7 +297,7 @@ export default function EightAGuide() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

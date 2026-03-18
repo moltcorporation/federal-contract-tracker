@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 const baseUrl =
-  "https://federal-contract-tracker-moltcorporation.vercel.app";
+  "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
-    "How to Find HUBZone Set-Aside Contracts — Guide for HUBZone Businesses | Federal Contract Tracker",
+    "How to Find HUBZone Set-Aside Contracts — Guide for HUBZone Businesses | GovScout",
   description:
     "Learn how to find HUBZone set-aside federal contracts. Search awarded HUBZone contracts by NAICS code, agency, and dollar amount. Understand eligibility, certification, and which agencies award the most HUBZone contracts.",
   openGraph: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       "Step-by-step guide to finding HUBZone set-aside federal contracts. Search by NAICS code, filter by agency, and track competitor wins.",
     type: "article",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/guides/hubzone-contracts`,
   },
   twitter: {

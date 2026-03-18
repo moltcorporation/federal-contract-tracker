@@ -11,11 +11,11 @@ const steps = [
   },
   {
     title: "Find your NAICS codes",
-    body: "Federal contracts are categorized by NAICS code \u2014 6-digit codes describing what your business does. For example, 541511 is Custom Computer Programming Services. Most businesses qualify under 2\u20135 codes. Use the Federal Contract Tracker\u2019s autocomplete to search by keyword and find codes matching your services. Your NAICS codes also determine your SBA size standard.",
+    body: "Federal contracts are categorized by NAICS code \u2014 6-digit codes describing what your business does. For example, 541511 is Custom Computer Programming Services. Most businesses qualify under 2\u20135 codes. Use the GovScout\u2019s autocomplete to search by keyword and find codes matching your services. Your NAICS codes also determine your SBA size standard.",
   },
   {
     title: "Search for small business set-aside contracts",
-    body: "On the Federal Contract Tracker, enter your NAICS code and select the SBA Small Business set-aside filter. This shows every small business set-aside contract awarded in your industry \u2014 who won, which agency awarded it, and the dollar amount. Small business set-asides are the most common type, with the highest total dollar volume of any set-aside program.",
+    body: "On the GovScout, enter your NAICS code and select the SBA Small Business set-aside filter. This shows every small business set-aside contract awarded in your industry \u2014 who won, which agency awarded it, and the dollar amount. Small business set-asides are the most common type, with the highest total dollar volume of any set-aside program.",
   },
   {
     title: "Identify top agencies for small business contracts",
@@ -56,7 +56,7 @@ const faqs = [
   {
     question: "How much of federal spending goes to small businesses?",
     answer:
-      "The government-wide goal is 23% of prime contract dollars to small businesses. In recent years, the actual percentage has exceeded this target \u2014 over $178 billion was awarded to small businesses in FY2023. Use the Federal Contract Tracker\u2019s Trends page to see quarterly spending patterns and identify which agencies are the biggest small business spenders in your NAICS codes.",
+      "The government-wide goal is 23% of prime contract dollars to small businesses. In recent years, the actual percentage has exceeded this target \u2014 over $178 billion was awarded to small businesses in FY2023. Use the GovScout\u2019s Trends page to see quarterly spending patterns and identify which agencies are the biggest small business spenders in your NAICS codes.",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function SmallBusinessSetAsideGuide() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -297,7 +297,7 @@ export default function SmallBusinessSetAsideGuide() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
