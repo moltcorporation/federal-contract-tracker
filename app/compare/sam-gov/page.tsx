@@ -74,67 +74,37 @@ const faqs = [
 
 export default function SamGovComparison() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
-      <header className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+    <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
+      <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            className="h-6 w-6 text-blue-600 dark:text-blue-400"
-            aria-hidden="true"
-          >
-            <path
-              d="M3 21V7l9-4 9 4v14"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M9 21V13h6v8"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-            />
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
+            <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
-          <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+          <span className="text-lg font-bold tracking-tight text-white">
             Federal Contract Tracker
           </span>
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            href="/trends"
-            className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-          >
-            Trends
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/"
-            className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
-          >
-            Search contracts free
-          </Link>
+          <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
+          <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
+          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
         </div>
       </header>
 
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-12">
         <div className="flex flex-col items-center gap-5 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             SAM.gov Alternative
-            <span className="block text-blue-600 dark:text-blue-400">
+            <span className="block text-blue-400">
               For Contract Research
             </span>
           </h1>
-          <p className="mx-auto max-w-xl text-lg text-slate-600 dark:text-slate-400">
+          <p className="mx-auto max-w-xl text-lg text-slate-400">
             SAM.gov is the official system for federal procurement — registration,
             solicitations, and awards. But if you just need to research{" "}
-            <strong className="text-slate-900 dark:text-white">
+            <strong className="text-white">
               who is winning contracts in your industry
             </strong>
             , Federal Contract Tracker gets you there faster.
@@ -142,17 +112,17 @@ export default function SamGovComparison() {
         </div>
 
         {/* Honest positioning */}
-        <div className="flex flex-col gap-4 rounded-xl border border-blue-200 bg-blue-50/60 p-6 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+        <div className="flex flex-col gap-4 rounded-xl border border-blue-900/30 bg-blue-950/20 p-6">
+          <h2 className="text-xl font-semibold text-white">
             An honest comparison
           </h2>
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          <p className="text-sm leading-relaxed text-slate-400">
             SAM.gov is the authoritative source for federal procurement. You need
             it to register your business, find open solicitations, and submit bids.
             Nothing replaces it for that. We don&apos;t compete with SAM.gov —
             we complement it.
           </p>
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          <p className="text-sm leading-relaxed text-slate-400">
             Federal Contract Tracker is built for one specific job: researching
             awarded contracts. Who won contracts in your NAICS code? Which agencies
             spend the most on your services? What set-aside contracts were awarded
@@ -163,20 +133,20 @@ export default function SamGovComparison() {
 
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             Federal Contract Tracker vs SAM.gov
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-100/50 dark:border-slate-800 dark:bg-slate-900/50">
-                  <th className="px-4 py-3 text-left font-medium text-slate-500 dark:text-slate-500">
+                <tr className="border-b border-slate-800 bg-slate-900/50">
+                  <th className="px-4 py-3 text-left font-medium text-slate-500">
                     Feature
                   </th>
-                  <th className="px-4 py-3 text-left font-medium text-blue-700 dark:text-blue-400">
+                  <th className="px-4 py-3 text-left font-medium text-blue-400">
                     Contract Tracker
                   </th>
-                  <th className="px-4 py-3 text-left font-medium text-slate-500 dark:text-slate-500">
+                  <th className="px-4 py-3 text-left font-medium text-slate-500">
                     SAM.gov
                   </th>
                 </tr>
@@ -185,15 +155,15 @@ export default function SamGovComparison() {
                 {comparisonRows.map((row, i) => (
                   <tr
                     key={i}
-                    className="border-b border-slate-100 last:border-0 dark:border-slate-800/50"
+                    className="border-b border-slate-800/50 last:border-0"
                   >
-                    <td className="px-4 py-3 font-medium text-slate-700 dark:text-slate-300">
+                    <td className="px-4 py-3 font-medium text-slate-300">
                       {row.feature}
                     </td>
-                    <td className="px-4 py-3 text-slate-700 dark:text-slate-300">
+                    <td className="px-4 py-3 text-slate-300">
                       {row.ours}
                     </td>
-                    <td className="px-4 py-3 text-slate-500 dark:text-slate-500">
+                    <td className="px-4 py-3 text-slate-500">
                       {row.theirs}
                     </td>
                   </tr>
@@ -205,15 +175,15 @@ export default function SamGovComparison() {
 
         {/* When to use each */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             When to use each tool
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="flex flex-col gap-2 rounded-lg border border-blue-200 bg-blue-50/50 p-5 dark:border-blue-900/30 dark:bg-blue-950/20">
-              <h3 className="font-semibold text-blue-700 dark:text-blue-400">
+            <div className="flex flex-col gap-2 rounded-lg border border-blue-900/30 bg-blue-950/20 p-5">
+              <h3 className="font-semibold text-blue-400">
                 Use Federal Contract Tracker when...
               </h3>
-              <ul className="flex flex-col gap-1.5 text-sm text-slate-600 dark:text-slate-400">
+              <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
                 <li>You want to see who won contracts in your NAICS code</li>
                 <li>You need to filter awarded contracts by set-aside type</li>
                 <li>You want agency spending breakdowns for business development</li>
@@ -221,11 +191,11 @@ export default function SamGovComparison() {
                 <li>You need a quick answer, not a 15-minute navigation exercise</li>
               </ul>
             </div>
-            <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
-              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex flex-col gap-2 rounded-lg border border-slate-700 bg-slate-900 p-5">
+              <h3 className="font-semibold text-slate-300">
                 Use SAM.gov when...
               </h3>
-              <ul className="flex flex-col gap-1.5 text-sm text-slate-500 dark:text-slate-400">
+              <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
                 <li>You need to register your business for federal contracts</li>
                 <li>You&apos;re looking for open solicitations to bid on</li>
                 <li>You need to verify entity registration or CAGE codes</li>
@@ -238,19 +208,19 @@ export default function SamGovComparison() {
 
         {/* FAQ */}
         <div className="flex flex-col gap-5">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             Frequently asked questions
           </h2>
           <div className="flex flex-col gap-4">
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+                className="rounded-lg border border-slate-800 bg-slate-900 p-5"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white">
+                <h3 className="font-semibold text-white">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">
                   {faq.answer}
                 </p>
               </div>
@@ -260,19 +230,19 @@ export default function SamGovComparison() {
 
         {/* More comparisons */}
         <div className="flex flex-col gap-3">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             More comparisons
           </h2>
           <div className="flex flex-wrap gap-3">
             <Link
               href="/compare/usaspending"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               vs USASpending.gov
             </Link>
             <Link
               href="/compare/govwin"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               vs GovWin
             </Link>
@@ -280,37 +250,35 @@ export default function SamGovComparison() {
         </div>
 
         {/* CTA */}
-        <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-200 bg-blue-50 p-8 text-center dark:border-blue-900/30 dark:bg-blue-950/20">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+        <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-900/30 bg-blue-950/20 p-8 text-center">
+          <h2 className="text-2xl font-bold text-white">
             Search federal contracts now
           </h2>
-          <p className="max-w-md text-sm text-slate-600 dark:text-slate-400">
+          <p className="max-w-md text-sm text-slate-400">
             10 free searches per day. Set-aside filters, NAICS autocomplete,
             agency spending breakdowns. No registration required.
           </p>
           <Link
             href="/"
-            className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+            className="rounded-lg bg-blue-500 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-400"
           >
             Search contracts free
           </Link>
         </div>
       </main>
 
-      <footer className="flex flex-col items-center gap-3 border-t border-slate-200 px-6 py-6 dark:border-slate-800">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+      <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-600 dark:text-blue-400">
-            Federal Contract Tracker
-          </span>
-          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">StatusPing</a>
-          <a href="https://domain-audit-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Recon</a>
+          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
-        <p className="text-xs text-slate-400 dark:text-slate-600">
+        <p className="text-xs text-slate-600">
           Data from{" "}
-          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">USASpending.gov</a>
+          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
           {" "}&middot; Built by agents at{" "}
-          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Moltcorp</a>
+          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
         </p>
       </footer>
     </div>
