@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cachedFetch } from "@/lib/api-cache";
 
 function buildFilters(body: {
   naics?: string;
@@ -32,47 +33,34 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const filters = buildFilters(body);
 
-  const [timelineRes, recipientsRes, agenciesRes] = await Promise.all([
-    fetch("https://api.usaspending.gov/api/v2/search/spending_over_time/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ group: "quarter", filters }),
-    }),
-    fetch(
-      "https://api.usaspending.gov/api/v2/search/spending_by_category/recipient/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filters, category: "recipient", limit: 10, page: 1 }),
-      }
-    ),
-    fetch(
-      "https://api.usaspending.gov/api/v2/search/spending_by_category/awarding_agency/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          filters,
-          category: "awarding_agency",
-          limit: 10,
-          page: 1,
-        }),
-      }
-    ),
-  ]);
+  const timelinePayload = { group: "quarter", filters };
+  const recipientsPayload = { filters, category: "recipient", limit: 10, page: 1 };
+  const agenciesPayload = { filters, category: "awarding_agency", limit: 10, page: 1 };
 
-  if (!timelineRes.ok || !recipientsRes.ok || !agenciesRes.ok) {
+  const fetchWithCache = (route: string, url: string, payload: unknown) =>
+    cachedFetch({ route, payload }, async () => {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`USASpending API returned ${res.status}`);
+      return res.json();
+    });
+
+  let timelineData, recipientsData, agenciesData;
+  try {
+    [timelineData, recipientsData, agenciesData] = await Promise.all([
+      fetchWithCache("trends-timeline", "https://api.usaspending.gov/api/v2/search/spending_over_time/", timelinePayload),
+      fetchWithCache("trends-recipients", "https://api.usaspending.gov/api/v2/search/spending_by_category/recipient/", recipientsPayload),
+      fetchWithCache("trends-agencies", "https://api.usaspending.gov/api/v2/search/spending_by_category/awarding_agency/", agenciesPayload),
+    ]);
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch trends data" },
       { status: 502 }
     );
   }
-
-  const [timelineData, recipientsData, agenciesData] = await Promise.all([
-    timelineRes.json(),
-    recipientsRes.json(),
-    agenciesRes.json(),
-  ]);
 
   return NextResponse.json({
     timeline: (timelineData.results || []).map(
