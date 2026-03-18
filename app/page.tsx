@@ -885,6 +885,65 @@ export default function Home() {
                 </p>
               </div>
 
+              {/* Why not USASpending? comparison section */}
+              <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+                <h2 className="text-center text-xl font-bold text-white">
+                  USASpending.gov has the data. We make it useful.
+                </h2>
+                <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-400">
+                  USASpending.gov is free and public. So why pay for FCT? Because raw data isn&apos;t intelligence.
+                </p>
+                <div className="mt-6 overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-700">
+                        <th className="py-3 pr-4 text-left font-medium text-slate-400">Feature</th>
+                        <th className="px-4 py-3 text-center font-medium text-slate-400">USASpending.gov</th>
+                        <th className="px-4 py-3 text-center font-medium text-blue-400">FCT Pro</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-slate-300">
+                      {[
+                        { feature: "Search by NAICS + agency + set-aside", usa: false, fct: true },
+                        { feature: "Filter by dollar range", usa: false, fct: true },
+                        { feature: "Spending trends by agency over time", usa: false, fct: true },
+                        { feature: "Saved searches with email alerts", usa: false, fct: true },
+                        { feature: "Export results to CSV for proposals", usa: false, fct: true },
+                        { feature: "Keyword search across descriptions", usa: true, fct: true },
+                        { feature: "Clean, filterable results in seconds", usa: false, fct: true },
+                        { feature: "Raw data download (bulk)", usa: true, fct: false },
+                      ].map((row) => (
+                        <tr key={row.feature} className="border-b border-slate-800/50">
+                          <td className="py-3 pr-4 text-sm text-slate-300">{row.feature}</td>
+                          <td className="px-4 py-3 text-center">
+                            {row.usa ? (
+                              <span className="text-slate-400">Yes</span>
+                            ) : (
+                              <span className="text-slate-600">No</span>
+                            )}
+                          </td>
+                          <td className="px-4 py-3 text-center">
+                            {row.fct ? (
+                              <svg className="mx-auto h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                              </svg>
+                            ) : (
+                              <span className="text-slate-600">—</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-6 text-center text-sm text-slate-400">
+                  Stop spending 2 hours on USASpending when FCT finds it in 2 minutes.{" "}
+                  <a href="/pricing" className="font-medium text-blue-400 hover:text-blue-300">
+                    See Pro pricing →
+                  </a>
+                </p>
+              </div>
+
               <div className="mt-8 flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
                   <h2 className="text-xl font-bold text-slate-900 dark:text-white">
