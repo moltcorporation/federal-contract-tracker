@@ -19,24 +19,29 @@ function XIcon() {
 
 const faqs = [
   {
-    question: "How many free searches do I get?",
+    question: "Is $49/mo worth it for my small business?",
     answer:
-      "Free users get 10 contract searches per day. This resets every 24 hours. The Spending by Agency view is also included in the free tier.",
+      "One federal contract can be worth $50K–$50M. Pro gives you the tools to find those opportunities before your competitors do — unlimited searches to explore every NAICS code, spending trends to spot agencies ramping up budgets, and CSV export to build target lists for your proposals. If it helps you win even one additional contract, it pays for itself for decades.",
   },
   {
-    question: "What payment methods do you accept?",
+    question: "How is this different from USASpending.gov?",
     answer:
-      "We accept all major credit cards through Stripe. Your subscription renews monthly and you can cancel anytime.",
-  },
-  {
-    question: "Can I switch between plans?",
-    answer:
-      "Yes. You can upgrade from Free to Pro or Enterprise at any time. Downgrading takes effect at the end of your billing period.",
+      "USASpending has the same underlying data, but it's built for government transparency — not business intelligence. Finding competitor awards requires navigating multiple pages, and there's no way to filter by set-aside type, export results, or track spending trends by NAICS code. We turn that raw data into actionable intelligence you can use in proposals.",
   },
   {
     question: "Where does the contract data come from?",
     answer:
-      "All data comes from USASpending.gov, the official source for federal spending data. It is updated daily and covers all awarded federal contracts.",
+      "All data comes directly from USASpending.gov, the official source for federal spending data. It's updated daily and covers every awarded federal contract. We don't modify the data — we make it searchable and useful.",
+  },
+  {
+    question: "Can I cancel anytime?",
+    answer:
+      "Yes. No long-term commitment. Cancel through Stripe and your access continues through the end of your billing period. Your saved searches and alerts are preserved if you resubscribe later.",
+  },
+  {
+    question: "Do you offer a trial?",
+    answer:
+      "The free tier is your trial — search up to 10 times per day with full access to contract data and agency spending. When you're ready for unlimited searches, trends, and export, upgrade to Pro.",
   },
 ];
 
@@ -63,122 +68,161 @@ export default function PricingPage() {
 
       <main className="flex flex-1 flex-col items-center px-4 py-16">
         <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            Simple, transparent pricing
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Federal contract intelligence at indie pricing
           </h1>
-          <p className="max-w-md text-lg text-slate-500 dark:text-slate-400">
-            Start free. Upgrade when you need unlimited searches and advanced features.
+          <p className="max-w-lg text-lg text-slate-400">
+            GovWin charges $2,000+/year. We give you the same award data, competitor tracking, and spending trends for a fraction of the cost.
           </p>
         </div>
 
         <div className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
           {/* Free tier */}
-          <div className="flex flex-col gap-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex flex-col gap-6 rounded-xl border border-slate-800 bg-slate-900 p-6">
             <div className="flex flex-col gap-1">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Free</h2>
-              <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-extrabold text-slate-900 dark:text-white">$0</span>
-                <span className="text-sm text-slate-500 dark:text-slate-400">/month</span>
+              <h2 className="text-lg font-bold text-white">Free</h2>
+              <p className="text-xs text-slate-400">For businesses exploring the federal market</p>
+              <div className="mt-2 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-white">$0</span>
+                <span className="text-sm text-slate-400">/month</span>
               </div>
             </div>
             <ul className="flex flex-col gap-3">
               {[
-                { text: "10 searches per day", included: true },
-                { text: "Contract search", included: true },
-                { text: "Spending by agency", included: true },
-                { text: "Set-aside filters", included: true },
-                { text: "Unlimited searches", included: false },
-                { text: "CSV export", included: false },
-                { text: "Saved searches", included: false },
+                { text: "See who's winning contracts in your NAICS code", included: true },
+                { text: "Filter by agency, set-aside type, and dollar range", included: true },
+                { text: "View spending breakdowns by agency", included: true },
+                { text: "10 searches per day to explore the data", included: true },
+                { text: "Unlimited searches and deep research", included: false },
+                { text: "Export award data for proposals", included: false },
+                { text: "Saved searches with email alerts", included: false },
               ].map((item) => (
-                <li key={item.text} className="flex items-center gap-2.5">
-                  {item.included ? <CheckIcon /> : <XIcon />}
-                  <span className={item.included ? "text-sm text-slate-900 dark:text-white" : "text-sm text-slate-400 dark:text-slate-500"}>
+                <li key={item.text} className="flex items-start gap-2.5">
+                  <span className="mt-0.5">{item.included ? <CheckIcon /> : <XIcon />}</span>
+                  <span className={item.included ? "text-sm text-white" : "text-sm text-slate-500"}>
                     {item.text}
                   </span>
                 </li>
               ))}
             </ul>
-            <Link href="/" className="mt-auto w-full rounded-lg border border-slate-300 py-2.5 text-center text-sm font-medium text-slate-900 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800">
-              Get started free
+            <Link href="/" className="mt-auto w-full rounded-lg border border-slate-700 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800">
+              Start searching — free
             </Link>
           </div>
 
           {/* Pro tier */}
-          <div className="flex flex-col gap-6 rounded-xl border-2 border-blue-600 bg-white p-6 dark:border-blue-400 dark:bg-slate-900">
+          <div className="flex flex-col gap-6 rounded-xl border-2 border-blue-400 bg-slate-900 p-6">
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">Pro</h2>
-                <span className="rounded-full bg-blue-600 px-2 py-0.5 text-xs font-medium text-white dark:bg-blue-500">
-                  Popular
+                <h2 className="text-lg font-bold text-white">Pro</h2>
+                <span className="rounded-full bg-blue-600 px-2 py-0.5 text-xs font-medium text-white">
+                  Most popular
                 </span>
               </div>
-              <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-extrabold text-slate-900 dark:text-white">$49</span>
-                <span className="text-sm text-slate-500 dark:text-slate-400">/month</span>
+              <p className="text-xs text-slate-400">For serious BD teams tracking competitors</p>
+              <div className="mt-2 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-white">$49</span>
+                <span className="text-sm text-slate-400">/month</span>
               </div>
             </div>
             <ul className="flex flex-col gap-3">
               {[
-                "Unlimited searches",
-                "Contract search",
-                "Spending by agency",
-                "Set-aside filters",
-                "Spending trends",
-                "CSV export",
-                "Recipient search",
+                "Unlimited searches — research every opportunity",
+                "Find who your competitors are winning contracts from",
+                "Spot agencies ramping up spend in your NAICS code",
+                "Export award data as CSV for proposals and BD tracking",
+                "Search by recipient to map competitor portfolios",
+                "Filter by HUBZone, WOSB, SDVOSB, 8(a) set-asides",
+                "Keyword search across award descriptions",
               ].map((text) => (
-                <li key={text} className="flex items-center gap-2.5">
-                  <CheckIcon />
-                  <span className="text-sm text-slate-900 dark:text-white">{text}</span>
+                <li key={text} className="flex items-start gap-2.5">
+                  <span className="mt-0.5"><CheckIcon /></span>
+                  <span className="text-sm text-white">{text}</span>
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400">
-              Upgrade to Pro
+            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
+              Start Pro — $49/mo
             </a>
           </div>
 
           {/* Enterprise tier */}
-          <div className="flex flex-col gap-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex flex-col gap-6 rounded-xl border border-slate-800 bg-slate-900 p-6">
             <div className="flex flex-col gap-1">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Enterprise</h2>
-              <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-extrabold text-slate-900 dark:text-white">$99</span>
-                <span className="text-sm text-slate-500 dark:text-slate-400">/month</span>
+              <h2 className="text-lg font-bold text-white">Enterprise</h2>
+              <p className="text-xs text-slate-400">For teams managing a full federal pipeline</p>
+              <div className="mt-2 flex items-baseline gap-1">
+                <span className="text-3xl font-extrabold text-white">$99</span>
+                <span className="text-sm text-slate-400">/month</span>
               </div>
             </div>
             <ul className="flex flex-col gap-3">
               {[
                 "Everything in Pro",
-                "Saved searches",
-                "Email alerts on new awards",
-                "API access",
+                "Save searches and get emailed when new awards match",
+                "Never miss a competitor win or a new opportunity",
+                "API access for custom integrations",
                 "Priority support",
                 "Team accounts (coming soon)",
               ].map((text) => (
-                <li key={text} className="flex items-center gap-2.5">
-                  <CheckIcon />
-                  <span className="text-sm text-slate-900 dark:text-white">{text}</span>
+                <li key={text} className="flex items-start gap-2.5">
+                  <span className="mt-0.5"><CheckIcon /></span>
+                  <span className="text-sm text-white">{text}</span>
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg border border-slate-300 py-2.5 text-center text-sm font-medium text-slate-900 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800">
-              Contact us
+            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg border border-slate-700 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800">
+              Start Enterprise — $99/mo
             </a>
+          </div>
+        </div>
+
+        {/* Why not USASpending */}
+        <div className="mt-16 w-full max-w-2xl">
+          <h2 className="text-center text-2xl font-bold text-white">
+            Why not just use USASpending.gov?
+          </h2>
+          <p className="mt-4 text-center text-sm text-slate-400">
+            USASpending is the source — but it was built for government transparency, not business development. Here&apos;s what you&apos;re missing:
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+              <h3 className="text-sm font-semibold text-white">No set-aside filtering</h3>
+              <p className="mt-1 text-xs text-slate-400">
+                Can&apos;t filter awards by HUBZone, WOSB, SDVOSB, or 8(a). If you&apos;re a set-aside business, you&apos;re scrolling through irrelevant results.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+              <h3 className="text-sm font-semibold text-white">No competitor tracking</h3>
+              <p className="mt-1 text-xs text-slate-400">
+                Want to see every contract a competitor won this year? That takes dozens of clicks. Here, it&apos;s one search.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+              <h3 className="text-sm font-semibold text-white">No spending trends</h3>
+              <p className="mt-1 text-xs text-slate-400">
+                USASpending shows raw numbers. We show you which agencies are increasing spend in your NAICS code quarter over quarter — so you know where to focus.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+              <h3 className="text-sm font-semibold text-white">No export for proposals</h3>
+              <p className="mt-1 text-xs text-slate-400">
+                Building a past performance section or mapping the competitive landscape? Export filtered results as CSV instead of copying data cell by cell.
+              </p>
+            </div>
           </div>
         </div>
 
         {/* FAQ */}
         <div className="mt-16 flex w-full max-w-2xl flex-col gap-6">
-          <h2 className="text-center text-2xl font-bold text-slate-900 dark:text-white">
+          <h2 className="text-center text-2xl font-bold text-white">
             Frequently asked questions
           </h2>
           <div className="flex flex-col gap-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">{faq.question}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">{faq.answer}</p>
+              <div key={faq.question} className="flex flex-col gap-2 rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <h3 className="text-sm font-semibold text-white">{faq.question}</h3>
+                <p className="text-sm text-slate-400">{faq.answer}</p>
               </div>
             ))}
           </div>
