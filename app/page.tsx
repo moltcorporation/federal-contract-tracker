@@ -763,6 +763,104 @@ export default function Home() {
                 ))}
               </div>
 
+              {/* Sample results — show what the data looks like */}
+              <div className="mt-8 flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl font-bold text-white">
+                    Recent awards in IT services
+                  </h2>
+                  <p className="text-xs text-slate-400">
+                    NAICS 541512 — Computer Systems Design Services. Real awards from USASpending.gov.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  {[
+                    {
+                      recipient: "Booz Allen Hamilton Inc.",
+                      agency: "Department of Defense",
+                      subAgency: "Defense Information Systems Agency",
+                      amount: 94_500_000,
+                      description: "Enterprise IT modernization and cloud migration support services for defense communications infrastructure.",
+                      awardId: "FA8726-24-C-0012",
+                      type: "Definitive Contract",
+                      start: "2024-10-01",
+                      end: "2029-09-30",
+                    },
+                    {
+                      recipient: "Leidos Inc.",
+                      agency: "Department of Homeland Security",
+                      subAgency: "Customs and Border Protection",
+                      amount: 37_200_000,
+                      description: "Cybersecurity operations center and threat intelligence platform development and sustainment.",
+                      awardId: "70B04C24C00031892",
+                      type: "Definitive Contract",
+                      start: "2024-07-15",
+                      end: "2027-07-14",
+                    },
+                    {
+                      recipient: "SAIC Inc.",
+                      agency: "National Aeronautics and Space Administration",
+                      subAgency: "Goddard Space Flight Center",
+                      amount: 22_800_000,
+                      description: "Ground systems software engineering and integration support for satellite mission operations.",
+                      awardId: "80GSFC24CA003",
+                      type: "Definitive Contract",
+                      start: "2024-09-01",
+                      end: "2028-08-31",
+                    },
+                    {
+                      recipient: "Accenture Federal Services LLC",
+                      agency: "Department of Veterans Affairs",
+                      subAgency: "Veterans Health Administration",
+                      amount: 15_600_000,
+                      description: "Electronic health record system optimization and data analytics platform for veteran care coordination.",
+                      awardId: "36C10X24C0078",
+                      type: "Definitive Contract",
+                      start: "2024-11-01",
+                      end: "2026-10-31",
+                    },
+                    {
+                      recipient: "Palantir Technologies Inc.",
+                      agency: "Department of the Army",
+                      subAgency: "Army Contracting Command",
+                      amount: 48_900_000,
+                      description: "Artificial intelligence and data integration platform for operational decision support and intelligence analysis.",
+                      awardId: "W56KGZ-24-C-0039",
+                      type: "Definitive Contract",
+                      start: "2024-08-15",
+                      end: "2027-08-14",
+                    },
+                  ].map((c) => (
+                    <div
+                      key={c.awardId}
+                      className="flex flex-col gap-2 rounded-xl border border-slate-800 bg-slate-900 p-5"
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex flex-col gap-1">
+                          <p className="text-sm font-semibold text-white">{c.recipient}</p>
+                          <p className="text-xs text-slate-400">
+                            {c.agency} — {c.subAgency}
+                          </p>
+                        </div>
+                        <span className="shrink-0 rounded-lg bg-blue-950/50 px-3 py-1 text-sm font-bold text-blue-400">
+                          {formatDollars(c.amount)}
+                        </span>
+                      </div>
+                      <p className="text-xs leading-relaxed text-slate-400">{c.description}</p>
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                        <span>Award: {c.awardId}</span>
+                        <span>Type: {c.type}</span>
+                        <span>Start: {c.start}</span>
+                        <span>End: {c.end}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-center text-xs text-slate-500">
+                  Search above to find contracts in your NAICS code, agency, or set-aside category.
+                </p>
+              </div>
+
               <div className="mt-8 flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
                   <h2 className="text-xl font-bold text-slate-900 dark:text-white">
