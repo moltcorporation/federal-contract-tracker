@@ -381,12 +381,13 @@ export default function Home() {
               Powered by USASpending.gov — updated daily
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Federal Contract Intelligence
-              <span className="block text-blue-400">at 1% of the Price</span>
+              See Who&apos;s Winning Contracts
+              <span className="block text-blue-400">Before Your Competitors Do</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-slate-400">
-              GovWin charges $15,000–$29,000/year. We give you the same USASpending award data
-              — searchable by NAICS, agency, set-aside, and recipient — for <span className="font-semibold text-white">$49/mo</span>.
+              Stop guessing which contracts are being awarded in your NAICS code. Search 5+ years of federal award
+              data, track spending trends by agency, and spot opportunities your competitors
+              miss — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
               <div className="flex flex-col items-center">
@@ -395,25 +396,47 @@ export default function Home() {
               </div>
               <div className="h-8 w-px bg-slate-700" />
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-white">10</span>
-                <span className="text-xs text-slate-500">free searches/day</span>
+                <span className="text-2xl font-bold text-white">5+</span>
+                <span className="text-xs text-slate-500">years of award history</span>
               </div>
               <div className="h-8 w-px bg-slate-700" />
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-white">5+</span>
-                <span className="text-xs text-slate-500">years of award data</span>
+                <span className="text-2xl font-bold text-white">10</span>
+                <span className="text-xs text-slate-500">free searches/day</span>
+              </div>
+            </div>
+            {/* Competitive positioning */}
+            <div className="mx-auto mt-2 flex max-w-xl flex-col gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-5 py-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Why not the alternatives?</p>
+              <div className="flex flex-col gap-1.5 text-sm text-slate-400">
+                <div className="flex items-center justify-between">
+                  <span>GovWin IQ</span>
+                  <span className="text-slate-500">$15,000–$29,000/yr · Enterprise-only</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>GovIntel AI</span>
+                  <span className="text-slate-500">$25/mo · No historical award data</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>USASpending.gov</span>
+                  <span className="text-slate-500">Free · Painful UX, no saved searches</span>
+                </div>
+                <div className="mt-1 flex items-center justify-between border-t border-slate-700/50 pt-2">
+                  <span className="font-semibold text-white">Federal Contract Tracker</span>
+                  <span className="font-semibold text-blue-400">$49/mo · Award history + trends + alerts</span>
+                </div>
               </div>
             </div>
             {/* Trust signals */}
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <span className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs text-slate-400">
-                🏛️ Official USASpending.gov data
+                Unlimited searches with Pro
               </span>
               <span className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs text-slate-400">
-                🔍 8(a) · HUBZone · WOSB · SDVOSB filters
+                CSV export for proposals
               </span>
               <span className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs text-slate-400">
-                📊 Spending trends by agency
+                Saved search email alerts
               </span>
             </div>
           </div>
@@ -431,10 +454,10 @@ export default function Home() {
           ) : (
             <div className="flex flex-col gap-1 text-center">
               <h2 className="text-xl font-bold tracking-tight text-white">
-                Search Contract Awards
+                Find contracts in your industry
               </h2>
               <p className="text-sm text-slate-500">
-                Enter your criteria below to search federal contract awards.
+                Search by keyword, NAICS code, agency, or recipient to see who&apos;s winning awards.
               </p>
             </div>
           )}
@@ -865,14 +888,15 @@ export default function Home() {
               <div className="mt-8 flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
                   <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                    What is the Federal Contract Tracker?
+                    Win more government contracts
                   </h2>
                   <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                    The Federal Contract Tracker lets you search awarded federal contracts using data from
-                    USASpending.gov. Filter by NAICS code, awarding agency, dollar amount, set-aside type,
-                    and recipient company. Whether you&apos;re a small business pursuing government contracts
-                    or a researcher tracking federal spending, this tool gives you fast access to contract
-                    award data without navigating the complex USASpending interface.
+                    Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending
+                    in your industry, and which competitors keep showing up. The Federal Contract Tracker
+                    turns 5+ years of USASpending.gov data into competitive intelligence you can use —
+                    find patterns in award history, track spending trends by agency, and set up alerts
+                    so you never miss a relevant award. Built for small businesses that can&apos;t afford
+                    $15K/yr enterprise tools but need more than raw government data.
                   </p>
                 </div>
 
