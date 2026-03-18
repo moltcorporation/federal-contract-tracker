@@ -45,9 +45,9 @@ const SET_ASIDE_OPTIONS = [
   { value: "ESB", label: "Economically Disadvantaged WOSB" },
 ];
 
-const inputClass = "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50";
-const selectClass = "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-blue-900/50";
-const labelClass = "text-xs font-medium text-slate-700 dark:text-slate-300";
+const inputClass = "rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-900/50";
+const selectClass = "rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-900/50";
+const labelClass = "text-xs font-medium text-slate-300";
 
 function NaicsAutocomplete({
   id,
@@ -348,54 +348,92 @@ export default function Home() {
   const maxAgencyAmount = agencyResults.length > 0 ? Math.max(...agencyResults.map((a) => a.amount)) : 0;
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
-      <header className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+    <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
+      <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
         <div className="flex items-center gap-2">
-          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
             <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
-          <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+          <span className="text-lg font-bold tracking-tight text-white">
             Federal Contract Tracker
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <a
-            href="/trends"
-            className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-          >
-            Trends
-          </a>
-          <a
-            href="/pricing"
-            className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            Pricing
-          </a>
-          <a
-            href="https://moltcorporation.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-slate-500 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-          >
-            by Moltcorp
-          </a>
+          <a href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</a>
+          <a href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</a>
+          <a href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</a>
         </div>
       </header>
 
-      <main className="flex flex-1 flex-col items-center px-4 pb-16 pt-12">
-        <div className="flex w-full max-w-3xl flex-col gap-8">
-          <div className="flex flex-col gap-3 text-center">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-              Search Federal Contract
-              <span className="block text-blue-600 dark:text-blue-400">Awards</span>
+      {/* Hero Section */}
+      {!searched && !agencySearched && (
+        <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 px-4 py-16 sm:py-20">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
+          <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-800/50 bg-blue-950/50 px-4 py-1.5 text-xs font-medium text-blue-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+              Powered by USASpending.gov — updated daily
+            </div>
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Federal Contract Intelligence
+              <span className="block text-blue-400">at 1% of the Price</span>
             </h1>
-            <p className="mx-auto max-w-lg text-base text-slate-600 dark:text-slate-400">
-              Search awarded federal contracts by NAICS code, agency, set-aside type,
-              recipient, and dollar amount. Powered by USASpending.gov data, updated daily.
+            <p className="mx-auto max-w-2xl text-lg text-slate-400">
+              GovWin charges $15,000–$29,000/year. We give you the same USASpending award data
+              — searchable by NAICS, agency, set-aside, and recipient — for <span className="font-semibold text-white">$49/mo</span>.
             </p>
+            <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-bold text-white">$49</span>
+                <span className="text-xs text-slate-500">/month Pro</span>
+              </div>
+              <div className="h-8 w-px bg-slate-700" />
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-bold text-white">10</span>
+                <span className="text-xs text-slate-500">free searches/day</span>
+              </div>
+              <div className="h-8 w-px bg-slate-700" />
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-bold text-white">5+</span>
+                <span className="text-xs text-slate-500">years of award data</span>
+              </div>
+            </div>
+            {/* Trust signals */}
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
+              <span className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs text-slate-400">
+                🏛️ Official USASpending.gov data
+              </span>
+              <span className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs text-slate-400">
+                🔍 8(a) · HUBZone · WOSB · SDVOSB filters
+              </span>
+              <span className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs text-slate-400">
+                📊 Spending trends by agency
+              </span>
+            </div>
           </div>
+        </section>
+      )}
+
+      <main className="flex flex-1 flex-col items-center px-4 pb-16 pt-8">
+        <div className="flex w-full max-w-3xl flex-col gap-8">
+          {searched || agencySearched ? (
+            <div className="flex flex-col gap-1 text-center">
+              <h1 className="text-2xl font-bold tracking-tight text-white">
+                Contract Search Results
+              </h1>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-1 text-center">
+              <h2 className="text-xl font-bold tracking-tight text-white">
+                Search Contract Awards
+              </h2>
+              <p className="text-sm text-slate-500">
+                Enter your criteria below to search federal contract awards.
+              </p>
+            </div>
+          )}
 
           {/* Tab navigation */}
           <div className="flex gap-1 rounded-lg border border-slate-200 bg-slate-100 p-1 dark:border-slate-800 dark:bg-slate-900">
@@ -776,18 +814,18 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="flex flex-col items-center gap-3 border-t border-slate-200 px-6 py-6 dark:border-slate-800">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+      <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-600 dark:text-blue-400">Federal Contract Tracker</span>
-          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">StatusPing</a>
-          <a href="https://domain-audit-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Recon</a>
+          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
-        <p className="text-xs text-slate-400 dark:text-slate-600">
+        <p className="text-xs text-slate-600">
           Data from{" "}
-          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">USASpending.gov</a>
+          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
           {" "}· Built by agents at{" "}
-          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Moltcorp</a>
+          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
         </p>
       </footer>
     </div>
