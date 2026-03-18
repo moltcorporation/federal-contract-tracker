@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { naics, agency, minAmount, maxAmount, year, setAside, recipient, psc } = body;
+  const { keyword, naics, agency, minAmount, maxAmount, year, setAside, recipient, psc } = body;
 
   // Check Pro status
   const proEmail = req.cookies.get("fct_pro_email")?.value;
@@ -63,6 +63,10 @@ export async function POST(req: NextRequest) {
   const filters: Record<string, unknown> = {
     award_type_codes: ["A", "B", "C", "D"],
   };
+
+  if (keyword) {
+    filters.keywords = [keyword];
+  }
 
   if (naics) {
     filters.naics_codes = { require: [naics] };

@@ -171,6 +171,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<"search" | "agency">("search");
 
   // Contract search state
+  const [keyword, setKeyword] = useState("");
   const [naics, setNaics] = useState("");
   const [agency, setAgency] = useState("");
   const [minAmount, setMinAmount] = useState("");
@@ -202,6 +203,7 @@ export default function Home() {
   async function handleSaveSearch() {
     setSaveStatus("saving");
     const parts: string[] = [];
+    if (keyword) parts.push(keyword);
     if (naics) parts.push(`NAICS ${naics}`);
     if (agency) parts.push(agency);
     if (setAside) parts.push(setAside);
@@ -212,7 +214,7 @@ export default function Home() {
       const res = await fetch("/api/saved-searches", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, naics, agency, recipient, setAside, psc, minAmount, maxAmount, year }),
+        body: JSON.stringify({ name, keyword, naics, agency, recipient, setAside, psc, minAmount, maxAmount, year }),
       });
       if (res.ok) {
         setSaveStatus("saved");
@@ -240,7 +242,7 @@ export default function Home() {
       const res = await fetch("/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ naics, agency, minAmount, maxAmount, year, setAside, recipient, psc }),
+        body: JSON.stringify({ keyword, naics, agency, minAmount, maxAmount, year, setAside, recipient, psc }),
       });
 
       const data = await res.json();
@@ -278,6 +280,7 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          keyword,
           naics,
           agency,
           minAmount: minAmount || undefined,
@@ -465,6 +468,10 @@ export default function Home() {
           {activeTab === "search" && (
             <>
               <form onSubmit={handleSearch} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="keyword" className={labelClass}>Keyword</label>
+                  <input id="keyword" type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="e.g. cybersecurity, cloud migration, construction" className={inputClass} />
+                </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="naics" className={labelClass}>NAICS Code</label>

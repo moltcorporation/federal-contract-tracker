@@ -26,12 +26,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { naics, agency, minAmount, maxAmount, year, setAside, recipient, psc } = body;
+  const { keyword, naics, agency, minAmount, maxAmount, year, setAside, recipient, psc } = body;
 
   const filters: Record<string, unknown> = {
     award_type_codes: ["A", "B", "C", "D"],
   };
 
+  if (keyword) filters.keywords = [keyword];
   if (naics) filters.naics_codes = { require: [naics] };
   if (psc) filters.psc_codes = { require: [psc] };
   if (agency) filters.agencies = [{ type: "awarding", tier: "toptier", name: agency }];
