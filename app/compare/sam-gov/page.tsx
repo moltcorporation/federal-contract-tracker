@@ -45,30 +45,30 @@ const comparisonRows = [
 
 const faqs = [
   {
-    question: "Is Federal Contract Tracker a replacement for SAM.gov?",
+    question: "Is GovScout a replacement for SAM.gov?",
     answer:
-      "No. SAM.gov is the official government system for entity registration, open solicitations, and contract opportunities. Federal Contract Tracker focuses specifically on awarded contracts — who won, for how much, and from which agency. Use SAM.gov to register and bid; use Federal Contract Tracker to research the competitive landscape.",
+      "No. SAM.gov is the official government system for entity registration, open solicitations, and contract opportunities. GovScout focuses specifically on awarded contracts — who won, for how much, and from which agency. Use SAM.gov to register and bid; use GovScout to research the competitive landscape.",
   },
   {
-    question: "Where does Federal Contract Tracker get its data?",
+    question: "Where does GovScout get its data?",
     answer:
       "All data comes from USASpending.gov, the U.S. government's official source for federal spending data. It covers all awarded federal contracts and is updated daily. We don't scrape SAM.gov — we use the same underlying government data through the public API.",
   },
   {
     question: "Can I search by set-aside type on SAM.gov?",
     answer:
-      "SAM.gov allows filtering by set-aside type for open solicitations, but researching awarded contracts by set-aside requires navigating to USASpending.gov and using its advanced search. Federal Contract Tracker puts set-aside filtering front and center — one click to see all 8(a), HUBZone, WOSB, or SDVOSB awards.",
+      "SAM.gov allows filtering by set-aside type for open solicitations, but researching awarded contracts by set-aside requires navigating to USASpending.gov and using its advanced search. GovScout puts set-aside filtering front and center — one click to see all 8(a), HUBZone, WOSB, or SDVOSB awards.",
   },
   {
-    question: "How much does Federal Contract Tracker cost?",
+    question: "How much does GovScout cost?",
     answer:
       "Free users get 10 searches per day with full access to all filters and features. Pro ($49/month) gives unlimited searches, spending trends, and CSV export. Enterprise ($99/month) adds saved searches, email alerts on new awards, and API access.",
   },
   {
     question:
-      "Why would I pay for Federal Contract Tracker when SAM.gov is free?",
+      "Why would I pay for GovScout when SAM.gov is free?",
     answer:
-      "SAM.gov is free but optimized for procurement officers, not small businesses doing competitive research. If you spend hours each week searching for contract awards, filtering by set-aside type, and analyzing agency spending patterns, Federal Contract Tracker saves you time with a purpose-built interface. The free tier covers casual use.",
+      "SAM.gov is free but optimized for procurement officers, not small businesses doing competitive research. If you spend hours each week searching for contract awards, filtering by set-aside type, and analyzing agency spending patterns, GovScout saves you time with a purpose-built interface. The free tier covers casual use.",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function SamGovComparison() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -107,7 +107,7 @@ export default function SamGovComparison() {
             <strong className="text-white">
               who is winning contracts in your industry
             </strong>
-            , Federal Contract Tracker gets you there faster.
+            , GovScout gets you there faster.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export default function SamGovComparison() {
             we complement it.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            Federal Contract Tracker is built for one specific job: researching
+            GovScout is built for one specific job: researching
             awarded contracts. Who won contracts in your NAICS code? Which agencies
             spend the most on your services? What set-aside contracts were awarded
             last year? That research takes 15+ clicks on SAM.gov and USASpending.gov.
@@ -134,7 +134,7 @@ export default function SamGovComparison() {
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            Federal Contract Tracker vs SAM.gov
+            GovScout vs SAM.gov
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
@@ -181,7 +181,7 @@ export default function SamGovComparison() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-2 rounded-lg border border-blue-900/30 bg-blue-950/20 p-5">
               <h3 className="font-semibold text-blue-400">
-                Use Federal Contract Tracker when...
+                Use GovScout when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
                 <li>You want to see who won contracts in your NAICS code</li>
@@ -270,7 +270,7 @@ export default function SamGovComparison() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

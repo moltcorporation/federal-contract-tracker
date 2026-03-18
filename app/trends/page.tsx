@@ -216,7 +216,7 @@ export default function TrendsPage() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -449,7 +449,7 @@ export default function TrendsPage() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

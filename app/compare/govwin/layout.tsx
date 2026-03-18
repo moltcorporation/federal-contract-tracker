@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 
 const baseUrl =
-  "https://federal-contract-tracker-moltcorporation.vercel.app";
+  "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
-    "GovWin Alternative — Affordable Federal Contract Research | Federal Contract Tracker",
+    "GovWin Alternative — Affordable Federal Contract Research | GovScout",
   description:
-    "GovWin by Deltek costs $2,000–$12,000/year. Federal Contract Tracker gives you awarded contract search, set-aside filters, NAICS autocomplete, and agency spending breakdowns for $49/month — no enterprise sales call required.",
+    "GovWin by Deltek costs $2,000–$12,000/year. GovScout gives you awarded contract search, set-aside filters, NAICS autocomplete, and agency spending breakdowns for $49/month — no enterprise sales call required.",
   openGraph: {
     title: "GovWin Alternative — Affordable Federal Contract Research",
     description:
       "Search awarded federal contracts with set-aside filters, NAICS autocomplete, and agency spending breakdowns. 1/40th the cost of GovWin.",
     type: "website",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/compare/govwin`,
   },
   twitter: {
@@ -29,30 +29,30 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "Is Federal Contract Tracker a replacement for GovWin?",
+    question: "Is GovScout a replacement for GovWin?",
     answer:
-      "Not entirely. GovWin is a full pipeline intelligence platform — it tracks pre-solicitation opportunities, agency forecasts, and competitor intel across the entire procurement lifecycle. Federal Contract Tracker focuses on awarded contracts: who won, for how much, and from which agency. If you need pipeline tracking and bid intelligence, GovWin is the more complete tool. If you need affordable awarded contract research, Federal Contract Tracker does that job at 1/40th the price.",
+      "Not entirely. GovWin is a full pipeline intelligence platform — it tracks pre-solicitation opportunities, agency forecasts, and competitor intel across the entire procurement lifecycle. GovScout focuses on awarded contracts: who won, for how much, and from which agency. If you need pipeline tracking and bid intelligence, GovWin is the more complete tool. If you need affordable awarded contract research, GovScout does that job at 1/40th the price.",
   },
   {
     question: "Why is GovWin so expensive?",
     answer:
-      "GovWin employs analysts who manually research and curate opportunity intelligence, agency forecasts, and competitive landscape reports. That human research labor is what drives the $2,000–$12,000/year price tag. Federal Contract Tracker uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
+      "GovWin employs analysts who manually research and curate opportunity intelligence, agency forecasts, and competitive landscape reports. That human research labor is what drives the $2,000–$12,000/year price tag. GovScout uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
   },
   {
-    question: "Where does Federal Contract Tracker get its data?",
+    question: "Where does GovScout get its data?",
     answer:
       "All data comes from USASpending.gov, the U.S. government's official source for federal spending data. It covers all awarded federal contracts and is updated daily. We use the public API — no scraping, no proprietary data sources.",
   },
   {
-    question: "Can I use both GovWin and Federal Contract Tracker?",
+    question: "Can I use both GovWin and GovScout?",
     answer:
-      "Yes, and many small businesses should. Use GovWin (or a similar pipeline tool) to find and track upcoming opportunities. Use Federal Contract Tracker to research the competitive landscape — who's winning contracts in your NAICS codes, which agencies are spending, and what set-aside contracts are being awarded. The awarded contract research from Federal Contract Tracker complements GovWin's forward-looking pipeline intelligence.",
+      "Yes, and many small businesses should. Use GovWin (or a similar pipeline tool) to find and track upcoming opportunities. Use GovScout to research the competitive landscape — who's winning contracts in your NAICS codes, which agencies are spending, and what set-aside contracts are being awarded. The awarded contract research from GovScout complements GovWin's forward-looking pipeline intelligence.",
   },
   {
     question:
-      "I'm a small business and can't afford GovWin. Is Federal Contract Tracker enough?",
+      "I'm a small business and can't afford GovWin. Is GovScout enough?",
     answer:
-      "It depends on what you need. If your primary goal is understanding who wins contracts in your space — which agencies spend the most, what set-aside awards look like, and who your competitors are — Federal Contract Tracker covers that for $49/month or even free (10 searches/day). You won't get pre-solicitation tracking or bid intelligence, but for competitive research on awarded contracts, it's a practical starting point.",
+      "It depends on what you need. If your primary goal is understanding who wins contracts in your space — which agencies spend the most, what set-aside awards look like, and who your competitors are — GovScout covers that for $49/month or even free (10 searches/day). You won't get pre-solicitation tracking or bid intelligence, but for competitive research on awarded contracts, it's a practical starting point.",
   },
 ];
 
@@ -60,13 +60,13 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "GovWin Alternative — Federal Contract Tracker",
+    name: "GovWin Alternative — GovScout",
     description:
       "Search awarded federal contracts with set-aside filters, NAICS autocomplete, and agency spending breakdowns. 1/40th the cost of GovWin by Deltek.",
     url: `${baseUrl}/compare/govwin`,
     mainEntity: {
       "@type": "SoftwareApplication",
-      name: "Federal Contract Tracker",
+      name: "GovScout",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Any",
       offers: [

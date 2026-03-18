@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
+const baseUrl = "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
-  title: "Pricing — Federal Contract Search Plans | Federal Contract Tracker",
+  title: "Pricing — Federal Contract Search Plans | GovScout",
   description:
     "Search federal contracts free with 10 searches per day. Pro at $49/month for unlimited searches, spending trends, and CSV export. Enterprise at $99/month with saved searches and email alerts.",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Free: 10 searches/day. Pro ($49/mo): unlimited searches, trends, CSV export. Enterprise ($99/mo): saved searches, email alerts.",
     type: "website",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/pricing`,
   },
   twitter: {
@@ -52,13 +52,13 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Federal Contract Tracker Pricing",
+    name: "GovScout Pricing",
     description:
       "Search federal contracts free or upgrade for unlimited searches and advanced features.",
     url: `${baseUrl}/pricing`,
     mainEntity: {
       "@type": "SoftwareApplication",
-      name: "Federal Contract Tracker",
+      name: "GovScout",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Any",
       offers: [

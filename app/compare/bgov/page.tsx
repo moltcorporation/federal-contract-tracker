@@ -50,23 +50,23 @@ const comparisonRows = [
 
 const faqs = [
   {
-    question: "Is Federal Contract Tracker a replacement for Bloomberg Government?",
+    question: "Is GovScout a replacement for Bloomberg Government?",
     answer:
-      "No. BGOV covers legislation, regulation, and contracts. Federal Contract Tracker focuses on awarded contracts only — who won, how much, and which agency. They are different tools for different needs.",
+      "No. BGOV covers legislation, regulation, and contracts. GovScout focuses on awarded contracts only — who won, how much, and which agency. They are different tools for different needs.",
   },
   {
     question: "Why is Bloomberg Government so expensive?",
     answer:
-      "BGOV employs journalists, analysts, and researchers who produce original intelligence on legislation, regulation, and procurement. That human research labor drives the $6,000–$12,000/year price tag. Federal Contract Tracker uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
+      "BGOV employs journalists, analysts, and researchers who produce original intelligence on legislation, regulation, and procurement. That human research labor drives the $6,000–$12,000/year price tag. GovScout uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
   },
   {
-    question: "Can I use both Bloomberg Government and Federal Contract Tracker?",
+    question: "Can I use both Bloomberg Government and GovScout?",
     answer:
-      "Yes. Use BGOV for legislative and regulatory intelligence. Use Federal Contract Tracker for affordable awarded contract research — who wins contracts in your NAICS codes, which agencies spend the most, and what set-aside contracts are being awarded.",
+      "Yes. Use BGOV for legislative and regulatory intelligence. Use GovScout for affordable awarded contract research — who wins contracts in your NAICS codes, which agencies spend the most, and what set-aside contracts are being awarded.",
   },
   {
     question:
-      "I'm a small business. Is Federal Contract Tracker enough to get started?",
+      "I'm a small business. Is GovScout enough to get started?",
     answer:
       "If your goal is understanding who wins contracts in your space, yes. $49/month or free (10 searches/day). You won't get legislative tracking, but for competitive contract research it's a practical starting point.",
   },
@@ -83,7 +83,7 @@ export default function BGOVComparison() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -107,7 +107,7 @@ export default function BGOVComparison() {
             <strong className="text-white">
               awarded federal contracts
             </strong>
-            , Federal Contract Tracker gets you there for $49/month.
+            , GovScout gets you there for $49/month.
           </p>
         </div>
 
@@ -125,7 +125,7 @@ export default function BGOVComparison() {
             price.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            Federal Contract Tracker focuses specifically on awarded federal
+            GovScout focuses specifically on awarded federal
             contracts. Who won contracts in your NAICS code? Which agencies
             spend the most on your services? What set-aside contracts were
             awarded last year? We don&apos;t cover legislative or regulatory
@@ -168,7 +168,7 @@ export default function BGOVComparison() {
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            Federal Contract Tracker vs Bloomberg Government
+            GovScout vs Bloomberg Government
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
@@ -215,7 +215,7 @@ export default function BGOVComparison() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-2 rounded-lg border border-blue-900/30 bg-blue-950/20 p-5">
               <h3 className="font-semibold text-blue-400">
-                Use Federal Contract Tracker when...
+                Use GovScout when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
                 <li>You need awarded contract research — who won, how much, which agency</li>
@@ -248,7 +248,7 @@ export default function BGOVComparison() {
             $12,000/year intelligence platform on day one. They need to answer
             basic questions: Are agencies spending money in my industry? Who&apos;s
             winning those contracts? Are there set-aside opportunities for my
-            business type? Federal Contract Tracker answers those questions at a
+            business type? GovScout answers those questions at a
             price that makes sense for businesses still building their federal
             pipeline.
           </p>
@@ -269,14 +269,14 @@ export default function BGOVComparison() {
             href="/compare/govwin"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            Federal Contract Tracker vs GovWin
+            GovScout vs GovWin
           </Link>
           <span className="text-slate-600">&middot;</span>
           <Link
             href="/compare/sam-gov"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            Federal Contract Tracker vs SAM.gov
+            GovScout vs SAM.gov
           </Link>
         </div>
 
@@ -323,7 +323,7 @@ export default function BGOVComparison() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

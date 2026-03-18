@@ -360,7 +360,7 @@ export default function Home() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </div>
         <div className="flex items-center gap-4">
@@ -424,7 +424,7 @@ export default function Home() {
                   <span className="text-slate-500">Free · Painful UX, no saved searches</span>
                 </div>
                 <div className="mt-1 flex items-center justify-between border-t border-slate-700/50 pt-2">
-                  <span className="font-semibold text-white">Federal Contract Tracker</span>
+                  <span className="font-semibold text-white">GovScout</span>
                   <span className="font-semibold text-blue-400">$49/mo · Award history + trends + alerts</span>
                 </div>
               </div>
@@ -953,7 +953,7 @@ export default function Home() {
                   </h2>
                   <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                     Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending
-                    in your industry, and which competitors keep showing up. The Federal Contract Tracker
+                    in your industry, and which competitors keep showing up. The GovScout
                     turns 5+ years of USASpending.gov data into competitive intelligence you can use —
                     find patterns in award history, track spending trends by agency, and set up alerts
                     so you never miss a relevant award. Built for small businesses that can&apos;t afford
@@ -1008,7 +1008,7 @@ export default function Home() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
+const baseUrl = "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
-    "How to Find SDVOSB Set-Aside Federal Contracts | Federal Contract Tracker",
+    "How to Find SDVOSB Set-Aside Federal Contracts | GovScout",
   description:
     "Step-by-step guide to finding SDVOSB set-aside federal contract awards. Search by NAICS code, track agency spending, and research competitors. Free.",
   alternates: {
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Find SDVOSB Set-Aside Federal Contracts",
     description:
-      "Guide to finding service-disabled veteran-owned small business contract awards using the Federal Contract Tracker.",
+      "Guide to finding service-disabled veteran-owned small business contract awards using the GovScout.",
     type: "article",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/guides/sdvosb-contracts`,
   },
   twitter: {
@@ -34,11 +34,11 @@ const steps = [
   },
   {
     title: "Find your NAICS code",
-    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'janitorial', 'IT services', 'construction') and select the matching code. SDVOSB set-asides are available across all NAICS codes, giving you broad access to opportunities regardless of industry.",
+    body: "Federal contracts are categorized by NAICS code. Use the GovScout's autocomplete — type your industry (e.g., 'janitorial', 'IT services', 'construction') and select the matching code. SDVOSB set-asides are available across all NAICS codes, giving you broad access to opportunities regardless of industry.",
   },
   {
     title: "Search for awarded SDVOSB contracts",
-    body: "On the Federal Contract Tracker, enter your NAICS code and select the SDVOSB set-aside filter. This shows every SDVOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. Study the winners to understand your competitive landscape.",
+    body: "On the GovScout, enter your NAICS code and select the SDVOSB set-aside filter. This shows every SDVOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. Study the winners to understand your competitive landscape.",
   },
   {
     title: "Check VA-specific opportunities",
@@ -79,7 +79,7 @@ const faqs = [
   {
     question: "Can I hold both SDVOSB and 8(a) certification?",
     answer:
-      "Yes. SDVOSB verification and 8(a) Business Development certification are separate programs. If you qualify for both, you can bid on SDVOSB set-asides, 8(a) set-asides, and general small business set-asides — significantly expanding your opportunities. Use the Federal Contract Tracker to compare award volumes across both set-aside types in your NAICS code.",
+      "Yes. SDVOSB verification and 8(a) Business Development certification are separate programs. If you qualify for both, you can bid on SDVOSB set-asides, 8(a) set-asides, and general small business set-asides — significantly expanding your opportunities. Use the GovScout to compare award volumes across both set-aside types in your NAICS code.",
   },
 ];
 
@@ -130,7 +130,7 @@ export default function SdvosbGuide() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -206,7 +206,7 @@ export default function SdvosbGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types:
+            The GovScout supports all major set-aside types:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
@@ -317,7 +317,7 @@ export default function SdvosbGuide() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

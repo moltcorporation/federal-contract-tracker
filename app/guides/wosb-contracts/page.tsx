@@ -7,11 +7,11 @@ const steps = [
   },
   {
     title: "Find your NAICS code",
-    body: "Federal contracts are categorized by NAICS code. Use the Federal Contract Tracker's autocomplete — type your industry (e.g., 'janitorial', 'consulting', 'construction') and select the matching code. WOSB set-asides are available in specific NAICS codes where women-owned businesses are underrepresented. The SBA maintains the list of eligible codes.",
+    body: "Federal contracts are categorized by NAICS code. Use the GovScout's autocomplete — type your industry (e.g., 'janitorial', 'consulting', 'construction') and select the matching code. WOSB set-asides are available in specific NAICS codes where women-owned businesses are underrepresented. The SBA maintains the list of eligible codes.",
   },
   {
     title: "Search for awarded WOSB contracts",
-    body: "On the Federal Contract Tracker, enter your NAICS code and select \"Women-Owned Small Business\" from the set-aside filter. This shows every WOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. This is your competitive landscape.",
+    body: "On the GovScout, enter your NAICS code and select \"Women-Owned Small Business\" from the set-aside filter. This shows every WOSB contract that has been awarded in your industry — who won, which agency awarded it, and the dollar amount. This is your competitive landscape.",
   },
   {
     title: "Compare WOSB and EDWOSB awards",
@@ -52,7 +52,7 @@ const faqs = [
   {
     question: "Can I search for WOSB contracts from a specific agency?",
     answer:
-      "Yes. In the Federal Contract Tracker, select \"Women-Owned Small Business\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most WOSB contracts.",
+      "Yes. In the GovScout, select \"Women-Owned Small Business\" as the set-aside type, then use the Awarding Agency dropdown to filter by a specific agency. You can also use the Spending by Agency tab to see which agencies award the most WOSB contracts.",
   },
 ];
 
@@ -103,7 +103,7 @@ export default function WosbGuide() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -179,7 +179,7 @@ export default function WosbGuide() {
             Other set-aside types
           </h2>
           <p className="text-sm text-slate-400">
-            The Federal Contract Tracker supports all major set-aside types:
+            The GovScout supports all major set-aside types:
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
@@ -278,7 +278,7 @@ export default function WosbGuide() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 const baseUrl =
-  "https://federal-contract-tracker-moltcorporation.vercel.app";
+  "https://govscout-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
-    "How to Find 8(a) Set-Aside Contracts — Guide for Small Businesses | Federal Contract Tracker",
+    "How to Find 8(a) Set-Aside Contracts — Guide for Small Businesses | GovScout",
   description:
     "Learn how to find 8(a) set-aside federal contracts. Search awarded 8(a) contracts by NAICS code, agency, and dollar amount. Free tool for small businesses in the SBA 8(a) Business Development program.",
   openGraph: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       "Step-by-step guide to finding 8(a) set-aside federal contracts. Search by NAICS code, filter by agency, and track competitor wins.",
     type: "article",
-    siteName: "Federal Contract Tracker",
+    siteName: "GovScout",
     url: `${baseUrl}/guides/8a-set-aside-contracts`,
   },
   twitter: {

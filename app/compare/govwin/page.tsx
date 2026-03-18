@@ -55,30 +55,30 @@ const comparisonRows = [
 
 const faqs = [
   {
-    question: "Is Federal Contract Tracker a replacement for GovWin?",
+    question: "Is GovScout a replacement for GovWin?",
     answer:
-      "Not entirely. GovWin is a full pipeline intelligence platform — it tracks pre-solicitation opportunities, agency forecasts, and competitor intel across the entire procurement lifecycle. Federal Contract Tracker focuses on awarded contracts: who won, for how much, and from which agency. If you need pipeline tracking and bid intelligence, GovWin is the more complete tool. If you need affordable awarded contract research, Federal Contract Tracker does that job at 1/40th the price.",
+      "Not entirely. GovWin is a full pipeline intelligence platform — it tracks pre-solicitation opportunities, agency forecasts, and competitor intel across the entire procurement lifecycle. GovScout focuses on awarded contracts: who won, for how much, and from which agency. If you need pipeline tracking and bid intelligence, GovWin is the more complete tool. If you need affordable awarded contract research, GovScout does that job at 1/40th the price.",
   },
   {
     question: "Why is GovWin so expensive?",
     answer:
-      "GovWin employs analysts who manually research and curate opportunity intelligence, agency forecasts, and competitive landscape reports. That human research labor is what drives the $2,000–$12,000/year price tag. Federal Contract Tracker uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
+      "GovWin employs analysts who manually research and curate opportunity intelligence, agency forecasts, and competitive landscape reports. That human research labor is what drives the $2,000–$12,000/year price tag. GovScout uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
   },
   {
-    question: "Where does Federal Contract Tracker get its data?",
+    question: "Where does GovScout get its data?",
     answer:
       "All data comes from USASpending.gov, the U.S. government's official source for federal spending data. It covers all awarded federal contracts and is updated daily. We use the public API — no scraping, no proprietary data sources.",
   },
   {
-    question: "Can I use both GovWin and Federal Contract Tracker?",
+    question: "Can I use both GovWin and GovScout?",
     answer:
-      "Yes, and many small businesses should. Use GovWin (or a similar pipeline tool) to find and track upcoming opportunities. Use Federal Contract Tracker to research the competitive landscape — who's winning contracts in your NAICS codes, which agencies are spending, and what set-aside contracts are being awarded. The awarded contract research from Federal Contract Tracker complements GovWin's forward-looking pipeline intelligence.",
+      "Yes, and many small businesses should. Use GovWin (or a similar pipeline tool) to find and track upcoming opportunities. Use GovScout to research the competitive landscape — who's winning contracts in your NAICS codes, which agencies are spending, and what set-aside contracts are being awarded. The awarded contract research from GovScout complements GovWin's forward-looking pipeline intelligence.",
   },
   {
     question:
-      "I'm a small business and can't afford GovWin. Is Federal Contract Tracker enough?",
+      "I'm a small business and can't afford GovWin. Is GovScout enough?",
     answer:
-      "It depends on what you need. If your primary goal is understanding who wins contracts in your space — which agencies spend the most, what set-aside awards look like, and who your competitors are — Federal Contract Tracker covers that for $49/month or even free (10 searches/day). You won't get pre-solicitation tracking or bid intelligence, but for competitive research on awarded contracts, it's a practical starting point.",
+      "It depends on what you need. If your primary goal is understanding who wins contracts in your space — which agencies spend the most, what set-aside awards look like, and who your competitors are — GovScout covers that for $49/month or even free (10 searches/day). You won't get pre-solicitation tracking or bid intelligence, but for competitive research on awarded contracts, it's a practical starting point.",
   },
 ];
 
@@ -93,7 +93,7 @@ export default function GovWinComparison() {
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
           <span className="text-lg font-bold tracking-tight text-white">
-            Federal Contract Tracker
+            GovScout
           </span>
         </Link>
         <div className="flex items-center gap-4">
@@ -118,7 +118,7 @@ export default function GovWinComparison() {
             <strong className="text-white">
               who is winning awarded contracts
             </strong>
-            , Federal Contract Tracker gets you there for $49/month.
+            , GovScout gets you there for $49/month.
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export default function GovWinComparison() {
             GovWin earns its price.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            Federal Contract Tracker does one thing: awarded contract research.
+            GovScout does one thing: awarded contract research.
             Who won contracts in your NAICS code? Which agencies spend the most
             on your services? What set-aside contracts were awarded last year?
             For small businesses that need competitive intelligence without a
@@ -177,7 +177,7 @@ export default function GovWinComparison() {
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            Federal Contract Tracker vs GovWin
+            GovScout vs GovWin
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
@@ -224,7 +224,7 @@ export default function GovWinComparison() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-2 rounded-lg border border-blue-900/30 bg-blue-950/20 p-5">
               <h3 className="font-semibold text-blue-400">
-                Use Federal Contract Tracker when...
+                Use GovScout when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
                 <li>You want to see who won contracts in your NAICS code</li>
@@ -259,14 +259,14 @@ export default function GovWinComparison() {
             $12,000/year intelligence platform on day one. They need to answer
             basic questions: Are agencies spending money in my industry? Who&apos;s
             winning those contracts? Are there set-aside opportunities for my
-            business type? Federal Contract Tracker answers those questions at a
+            business type? GovScout answers those questions at a
             price that makes sense for businesses still building their federal
             pipeline.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
             As your federal business grows and you need pre-solicitation
             tracking, bid management, and deeper competitive intelligence, tools
-            like GovWin become worth the investment. Federal Contract Tracker is
+            like GovWin become worth the investment. GovScout is
             where you start.
           </p>
         </div>
@@ -280,14 +280,14 @@ export default function GovWinComparison() {
             href="/compare/bgov"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            Federal Contract Tracker vs Bloomberg Government
+            GovScout vs Bloomberg Government
           </Link>
           <span className="text-slate-600">&middot;</span>
           <Link
             href="/compare/sam-gov"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            Federal Contract Tracker vs SAM.gov
+            GovScout vs SAM.gov
           </Link>
         </div>
 
@@ -334,7 +334,7 @@ export default function GovWinComparison() {
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
           <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
