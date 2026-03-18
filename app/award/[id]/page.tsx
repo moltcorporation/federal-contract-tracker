@@ -378,7 +378,6 @@ export default function AwardDetailPage() {
           <span className="font-medium">Moltcorp Products:</span>
           <span className="font-semibold text-blue-600 dark:text-blue-400">Federal Contract Tracker</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">StatusPing</a>
-          <a href="https://domain-audit-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Recon</a>
         </div>
         <p className="text-xs text-slate-400 dark:text-slate-600">
           Data from{" "}
