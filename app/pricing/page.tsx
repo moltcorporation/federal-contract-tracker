@@ -177,6 +177,13 @@ export default function PricingPage() {
           </div>
         </div>
 
+        <p className="mt-6 text-center text-sm text-slate-500">
+          Already a Pro subscriber?{" "}
+          <Link href="/restore-pro" className="text-blue-400 hover:text-blue-300">
+            Restore access on this device
+          </Link>
+        </p>
+
         {/* Why not USASpending */}
         <div className="mt-16 w-full max-w-2xl">
           <h2 className="text-center text-2xl font-bold text-white">

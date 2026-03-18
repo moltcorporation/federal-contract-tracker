@@ -367,6 +367,7 @@ export default function Home() {
           <a href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</a>
           <a href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</a>
           <a href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</a>
+          <a href="/restore-pro" className="text-xs font-medium text-slate-500 transition-colors hover:text-blue-400">Restore Pro</a>
         </div>
       </header>
 
