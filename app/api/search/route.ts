@@ -3,6 +3,7 @@ import { createHash } from "crypto";
 import { db } from "@/db";
 import { searchLogs } from "@/db/schema";
 import { buildCheckoutUrl, checkProAccess } from "@/lib/stripe";
+import { cachedFetch } from "@/lib/api-cache";
 import { sql } from "drizzle-orm";
 
 const FREE_LIMIT = 10;
@@ -101,42 +102,48 @@ export async function POST(req: NextRequest) {
     },
   ];
 
+  const requestPayload = {
+    filters,
+    fields: [
+      "Award ID",
+      "Recipient Name",
+      "Description",
+      "Award Amount",
+      "Awarding Agency",
+      "Awarding Sub Agency",
+      "Start Date",
+      "End Date",
+      "Award Type",
+      "recipient_id",
+      "internal_id",
+    ],
+    page: body.page || 1,
+    limit: 20,
+    sort: "Award Amount",
+    order: "desc",
+    subawards: false,
+  };
+
   try {
-    const res = await fetch(
-      "https://api.usaspending.gov/api/v2/search/spending_by_award/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          filters,
-          fields: [
-            "Award ID",
-            "Recipient Name",
-            "Description",
-            "Award Amount",
-            "Awarding Agency",
-            "Awarding Sub Agency",
-            "Start Date",
-            "End Date",
-            "Award Type",
-            "recipient_id",
-            "internal_id",
-          ],
-          page: body.page || 1,
-          limit: 20,
-          sort: "Award Amount",
-          order: "desc",
-          subawards: false,
-        }),
+    const data = await cachedFetch(
+      { route: "search", payload: requestPayload },
+      async () => {
+        const res = await fetch(
+          "https://api.usaspending.gov/api/v2/search/spending_by_award/",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestPayload),
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error(`USASpending API returned ${res.status}`);
+        }
+
+        return res.json();
       }
     );
-
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: "Failed to fetch from USASpending API" },
-        { status: 502 }
-      );
-    }
 
     // Log the search (non-blocking — don't let DB errors break search)
     try {
@@ -145,7 +152,6 @@ export async function POST(req: NextRequest) {
       console.error("Failed to log search, continuing");
     }
 
-    const data = await res.json();
     const remaining = isPro ? -1 : FREE_LIMIT - used - 1;
 
     return NextResponse.json({
@@ -156,7 +162,7 @@ export async function POST(req: NextRequest) {
     });
   } catch {
     return NextResponse.json(
-      { error: "Failed to connect to USASpending API" },
+      { error: "Failed to fetch from USASpending API" },
       { status: 502 }
     );
   }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cachedFetch } from "@/lib/api-cache";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -28,33 +29,38 @@ export async function POST(req: NextRequest) {
     },
   ];
 
+  const requestPayload = {
+    filters,
+    category: "awarding_agency",
+    limit: 10,
+    page: 1,
+  };
+
   try {
-    const res = await fetch(
-      "https://api.usaspending.gov/api/v2/search/spending_by_category/awarding_agency/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          filters,
-          category: "awarding_agency",
-          limit: 10,
-          page: 1,
-        }),
+    const data = await cachedFetch(
+      { route: "spending-by-agency", payload: requestPayload },
+      async () => {
+        const res = await fetch(
+          "https://api.usaspending.gov/api/v2/search/spending_by_category/awarding_agency/",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestPayload),
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error(`USASpending API returned ${res.status}`);
+        }
+
+        return res.json();
       }
     );
 
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: "Failed to fetch from USASpending API" },
-        { status: 502 }
-      );
-    }
-
-    const data = await res.json();
     return NextResponse.json(data);
   } catch {
     return NextResponse.json(
-      { error: "Failed to connect to USASpending API" },
+      { error: "Failed to fetch from USASpending API" },
       { status: 502 }
     );
   }
