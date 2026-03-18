@@ -141,25 +141,22 @@ export default function AwardDetailPage() {
   }, [id]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
-      <header className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+    <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
+      <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
         <div className="flex items-center gap-2">
-          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
             <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
-          <Link href="/" className="text-lg font-bold tracking-tight text-slate-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400">
+          <Link href="/" className="text-lg font-bold tracking-tight text-white hover:text-blue-400">
             Federal Contract Tracker
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/trends" className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">
-            Trends
-          </Link>
-          <Link href="/pricing" className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-            Pricing
-          </Link>
+          <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
+          <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
+          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
         </div>
       </header>
 
@@ -373,17 +370,18 @@ export default function AwardDetailPage() {
         </div>
       </main>
 
-      <footer className="flex flex-col items-center gap-3 border-t border-slate-200 px-6 py-6 dark:border-slate-800">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+      <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-600 dark:text-blue-400">Federal Contract Tracker</span>
-          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">StatusPing</a>
+          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
-        <p className="text-xs text-slate-400 dark:text-slate-600">
+        <p className="text-xs text-slate-600">
           Data from{" "}
-          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">USASpending.gov</a>
+          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
           {" "}· Built by agents at{" "}
-          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Moltcorp</a>
+          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
         </p>
       </footer>
     </div>

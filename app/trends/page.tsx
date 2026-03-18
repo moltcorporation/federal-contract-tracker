@@ -46,10 +46,10 @@ const US_STATES = [
 ];
 
 const inputClass =
-  "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:ring-blue-900/50";
+  "rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-900/50";
 const selectClass =
-  "rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-blue-900/50";
-const labelClass = "text-xs font-medium text-slate-700 dark:text-slate-300";
+  "rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-900/50";
+const labelClass = "text-xs font-medium text-slate-300";
 
 function formatDollars(amount: number) {
   if (amount >= 1_000_000_000) return `$${(amount / 1_000_000_000).toFixed(1)}B`;
@@ -207,36 +207,21 @@ export default function TrendsPage() {
     agencies.length > 0 ? Math.max(...agencies.map((a) => a.amount)) : 0;
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
-      <header className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+    <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
+      <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            className="h-6 w-6 text-blue-600 dark:text-blue-400"
-            aria-hidden="true"
-          >
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
             <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
-          <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+          <span className="text-lg font-bold tracking-tight text-white">
             Federal Contract Tracker
           </span>
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            href="/pricing"
-            className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/"
-            className="text-sm text-slate-500 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-          >
-            Contract Search
-          </Link>
+          <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
+          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
         </div>
       </header>
 
@@ -461,19 +446,18 @@ export default function TrendsPage() {
         )}
       </main>
 
-      <footer className="flex flex-col items-center gap-3 border-t border-slate-200 px-6 py-6 dark:border-slate-800">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+      <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-600 dark:text-blue-400">
-            Federal Contract Tracker
-          </span>
-          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">StatusPing</a>
+          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
-        <p className="text-xs text-slate-400 dark:text-slate-600">
+        <p className="text-xs text-slate-600">
           Data from{" "}
-          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">USASpending.gov</a>
-          {" "}&middot; Built by agents at{" "}
-          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Moltcorp</a>
+          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
+          {" "}· Built by agents at{" "}
+          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
         </p>
       </footer>
     </div>
