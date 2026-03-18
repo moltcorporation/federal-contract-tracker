@@ -85,7 +85,7 @@ export default function EightAGuide() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-slate-950">
+    <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -95,56 +95,36 @@ export default function EightAGuide() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <header className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+      <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            className="h-6 w-6 text-blue-600 dark:text-blue-400"
-            aria-hidden="true"
-          >
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
             <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
           </svg>
-          <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+          <span className="text-lg font-bold tracking-tight text-white">
             Federal Contract Tracker
           </span>
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            href="/trends"
-            className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-          >
-            Trends
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/"
-            className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
-          >
-            Search contracts free
-          </Link>
+          <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
+          <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
+          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
         </div>
       </header>
 
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-12">
         <div className="flex flex-col gap-4">
-          <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
+          <p className="text-sm font-medium text-blue-400">
             Guide
           </p>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             How to Find 8(a) Set-Aside
-            <span className="block text-blue-600 dark:text-blue-400">
+            <span className="block text-blue-400">
               Federal Contracts
             </span>
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-slate-400">
             If you&apos;re in the SBA 8(a) Business Development program, the
             federal government sets aside contracts specifically for your
             business. The challenge is finding them. Here&apos;s how to search
@@ -158,16 +138,16 @@ export default function EightAGuide() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="flex gap-4 rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+              className="flex gap-4 rounded-lg border border-slate-800 bg-slate-900 p-5"
             >
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-900/50 text-sm font-bold text-blue-300">
                 {i + 1}
               </div>
               <div className="flex flex-col gap-1.5">
-                <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+                <h2 className="text-lg font-semibold text-white">
                   {step.title}
                 </h2>
-                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="text-sm leading-relaxed text-slate-400">
                   {step.body}
                 </p>
               </div>
@@ -176,18 +156,18 @@ export default function EightAGuide() {
         </div>
 
         {/* CTA */}
-        <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-200 bg-blue-50 p-8 text-center dark:border-blue-900/30 dark:bg-blue-950/20">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+        <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-900/30 bg-blue-950/20 p-8 text-center">
+          <h2 className="text-2xl font-bold text-white">
             Search 8(a) contracts now
           </h2>
-          <p className="max-w-md text-sm text-slate-600 dark:text-slate-400">
+          <p className="max-w-md text-sm text-slate-400">
             Enter your NAICS code, select the 8(a) set-aside filter, and see
             every awarded contract in your industry. Free — 10 searches per day,
             no registration.
           </p>
           <Link
             href="/"
-            className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+            className="rounded-lg bg-blue-500 px-8 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-400"
           >
             Search 8(a) contracts free
           </Link>
@@ -195,10 +175,10 @@ export default function EightAGuide() {
 
         {/* Other set-aside types */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             Other set-aside types
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-sm text-slate-400">
             The Federal Contract Tracker supports all major set-aside types.
             Use the same search process for any of these:
           </p>
@@ -227,18 +207,18 @@ export default function EightAGuide() {
             ].map((type) => (
               <div
                 key={type.name}
-                className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+                className="rounded-lg border border-slate-800 bg-slate-900 p-4"
               >
                 {type.href ? (
-                  <Link href={type.href} className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                  <Link href={type.href} className="font-semibold text-blue-400 hover:text-blue-300">
                     {type.name}
                   </Link>
                 ) : (
-                  <h3 className="font-semibold text-slate-900 dark:text-white">
+                  <h3 className="font-semibold text-white">
                     {type.name}
                   </h3>
                 )}
-                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                <p className="mt-1 text-xs text-slate-400">
                   {type.desc}
                 </p>
               </div>
@@ -248,19 +228,19 @@ export default function EightAGuide() {
 
         {/* FAQ */}
         <div className="flex flex-col gap-5">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             Frequently asked questions
           </h2>
           <div className="flex flex-col gap-4">
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+                className="rounded-lg border border-slate-800 bg-slate-900 p-5"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white">
+                <h3 className="font-semibold text-white">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">
                   {faq.answer}
                 </p>
               </div>
@@ -270,43 +250,43 @@ export default function EightAGuide() {
 
         {/* More resources */}
         <div className="flex flex-col gap-3">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-white">
             More resources
           </h2>
           <div className="flex flex-wrap gap-3">
             <Link
               href="/guides/wosb-contracts"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               WOSB Contracts Guide
             </Link>
             <Link
               href="/guides/hubzone-contracts"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               HUBZone Contracts Guide
             </Link>
             <Link
               href="/compare/sam-gov"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               FCT vs SAM.gov
             </Link>
             <Link
               href="/compare/govwin"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               FCT vs GovWin
             </Link>
             <Link
               href="/trends"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               Spending Trends
             </Link>
             <Link
               href="/pricing"
-              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-400"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               Pricing
             </Link>
@@ -314,19 +294,18 @@ export default function EightAGuide() {
         </div>
       </main>
 
-      <footer className="flex flex-col items-center gap-3 border-t border-slate-200 px-6 py-6 dark:border-slate-800">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+      <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-600 dark:text-blue-400">
-            Federal Contract Tracker
-          </span>
-          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">StatusPing</a>
+          <span className="font-semibold text-blue-400">Federal Contract Tracker</span>
+          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
         </div>
-        <p className="text-xs text-slate-400 dark:text-slate-600">
+        <p className="text-xs text-slate-600">
           Data from{" "}
-          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">USASpending.gov</a>
+          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
           {" "}&middot; Built by agents at{" "}
-          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">Moltcorp</a>
+          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
         </p>
       </footer>
     </div>
