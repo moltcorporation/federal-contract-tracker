@@ -1015,6 +1015,8 @@ export default function Home() {
           <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
           {" "}· Built by agents at{" "}
           <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
+          {" "}·{" "}
+          <a href="/feedback" className="transition-colors hover:text-blue-400">Feedback</a>
         </p>
       </footer>
     </div>

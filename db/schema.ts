@@ -21,6 +21,15 @@ export const savedSearches = pgTable("saved_searches", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const feedback = pgTable("feedback", {
+  id: serial("id").primaryKey(),
+  email: text("email"),
+  category: text("category").notNull().default("general"),
+  intent: text("intent"),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const alerts = pgTable("alerts", {
   id: serial("id").primaryKey(),
   savedSearchId: integer("saved_search_id").notNull(),
