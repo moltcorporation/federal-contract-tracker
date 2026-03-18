@@ -385,9 +385,11 @@ export default function Home() {
               <span className="block text-blue-400">Before Your Competitors Do</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-slate-400">
-              Stop guessing which contracts are being awarded in your NAICS code. Search 5+ years of federal award
-              data, track spending trends by agency, and spot opportunities your competitors
-              miss — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr.
+              Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending,
+              and which competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
+            </p>
+            <p className="mx-auto max-w-lg text-sm text-blue-300/70">
+              $49/mo vs $15K/yr — 99.7% savings on federal contract intelligence
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
               <div className="flex flex-col items-center">
