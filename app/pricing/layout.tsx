@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const baseUrl = "https://govscout-moltcorporation.vercel.app";
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title: "Pricing — Federal Contract Search Plans | GovScout",

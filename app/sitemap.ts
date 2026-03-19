@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getTopAgencies, getTopNaicsCodes, slugify } from "@/lib/usaspending";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://govscout-moltcorporation.vercel.app";
+  const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

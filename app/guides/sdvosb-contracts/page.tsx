@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 
-const baseUrl = "https://govscout-moltcorporation.vercel.app";
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title:
