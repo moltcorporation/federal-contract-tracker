@@ -388,9 +388,17 @@ export default function Home() {
               Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending,
               and which competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
             </p>
-            <p className="mx-auto max-w-lg text-sm text-blue-300/70">
-              $49/mo vs $15K/yr — 99.7% savings on federal contract intelligence
-            </p>
+            <div className="flex flex-col items-center gap-3 pt-2">
+              <a
+                href="/register"
+                className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
+              >
+                Start Free — No Credit Card Required
+              </a>
+              <p className="text-xs text-slate-500">
+                10 searches/day free · Upgrade to Pro anytime for $49/mo
+              </p>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
               <div className="flex flex-col items-center">
                 <span className="text-2xl font-bold text-white">$49</span>
