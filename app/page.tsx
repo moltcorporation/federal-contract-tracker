@@ -35,6 +35,17 @@ function formatDollars(amount: number) {
   return `$${amount.toLocaleString()}`;
 }
 
+const POPULAR_SEARCHES = [
+  { label: "IT Services (541512)", naics: "541512", keyword: "" },
+  { label: "Construction (236220)", naics: "236220", keyword: "" },
+  { label: "Cybersecurity", naics: "", keyword: "cybersecurity" },
+  { label: "Cloud Computing", naics: "", keyword: "cloud computing" },
+  { label: "Engineering (541330)", naics: "541330", keyword: "" },
+  { label: "Consulting (541611)", naics: "541611", keyword: "" },
+  { label: "R&D (541715)", naics: "541715", keyword: "" },
+  { label: "Facilities (561210)", naics: "561210", keyword: "" },
+];
+
 const SET_ASIDE_OPTIONS = [
   { value: "", label: "All contracts" },
   { value: "SBA", label: "Small Business (SBA)" },
@@ -217,6 +228,19 @@ export default function Home() {
   const [agencyError, setAgencyError] = useState("");
   const [agencySearched, setAgencySearched] = useState(false);
 
+  // First-visit banner
+  const [showFirstVisit, setShowFirstVisit] = useState(false);
+  useEffect(() => {
+    if (!localStorage.getItem("govscout_visited")) {
+      setShowFirstVisit(true);
+    }
+  }, []);
+
+  function dismissFirstVisit() {
+    setShowFirstVisit(false);
+    localStorage.setItem("govscout_visited", "1");
+  }
+
   async function handleSaveSearch() {
     setSaveStatus("saving");
     const parts: string[] = [];
@@ -247,8 +271,7 @@ export default function Home() {
     }
   }
 
-  async function handleSearch(e: React.FormEvent) {
-    e.preventDefault();
+  async function doSearch(params: { keyword: string; naics: string; agency: string; minAmount: string; maxAmount: string; year: string; setAside: string; recipient: string; psc: string }) {
     setError("");
     setUpgradeUrl("");
     setLoading(true);
@@ -259,7 +282,7 @@ export default function Home() {
       const res = await fetch("/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ keyword, naics, agency, minAmount, maxAmount, year, setAside, recipient, psc }),
+        body: JSON.stringify(params),
       });
 
       const data = await res.json();
@@ -286,6 +309,24 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    doSearch({ keyword, naics, agency, minAmount, maxAmount, year, setAside, recipient, psc });
+  }
+
+  function handlePopularSearch(search: { keyword: string; naics: string }) {
+    setKeyword(search.keyword);
+    setNaics(search.naics);
+    setAgency("");
+    setMinAmount("");
+    setMaxAmount("");
+    setSetAside("");
+    setRecipient("");
+    setPsc("");
+    dismissFirstVisit();
+    doSearch({ keyword: search.keyword, naics: search.naics, agency: "", minAmount: "", maxAmount: "", year, setAside: "", recipient: "", psc: "" });
   }
 
   const [exporting, setExporting] = useState(false);
@@ -514,6 +555,17 @@ export default function Home() {
             </div>
           ) : (
             <div id="search" className="flex flex-col gap-1 text-center scroll-mt-8">
+              {showFirstVisit && (
+                <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-blue-800/50 bg-blue-950/30 px-4 py-3 text-left">
+                  <div className="flex items-center gap-3">
+                    <span className="text-lg">&#128161;</span>
+                    <p className="text-sm text-blue-200">
+                      <span className="font-semibold">New here?</span> Try clicking a popular search below, or search your industry NAICS code to see real federal contract data.
+                    </p>
+                  </div>
+                  <button onClick={dismissFirstVisit} className="shrink-0 text-sm text-slate-500 hover:text-slate-300" aria-label="Dismiss">&#10005;</button>
+                </div>
+              )}
               <h2 className="text-xl font-bold tracking-tight text-white">
                 Find contracts in your industry
               </h2>
@@ -555,7 +607,7 @@ export default function Home() {
               <form onSubmit={handleSearch} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="keyword" className={labelClass}>Keyword</label>
-                  <input id="keyword" type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="e.g. cybersecurity, cloud migration, construction" className={inputClass} />
+                  <input id="keyword" type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search by keyword, NAICS code, or agency name..." className={inputClass} />
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
@@ -614,6 +666,24 @@ export default function Home() {
                   </button>
                 </div>
               </form>
+
+              {!searched && !loading && (
+                <div className="flex flex-col gap-3">
+                  <p className="text-xs font-medium uppercase tracking-wider text-slate-500">Popular searches</p>
+                  <div className="flex flex-wrap gap-2">
+                    {POPULAR_SEARCHES.map((s) => (
+                      <button
+                        key={s.label}
+                        type="button"
+                        onClick={() => handlePopularSearch(s)}
+                        className="rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-2 text-sm text-slate-300 transition-all hover:border-blue-600 hover:bg-slate-800 hover:text-blue-300"
+                      >
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {error && (
                 <div className="rounded-xl border border-red-200 bg-red-50 p-5 dark:border-red-800 dark:bg-red-900/20">
