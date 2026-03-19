@@ -364,10 +364,10 @@ export default function Home() {
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <a href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</a>
-          <a href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</a>
-          <a href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</a>
-          <a href="/restore-pro" className="text-xs font-medium text-slate-500 transition-colors hover:text-blue-400">Restore Pro</a>
+          <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
+          <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
+          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
+          <Link href="/restore-pro" className="text-xs font-medium text-slate-500 transition-colors hover:text-blue-400">Restore Pro</Link>
         </div>
       </header>
 
@@ -437,19 +437,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* Primary CTA */}
+            {/* Secondary CTA */}
             <div className="flex flex-col items-center gap-3 pt-2">
               <a
                 href="#search"
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-900/30 transition-all hover:bg-blue-500 hover:shadow-blue-900/40"
+                className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 underline decoration-slate-700 underline-offset-4 transition-colors hover:text-blue-400"
               >
-                Search Contracts Free — No Signup Required
-              </a>
-              <a
-                href="/pricing"
-                className="text-sm text-slate-400 underline decoration-slate-700 underline-offset-4 transition-colors hover:text-blue-400"
-              >
-                See Pro pricing →
+                Or try a free search first — no account needed
               </a>
             </div>
             {/* Trust signals */}
@@ -987,7 +981,7 @@ export default function Home() {
                   </h2>
                   <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                     Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending
-                    in your industry, and which competitors keep showing up. The GovScout
+                    in your industry, and which competitors keep showing up. GovScout
                     turns 5+ years of USASpending.gov data into competitive intelligence you can use —
                     find patterns in award history, track spending trends by agency, and set up alerts
                     so you never miss a relevant award. Built for small businesses that can&apos;t afford
