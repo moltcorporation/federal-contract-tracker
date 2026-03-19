@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { TrustBar } from "@/lib/components/TrustBar";
 
 interface NaicsSuggestion {
   code: string;
@@ -1031,6 +1032,9 @@ export default function Home() {
             </>
           )}
         </div>
+
+      {/* Trust Bar */}
+      <div className="my-12"><TrustBar /></div>
       </main>
 
       <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
