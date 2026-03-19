@@ -1,6 +1,7 @@
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { hashPassword, createSession } from "@/lib/auth";
+import { scheduleDrip } from "@/lib/drip";
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 
@@ -49,6 +50,11 @@ export async function POST(request: Request) {
       .returning({ id: users.id });
 
     await createSession(user.id);
+
+    // Schedule B2B drip email sequence (non-blocking)
+    scheduleDrip(user.id).catch((err) =>
+      console.error("Failed to schedule drip for user", user.id, err)
+    );
 
     return NextResponse.json({ id: user.id }, { status: 201 });
   } catch (error) {

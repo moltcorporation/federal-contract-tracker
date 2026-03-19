@@ -59,3 +59,18 @@ export const emailSubscribers = pgTable("email_subscribers", {
   source: text("source"),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const dripSchedule = pgTable("drip_schedule", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+  emailStep: integer("email_step").notNull(),
+  sendAt: timestamp("send_at").notNull(),
+  sentAt: timestamp("sent_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const dripUnsubscribes = pgTable("drip_unsubscribes", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().unique(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
