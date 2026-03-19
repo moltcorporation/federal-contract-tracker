@@ -66,6 +66,12 @@ export default async function AgenciesIndexPage() {
           <Link href="/naics" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">NAICS Codes</Link>
           <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
           <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
+          <Link
+            href="/register"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          >
+            Sign Up Free
+          </Link>
         </div>
       </header>
 
