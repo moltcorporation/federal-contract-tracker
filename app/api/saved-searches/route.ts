@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
   if (!isPro) {
     return NextResponse.json(
       {
-        error: "Enterprise plan required for saved searches.",
+        error: "Pro plan required for saved searches.",
         upgradeUrl: buildCheckoutUrl(email),
       },
       { status: 403 }
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   if (!isPro) {
     return NextResponse.json(
       {
-        error: "Enterprise plan required for saved searches.",
+        error: "Pro plan required for saved searches.",
         upgradeUrl: buildCheckoutUrl(email),
       },
       { status: 403 }

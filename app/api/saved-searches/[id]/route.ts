@@ -21,7 +21,7 @@ export async function DELETE(
   if (!isPro) {
     return NextResponse.json(
       {
-        error: "Enterprise plan required.",
+        error: "Pro plan required.",
         upgradeUrl: buildCheckoutUrl(email),
       },
       { status: 403 }
