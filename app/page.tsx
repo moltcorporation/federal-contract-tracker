@@ -35,6 +35,25 @@ function formatDollars(amount: number) {
   return `$${amount.toLocaleString()}`;
 }
 
+const NAICS_CATEGORIES = [
+  { code: "541512", label: "IT Services", icon: "💻" },
+  { code: "236220", label: "Construction", icon: "🏗️" },
+  { code: "541330", label: "Engineering", icon: "⚙️" },
+  { code: "541611", label: "Consulting", icon: "📊" },
+  { code: "561720", label: "Janitorial", icon: "🧹" },
+  { code: "541511", label: "Custom Software", icon: "🖥️" },
+  { code: "562910", label: "Environmental", icon: "🌿" },
+  { code: "336411", label: "Aerospace", icon: "✈️" },
+  { code: "541690", label: "Scientific R&D", icon: "🔬" },
+  { code: "561210", label: "Facilities Support", icon: "🏢" },
+];
+
+const SUGGESTED_SEARCHES = [
+  { label: "Cybersecurity contracts over $1M", keyword: "cybersecurity", minAmount: "1000000", naics: "", agency: "" },
+  { label: "DoD IT modernization", keyword: "IT modernization", naics: "541512", agency: "Department of Defense" },
+  { label: "Small business set-asides in construction", keyword: "", naics: "236220", agency: "", setAside: "SBA" },
+];
+
 const SET_ASIDE_OPTIONS = [
   { value: "", label: "All contracts" },
   { value: "SBA", label: "Small Business (SBA)" },
@@ -206,6 +225,7 @@ export default function Home() {
   const [remaining, setRemaining] = useState<number | null>(null);
   const [searched, setSearched] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [isFirstSearch, setIsFirstSearch] = useState(true);
 
   // Spending by agency state
   const [agencyNaics, setAgencyNaics] = useState("");
@@ -285,6 +305,7 @@ export default function Home() {
       setResults([]);
     } finally {
       setLoading(false);
+      if (isFirstSearch) setIsFirstSearch(false);
     }
   }
 
@@ -513,13 +534,57 @@ export default function Home() {
               </h1>
             </div>
           ) : (
-            <div id="search" className="flex flex-col gap-1 text-center scroll-mt-8">
-              <h2 className="text-xl font-bold tracking-tight text-white">
-                Find contracts in your industry
-              </h2>
-              <p className="text-sm text-slate-500">
-                Search by keyword, NAICS code, agency, or recipient to see who&apos;s winning awards.
-              </p>
+            <div id="search" className="flex flex-col gap-6 scroll-mt-8">
+              <div className="text-center">
+                <h2 className="text-xl font-bold tracking-tight text-white">
+                  What does your business do?
+                </h2>
+                <p className="mt-1 text-sm text-slate-500">
+                  Pick your industry to see contracts you could be winning
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2">
+                {NAICS_CATEGORIES.map((cat) => (
+                  <button
+                    key={cat.code}
+                    type="button"
+                    onClick={() => {
+                      setNaics(cat.code);
+                      setActiveTab("search");
+                    }}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all ${
+                      naics === cat.code
+                        ? "border-blue-500 bg-blue-950/50 text-blue-300"
+                        : "border-slate-700 bg-slate-800/50 text-slate-300 hover:border-blue-600 hover:text-blue-300"
+                    }`}
+                  >
+                    <span>{cat.icon}</span>
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+              <div className="flex flex-col items-center gap-2 border-t border-slate-800 pt-4">
+                <p className="text-xs font-medium uppercase tracking-wider text-slate-600">Or try a popular search</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {SUGGESTED_SEARCHES.map((s, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => {
+                        setKeyword(s.keyword);
+                        if (s.naics) setNaics(s.naics);
+                        if (s.agency) setAgency(s.agency);
+                        if (s.minAmount) setMinAmount(s.minAmount);
+                        if (s.setAside) setSetAside(s.setAside);
+                        setActiveTab("search");
+                      }}
+                      className="rounded-lg border border-dashed border-slate-700 px-3 py-1.5 text-xs text-slate-400 transition-colors hover:border-blue-600 hover:text-blue-300"
+                    >
+                      {s.label} →
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -648,6 +713,27 @@ export default function Home() {
 
               {!loading && results.length > 0 && (
                 <div className="flex flex-col gap-4">
+                  {isFirstSearch && totalCount !== null && totalCount > 0 && (
+                    <div className="rounded-xl border border-blue-700/50 bg-gradient-to-r from-blue-950/80 to-slate-900 p-5">
+                      <div className="flex items-start gap-3">
+                        <span className="text-2xl">🎯</span>
+                        <div>
+                          <p className="font-semibold text-white">
+                            Found {totalCount.toLocaleString()} contracts matching your criteria
+                          </p>
+                          <p className="mt-1 text-sm text-slate-400">
+                            Pro users can export all results to CSV, save searches for later, and track spending trends across agencies.
+                          </p>
+                          <Link
+                            href="/pricing"
+                            className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                          >
+                            Unlock Pro features — $49/mo
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   {totalCount !== null && (
                     <div className="flex items-center justify-between gap-4">
                       <p className="text-sm text-slate-500 dark:text-slate-400">
