@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cachedFetch } from "@/lib/api-cache";
+import { buildCheckoutUrl, checkProAccess } from "@/lib/stripe";
 
 function buildFilters(body: {
   naics?: string;
@@ -30,6 +31,18 @@ function buildFilters(body: {
 }
 
 export async function POST(req: NextRequest) {
+  const proEmail = req.cookies.get("fct_pro_email")?.value;
+  let isPro = false;
+  if (proEmail) {
+    isPro = await checkProAccess(proEmail);
+  }
+  if (!isPro) {
+    return NextResponse.json(
+      { error: "Spending trends require a Pro subscription.", upgradeUrl: buildCheckoutUrl(proEmail) },
+      { status: 403 }
+    );
+  }
+
   const body = await req.json();
   const filters = buildFilters(body);
 

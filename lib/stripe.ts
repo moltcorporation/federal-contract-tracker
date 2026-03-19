@@ -1,7 +1,7 @@
-export const STRIPE_PAYMENT_LINK_ID = "plink_1TBPPEDT8EiLsMQhWJJouBtA";
+const STRIPE_PAYMENT_LINK_ID = process.env.STRIPE_PAYMENT_LINK_ID || "plink_1TBPPEDT8EiLsMQhWJJouBtA";
 
-export const STRIPE_PAYMENT_LINK_URL =
-  "https://buy.stripe.com/aFa5kDaNZ6Gd2jb4Ac3Nm02";
+const STRIPE_PAYMENT_LINK_URL =
+  process.env.STRIPE_PAYMENT_LINK_URL || "https://buy.stripe.com/aFa5kDaNZ6Gd2jb4Ac3Nm02";
 
 export function buildCheckoutUrl(email?: string): string {
   if (email) {
@@ -51,9 +51,7 @@ export async function checkProAccess(email: string): Promise<boolean> {
     return cached.hasAccess;
   }
 
-  // No cache at all and API is unreachable — fail open for the user's benefit.
-  // A legitimate free-tier user hitting this path would only happen if the API
-  // is down on their very first request, which is rare. The alternative
-  // (returning false) would lock out every paying customer during an outage.
-  return true;
+  // No cache and API unreachable — fail closed to prevent free access to Pro features.
+  // Paying customers who had a successful check will still be served from stale cache.
+  return false;
 }

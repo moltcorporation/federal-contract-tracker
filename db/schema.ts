@@ -6,6 +6,7 @@ export const users = pgTable("users", {
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
   name: text("name"),
+  /** @deprecated Pro status is checked via Moltcorp API, not this column. Retained for schema compatibility. */
   plan: text("plan").notNull().default("free"),
   stripeCustomerId: text("stripe_customer_id"),
   createdAt: timestamp("created_at").defaultNow(),

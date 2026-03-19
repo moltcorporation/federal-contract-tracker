@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
+import { buildCheckoutUrl } from "@/lib/stripe";
 
 function CheckIcon() {
   return (
@@ -142,7 +142,7 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
+            <a href={buildCheckoutUrl()} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
               Start Pro — $49/mo
             </a>
           </div>

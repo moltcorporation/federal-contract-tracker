@@ -388,6 +388,7 @@ export default function Home() {
             user ? (
               <>
                 <span className="text-xs text-slate-500">{user.email}</span>
+                <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Manage Billing</Link>
                 <button
                   onClick={handleLogout}
                   className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400"
