@@ -169,6 +169,23 @@ function NaicsAutocomplete({
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"search" | "agency">("search");
+  const [user, setUser] = useState<{ id: number; email: string; name: string | null } | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.user) setUser(data.user);
+        setAuthChecked(true);
+      })
+      .catch(() => setAuthChecked(true));
+  }, []);
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setUser(null);
+  }
 
   // Contract search state
   const [keyword, setKeyword] = useState("");
@@ -366,8 +383,30 @@ export default function Home() {
         <div className="flex items-center gap-4">
           <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
           <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
-          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
-          <Link href="/restore-pro" className="text-xs font-medium text-slate-500 transition-colors hover:text-blue-400">Restore Pro</Link>
+          <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
+          {authChecked && (
+            user ? (
+              <>
+                <span className="text-xs text-slate-500">{user.email}</span>
+                <button
+                  onClick={handleLogout}
+                  className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400"
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Log in</Link>
+                <Link
+                  href="/register"
+                  className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                >
+                  Sign Up Free
+                </Link>
+              </>
+            )
+          )}
         </div>
       </header>
 
