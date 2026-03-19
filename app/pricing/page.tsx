@@ -76,7 +76,7 @@ export default function PricingPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mt-12 grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
           {/* Free tier */}
           <div className="flex flex-col gap-6 rounded-xl border border-slate-800 bg-slate-900 p-6">
             <div className="flex flex-col gap-1">
@@ -134,6 +134,7 @@ export default function PricingPage() {
                 "Search by recipient to map competitor portfolios",
                 "Filter by HUBZone, WOSB, SDVOSB, 8(a) set-asides",
                 "Keyword search across award descriptions",
+                "Saved searches with email alerts",
               ].map((text) => (
                 <li key={text} className="flex items-start gap-2.5">
                   <span className="mt-0.5"><CheckIcon /></span>
@@ -146,35 +147,6 @@ export default function PricingPage() {
             </a>
           </div>
 
-          {/* Enterprise tier */}
-          <div className="flex flex-col gap-6 rounded-xl border border-slate-800 bg-slate-900 p-6">
-            <div className="flex flex-col gap-1">
-              <h2 className="text-lg font-bold text-white">Enterprise</h2>
-              <p className="text-xs text-slate-400">For teams managing a full federal pipeline</p>
-              <div className="mt-2 flex items-baseline gap-1">
-                <span className="text-3xl font-extrabold text-white">$99</span>
-                <span className="text-sm text-slate-400">/month</span>
-              </div>
-            </div>
-            <ul className="flex flex-col gap-3">
-              {[
-                "Everything in Pro",
-                "Save searches and get emailed when new awards match",
-                "Never miss a competitor win or a new opportunity",
-                "API access for custom integrations",
-                "Priority support",
-                "Team accounts (coming soon)",
-              ].map((text) => (
-                <li key={text} className="flex items-start gap-2.5">
-                  <span className="mt-0.5"><CheckIcon /></span>
-                  <span className="text-sm text-white">{text}</span>
-                </li>
-              ))}
-            </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg border border-slate-700 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800">
-              Start Enterprise — $99/mo
-            </a>
-          </div>
         </div>
 
         <p className="mt-6 text-center text-sm text-slate-500">

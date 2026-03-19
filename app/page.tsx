@@ -429,6 +429,21 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            {/* Primary CTA */}
+            <div className="flex flex-col items-center gap-3 pt-2">
+              <a
+                href="/register"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-900/30 transition-all hover:bg-blue-500 hover:shadow-blue-900/40"
+              >
+                Start Free — No Credit Card Required
+              </a>
+              <a
+                href="/pricing"
+                className="text-sm text-slate-400 underline decoration-slate-700 underline-offset-4 transition-colors hover:text-blue-400"
+              >
+                See Pro pricing →
+              </a>
+            </div>
             {/* Trust signals */}
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <div className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-4 py-1.5 text-xs text-slate-400">
