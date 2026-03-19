@@ -1274,6 +1274,8 @@ export default function HomeContent() {
           <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
           {" "}·{" "}
           <a href="/feedback" className="transition-colors hover:text-blue-400">Feedback</a>
+          {" "}·{" "}
+          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">System Status ↗</a>
         </p>
       </footer>
     </div>
