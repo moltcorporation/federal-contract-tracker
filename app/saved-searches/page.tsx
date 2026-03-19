@@ -147,7 +147,7 @@ export default function SavedSearchesPage() {
                 rel="noopener noreferrer"
                 className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
               >
-                Upgrade to Enterprise
+                Upgrade to Pro
               </a>
             )}
           </div>

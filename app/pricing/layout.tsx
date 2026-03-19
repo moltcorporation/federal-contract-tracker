@@ -5,14 +5,14 @@ const baseUrl = "https://govscout-moltcorporation.vercel.app";
 export const metadata: Metadata = {
   title: "Pricing — Federal Contract Search Plans | GovScout",
   description:
-    "Search federal contracts free with 10 searches per day. Pro at $49/month for unlimited searches, spending trends, and CSV export. Enterprise at $99/month with saved searches and email alerts.",
+    "Search federal contracts free with 10 searches per day. Pro at $49/month for unlimited searches, spending trends, CSV export, saved searches, and email alerts.",
   alternates: {
     canonical: `${baseUrl}/pricing`,
   },
   openGraph: {
     title: "Pricing — Federal Contract Search Plans",
     description:
-      "Free: 10 searches/day. Pro ($49/mo): unlimited searches, trends, CSV export. Enterprise ($99/mo): saved searches, email alerts.",
+      "Free: 10 searches/day. Pro ($49/mo): unlimited searches, trends, CSV export, saved searches, email alerts.",
     type: "website",
     siteName: "GovScout",
     url: `${baseUrl}/pricing`,
@@ -39,7 +39,7 @@ const faqs = [
   {
     question: "Can I switch between plans?",
     answer:
-      "Yes. You can upgrade from Free to Pro or Enterprise at any time. Downgrading takes effect at the end of your billing period.",
+      "Yes. You can upgrade from Free to Pro at any time. Downgrading takes effect at the end of your billing period.",
   },
   {
     question: "Where does the contract data come from?",
@@ -75,15 +75,7 @@ const jsonLd = [
           price: "49",
           priceCurrency: "USD",
           description:
-            "Unlimited searches, spending trends, CSV export, set-aside filters",
-        },
-        {
-          "@type": "Offer",
-          name: "Enterprise",
-          price: "99",
-          priceCurrency: "USD",
-          description:
-            "Everything in Pro plus saved searches, email alerts, API access",
+            "Unlimited searches, spending trends, CSV export, saved searches, email alerts",
         },
       ],
     },
