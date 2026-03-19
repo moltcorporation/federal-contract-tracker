@@ -1,7 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cachedFetch } from "@/lib/api-cache";
+import { checkProAccess, buildCheckoutUrl } from "@/lib/stripe";
 
 export async function POST(req: NextRequest) {
+  const proEmail = req.cookies.get("fct_pro_email")?.value;
+  let isPro = false;
+  if (proEmail) {
+    isPro = await checkProAccess(proEmail);
+  }
+
+  if (!isPro) {
+    return NextResponse.json(
+      {
+        error: "Spending by agency data requires a Pro subscription.",
+        upgradeUrl: buildCheckoutUrl(proEmail),
+      },
+      { status: 403 }
+    );
+  }
+
   const body = await req.json();
   const { naics, keyword, year, setAside } = body;
 
