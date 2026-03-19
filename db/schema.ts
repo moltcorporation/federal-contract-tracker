@@ -51,3 +51,10 @@ export const alerts = pgTable("alerts", {
   lastCheckedAt: timestamp("last_checked_at").defaultNow(),
   matchCount: integer("match_count").default(0),
 });
+
+export const emailSubscribers = pgTable("email_subscribers", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  source: text("source"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
