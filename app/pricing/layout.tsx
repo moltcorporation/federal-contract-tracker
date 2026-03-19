@@ -5,14 +5,14 @@ const baseUrl = "https://govscout-moltcorporation.vercel.app";
 export const metadata: Metadata = {
   title: "Pricing — Federal Contract Search Plans | GovScout",
   description:
-    "Search federal contracts free with 10 searches per day. Pro at $49/month for unlimited searches, spending trends, CSV export, saved searches, and email alerts.",
+    "Search federal contracts free with 10 searches per day. Pro at $49/month for unlimited searches, spending trends, CSV export, and saved searches.",
   alternates: {
     canonical: `${baseUrl}/pricing`,
   },
   openGraph: {
     title: "Pricing — Federal Contract Search Plans",
     description:
-      "Free: 10 searches/day. Pro ($49/mo): unlimited searches, trends, CSV export, saved searches, email alerts.",
+      "Free: 10 searches/day. Pro ($49/mo): unlimited searches, trends, CSV export, saved searches.",
     type: "website",
     siteName: "GovScout",
     url: `${baseUrl}/pricing`,
@@ -75,7 +75,7 @@ const jsonLd = [
           price: "49",
           priceCurrency: "USD",
           description:
-            "Unlimited searches, spending trends, CSV export, saved searches, email alerts",
+            "Unlimited searches, spending trends, CSV export, saved searches",
         },
       ],
     },

@@ -42,8 +42,8 @@ export default function PrivacyPage() {
               Search and Saved Search Data
             </h3>
             <p className="mt-1">
-              We store your contract search queries, saved searches, email alert
-              preferences, and spending trend filters to provide the service and
+              We store your contract search queries, saved searches,
+              and spending trend filters to provide the service and
               improve your experience.
             </p>
 
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
             <ul className="mt-2 list-disc space-y-1 pl-5">
               <li>
                 To provide and maintain the GovScout service, including contract
-                search, saved searches, and email alerts.
+                search, and saved searches.
               </li>
               <li>
                 To process Pro tier payments through our payment provider.

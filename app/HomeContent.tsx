@@ -539,7 +539,7 @@ export default function HomeContent() {
                 </div>
                 <div className="mt-1 flex items-center justify-between border-t border-slate-700/50 pt-2">
                   <span className="font-semibold text-white">GovScout</span>
-                  <span className="font-semibold text-blue-400">$49/mo · Award history + trends + alerts</span>
+                  <span className="font-semibold text-blue-400">$49/mo · Award history + trends + exports</span>
                 </div>
               </div>
             </div>
@@ -576,14 +576,14 @@ export default function HomeContent() {
         <section className="w-full bg-slate-950 border-y border-slate-800">
           <div className="mx-auto max-w-2xl px-4 py-12 text-center">
             <h2 className="text-lg font-semibold text-white">
-              Get weekly contract alerts for your industry
+              Get federal contract insights for your industry
             </h2>
             <p className="mt-2 text-sm text-slate-400">
               Join thousands of contractors who never miss a federal opportunity.
             </p>
             {emailCaptureSuccess ? (
               <div className="mt-6 rounded-lg border border-green-800 bg-green-950/50 px-4 py-3 text-sm text-green-300">
-                You&apos;re in! We&apos;ll send you relevant contract alerts soon.
+                You&apos;re in! We&apos;ll keep you updated.
               </div>
             ) : (
               <form
@@ -1151,7 +1151,7 @@ export default function HomeContent() {
                   Free vs Pro
                 </h2>
                 <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-400">
-                  Start searching free. Upgrade when you need unlimited access, exports, and alerts.
+                  Start searching free. Upgrade when you need unlimited access and exports.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {/* Free tier */}
@@ -1170,7 +1170,7 @@ export default function HomeContent() {
                       <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> View spending by agency</li>
                       <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> Unlimited searches</span></li>
                       <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> CSV export</span></li>
-                      <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> Saved searches & email alerts</span></li>
+                      <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> Saved searches</span></li>
                     </ul>
                     <a
                       href="/register"
@@ -1195,7 +1195,7 @@ export default function HomeContent() {
                     <ul className="flex flex-col gap-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Unlimited searches</li>
                       <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Export award data as CSV</li>
-                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Saved searches with email alerts</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Saved searches</li>
                       <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Spending trends by agency</li>
                       <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Competitor tracking</li>
                       <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> All free tier features</li>
@@ -1235,7 +1235,7 @@ export default function HomeContent() {
                         { feature: "Search by NAICS + agency + set-aside", usa: false, fct: true },
                         { feature: "Filter by dollar range", usa: false, fct: true },
                         { feature: "Spending trends by agency over time", usa: false, fct: true },
-                        { feature: "Saved searches with email alerts", usa: false, fct: true },
+                        { feature: "Saved searches", usa: false, fct: true },
                         { feature: "Export results to CSV for proposals", usa: false, fct: true },
                         { feature: "Keyword search across descriptions", usa: true, fct: true },
                         { feature: "Clean, filterable results in seconds", usa: false, fct: true },
@@ -1289,8 +1289,8 @@ export default function HomeContent() {
                     Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending
                     in your industry, and which competitors keep showing up. GovScout
                     turns 5+ years of USASpending.gov data into competitive intelligence you can use —
-                    find patterns in award history, track spending trends by agency, and set up alerts
-                    so you never miss a relevant award. Built for small businesses that can&apos;t afford
+                    find patterns in award history, track spending trends by agency, and save searches
+                    to revisit anytime. Built for small businesses that can&apos;t afford
                     $15K/yr enterprise tools but need more than raw government data.
                   </p>
                 </div>

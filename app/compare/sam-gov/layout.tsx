@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "How much does GovScout cost?",
     answer:
-      "Free users get 10 searches per day with full access to all filters and features. Pro ($49/month) gives unlimited searches, spending trends, CSV export, saved searches, and email alerts on new awards.",
+      "Free users get 10 searches per day with full access to all filters and features. Pro ($49/month) gives unlimited searches, spending trends, CSV export, and saved searches.",
   },
   {
     question:

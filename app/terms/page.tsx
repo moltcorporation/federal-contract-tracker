@@ -41,7 +41,7 @@ export default function TermsPage() {
             </h2>
             <p className="mt-2">
               GovScout provides tools to search federal contract awards, track
-              government spending trends, save searches with email alerts, and
+              government spending trends, save searches, and
               export contract data. Data is sourced from the public
               USASpending.gov API. The service includes a free tier and a paid
               Pro subscription.
