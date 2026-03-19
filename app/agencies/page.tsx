@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 import { getTopAgencies, slugify, formatDollars } from "@/lib/usaspending";
 
-const baseUrl = "https://govscout-moltcorporation.vercel.app";
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title: "Federal Agencies — Government Contract Spending | GovScout",

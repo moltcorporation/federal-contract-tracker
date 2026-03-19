@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 import { getTopNaicsCodes, formatDollars } from "@/lib/usaspending";
 
-const baseUrl = "https://govscout-moltcorporation.vercel.app";
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
 
 export const metadata: Metadata = {
   title: "NAICS Codes — Federal Contract Spending by Industry | GovScout",

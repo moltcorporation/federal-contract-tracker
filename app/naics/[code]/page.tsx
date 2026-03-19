@@ -13,7 +13,7 @@ import {
 import type { NaicsSummary } from "@/lib/usaspending";
 import { notFound } from "next/navigation";
 
-const baseUrl = "https://govscout-moltcorporation.vercel.app";
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
 
 export const revalidate = 86400;
 

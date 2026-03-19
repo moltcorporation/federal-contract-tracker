@@ -41,7 +41,7 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": "WebApplication",
       name: "GovScout",
-      url: "https://govscout-moltcorporation.vercel.app",
+      url: "https://federal-contract-tracker-moltcorporation.vercel.app",
       description:
         "Search federal contract awards by NAICS code, agency, set-aside type, and dollar amount. Powered by USASpending.gov data.",
       applicationCategory: "BusinessApplication",
