@@ -17,11 +17,16 @@ export default function RegisterPage() {
     setError("");
     setLoading(true);
 
+    const utmSource =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search).get("utm_source")
+        : null;
+
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, name }),
+        body: JSON.stringify({ email, password, name, ...(utmSource && { utm_source: utmSource }) }),
       });
 
       const data = await res.json();
