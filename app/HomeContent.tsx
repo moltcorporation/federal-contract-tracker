@@ -212,11 +212,21 @@ export default function HomeContent() {
             router.push("/onboarding");
             return;
           }
+          // Handle post-payment redirect from Stripe
+          if (searchParams.get("pro") === "activated") {
+            fetch("/api/restore-pro", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: data.user.email }),
+            })
+              .then(() => router.replace("/"))
+              .catch(() => {});
+          }
         }
         setAuthChecked(true);
       })
       .catch(() => setAuthChecked(true));
-  }, [router]);
+  }, [router, searchParams]);
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" });
