@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, integer } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer, boolean } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 export const users = pgTable("users", {
@@ -10,6 +10,8 @@ export const users = pgTable("users", {
   plan: text("plan").notNull().default("free"),
   // Deprecated: not used — Stripe customer tracking is managed by Moltcorp platform
   stripeCustomerId: text("stripe_customer_id"),
+  naicsCodes: text("naics_codes"),
+  onboardingCompleted: boolean("onboarding_completed").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

@@ -11,7 +11,13 @@ export async function GET() {
   }
 
   const [user] = await db
-    .select({ id: users.id, email: users.email, name: users.name })
+    .select({
+      id: users.id,
+      email: users.email,
+      name: users.name,
+      naicsCodes: users.naicsCodes,
+      onboardingCompleted: users.onboardingCompleted,
+    })
     .from(users)
     .where(eq(users.id, session.userId))
     .limit(1);
@@ -20,5 +26,10 @@ export async function GET() {
     return NextResponse.json({ user: null }, { status: 401 });
   }
 
-  return NextResponse.json({ user });
+  return NextResponse.json({
+    user: {
+      ...user,
+      naicsCodes: user.naicsCodes ? JSON.parse(user.naicsCodes) : null,
+    },
+  });
 }
