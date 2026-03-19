@@ -432,10 +432,10 @@ export default function Home() {
             {/* Primary CTA */}
             <div className="flex flex-col items-center gap-3 pt-2">
               <a
-                href="/register"
+                href="#search"
                 className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-900/30 transition-all hover:bg-blue-500 hover:shadow-blue-900/40"
               >
-                Start Free — No Credit Card Required
+                Search Contracts Free — No Signup Required
               </a>
               <a
                 href="/pricing"
@@ -472,7 +472,7 @@ export default function Home() {
               </h1>
             </div>
           ) : (
-            <div className="flex flex-col gap-1 text-center">
+            <div id="search" className="flex flex-col gap-1 text-center scroll-mt-8">
               <h2 className="text-xl font-bold tracking-tight text-white">
                 Find contracts in your industry
               </h2>
@@ -911,7 +911,7 @@ export default function Home() {
                   USASpending.gov has the data. We make it useful.
                 </h2>
                 <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-400">
-                  USASpending.gov is free and public. So why pay for FCT? Because raw data isn&apos;t intelligence.
+                  USASpending.gov is free and public. So why pay for GovScout? Because raw data isn&apos;t intelligence.
                 </p>
                 <div className="mt-6 overflow-x-auto">
                   <table className="w-full text-sm">
@@ -919,7 +919,7 @@ export default function Home() {
                       <tr className="border-b border-slate-700">
                         <th className="py-3 pr-4 text-left font-medium text-slate-400">Feature</th>
                         <th className="px-4 py-3 text-center font-medium text-slate-400">USASpending.gov</th>
-                        <th className="px-4 py-3 text-center font-medium text-blue-400">FCT Pro</th>
+                        <th className="px-4 py-3 text-center font-medium text-blue-400">GovScout Pro</th>
                       </tr>
                     </thead>
                     <tbody className="text-slate-300">
@@ -956,12 +956,20 @@ export default function Home() {
                     </tbody>
                   </table>
                 </div>
-                <p className="mt-6 text-center text-sm text-slate-400">
-                  Stop spending 2 hours on USASpending when FCT finds it in 2 minutes.{" "}
-                  <a href="/pricing" className="font-medium text-blue-400 hover:text-blue-300">
-                    See Pro pricing →
+                <div className="mt-6 flex flex-col items-center gap-3">
+                  <a
+                    href="#search"
+                    className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-900/30 transition-all hover:bg-blue-500"
+                  >
+                    Try a Free Search Now
                   </a>
-                </p>
+                  <p className="text-center text-sm text-slate-400">
+                    Stop spending 2 hours on USASpending when GovScout finds it in 2 minutes.{" "}
+                    <a href="/pricing" className="font-medium text-blue-400 hover:text-blue-300">
+                      See Pro pricing →
+                    </a>
+                  </p>
+                </div>
               </div>
 
               <div className="mt-8 flex flex-col gap-8">
@@ -1028,7 +1036,7 @@ export default function Home() {
           <span className="font-medium">Moltcorp Products:</span>
           <span className="font-semibold text-blue-400">GovScout</span>
           <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
-          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Qdot</a>
+          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">OneQR</a>
         </div>
         <p className="text-xs text-slate-600">
           Data from{" "}
