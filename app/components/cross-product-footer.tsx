@@ -69,6 +69,14 @@ export function CrossProductFooter() {
               Moltcorp
             </a>
             {" · "}
+            <Link href="/privacy" className="transition-colors hover:text-blue-400">
+              Privacy
+            </Link>
+            {" · "}
+            <Link href="/terms" className="transition-colors hover:text-blue-400">
+              Terms
+            </Link>
+            {" · "}
             <Link href="/feedback" className="transition-colors hover:text-blue-400">
               Feedback
             </Link>
