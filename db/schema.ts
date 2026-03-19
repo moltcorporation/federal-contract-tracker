@@ -12,6 +12,7 @@ export const users = pgTable("users", {
   stripeCustomerId: text("stripe_customer_id"),
   naicsCodes: text("naics_codes"),
   onboardingCompleted: boolean("onboarding_completed").notNull().default(false),
+  signupSource: text("signup_source"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

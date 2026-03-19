@@ -195,6 +195,8 @@ function NaicsAutocomplete({
 export default function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const utmSource = searchParams.get("utm_source");
+  const registerHref = utmSource ? `/register?utm_source=${encodeURIComponent(utmSource)}` : "/register";
   const [activeTab, setActiveTab] = useState<"search" | "agency">("search");
   const [user, setUser] = useState<{ id: number; email: string; name: string | null; naicsCodes: string[] | null; onboardingCompleted: boolean } | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
@@ -455,7 +457,7 @@ export default function HomeContent() {
               <>
                 <Link href="/login" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Log in</Link>
                 <Link
-                  href="/register"
+                  href={registerHref}
                   className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
                 >
                   Sign Up Free
@@ -485,7 +487,7 @@ export default function HomeContent() {
             </p>
             <div className="flex flex-col items-center gap-3 pt-2">
               <a
-                href="/register"
+                href={registerHref}
                 className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
               >
                 Start Free — No Credit Card Required

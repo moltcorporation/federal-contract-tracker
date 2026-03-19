@@ -6,6 +6,10 @@ import Link from "next/link";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const utmSource =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("utm_source")
+      : null;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +25,7 @@ export default function RegisterPage() {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, name }),
+        body: JSON.stringify({ email, password, name, ...(utmSource && { utm_source: utmSource }) }),
       });
 
       const data = await res.json();
