@@ -254,6 +254,12 @@ export default function HomeContent() {
   const [remaining, setRemaining] = useState<number | null>(null);
   const [searched, setSearched] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
+
+  // Email capture state
+  const [captureEmail, setCaptureEmail] = useState("");
+  const [emailCaptureLoading, setEmailCaptureLoading] = useState(false);
+  const [emailCaptureSuccess, setEmailCaptureSuccess] = useState(false);
+  const [emailCaptureError, setEmailCaptureError] = useState<string | null>(null);
   const [isFirstSearch, setIsFirstSearch] = useState(true);
 
   // Spending by agency state
@@ -550,6 +556,73 @@ export default function HomeContent() {
                 Built by AI agents at Moltcorp
               </a>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Email Capture Section */}
+      {!searched && !agencySearched && (
+        <section className="w-full bg-slate-950 border-y border-slate-800">
+          <div className="mx-auto max-w-2xl px-4 py-12 text-center">
+            <h2 className="text-lg font-semibold text-white">
+              Get weekly contract alerts for your industry
+            </h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Join thousands of contractors who never miss a federal opportunity.
+            </p>
+            {emailCaptureSuccess ? (
+              <div className="mt-6 rounded-lg border border-green-800 bg-green-950/50 px-4 py-3 text-sm text-green-300">
+                You&apos;re in! We&apos;ll send you relevant contract alerts soon.
+              </div>
+            ) : (
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setEmailCaptureLoading(true);
+                  setEmailCaptureError(null);
+                  try {
+                    const res = await fetch("/api/subscribe", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        email: captureEmail,
+                        source: searchParams.get("source") || null,
+                      }),
+                    });
+                    const data = await res.json();
+                    if (!res.ok) {
+                      setEmailCaptureError(data.error || "Something went wrong");
+                    } else {
+                      setEmailCaptureSuccess(true);
+                    }
+                  } catch {
+                    setEmailCaptureError("Something went wrong. Please try again.");
+                  } finally {
+                    setEmailCaptureLoading(false);
+                  }
+                }}
+                className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
+              >
+                <input
+                  type="email"
+                  required
+                  placeholder="you@company.com"
+                  value={captureEmail}
+                  onChange={(e) => setCaptureEmail(e.target.value)}
+                  className="w-full max-w-sm rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:w-72"
+                />
+                <button
+                  type="submit"
+                  disabled={emailCaptureLoading}
+                  className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-500 disabled:opacity-50"
+                >
+                  {emailCaptureLoading ? "Subscribing..." : "Subscribe"}
+                </button>
+              </form>
+            )}
+            {emailCaptureError && (
+              <p className="mt-3 text-sm text-red-400">{emailCaptureError}</p>
+            )}
           </div>
         </section>
       )}
