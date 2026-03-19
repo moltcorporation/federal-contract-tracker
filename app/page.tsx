@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 interface NaicsSuggestion {
@@ -187,24 +188,47 @@ function NaicsAutocomplete({
 }
 
 export default function Home() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<"search" | "agency">("search");
-  const [user, setUser] = useState<{ id: number; email: string; name: string | null } | null>(null);
+  const [user, setUser] = useState<{ id: number; email: string; name: string | null; naicsCodes: string[] | null; onboardingCompleted: boolean } | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
+  const [naicsApplied, setNaicsApplied] = useState(false);
 
   useEffect(() => {
     fetch("/api/auth/me")
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data?.user) setUser(data.user);
+        if (data?.user) {
+          setUser(data.user);
+          // Redirect to onboarding if not completed
+          if (!data.user.onboardingCompleted) {
+            router.push("/onboarding");
+            return;
+          }
+        }
         setAuthChecked(true);
       })
       .catch(() => setAuthChecked(true));
-  }, []);
+  }, [router]);
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" });
     setUser(null);
   }
+
+  // Pre-fill NAICS from URL param or user profile
+  useEffect(() => {
+    if (naicsApplied) return;
+    const paramNaics = searchParams.get("naics");
+    if (paramNaics) {
+      setNaics(paramNaics);
+      setNaicsApplied(true);
+    } else if (user?.naicsCodes && user.naicsCodes.length > 0) {
+      setNaics(user.naicsCodes[0]);
+      setNaicsApplied(true);
+    }
+  }, [user, searchParams, naicsApplied]);
 
   // Contract search state
   const [keyword, setKeyword] = useState("");
