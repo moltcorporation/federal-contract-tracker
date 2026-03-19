@@ -6,7 +6,9 @@ export const users = pgTable("users", {
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
   name: text("name"),
+  // Deprecated: Pro access is determined by Moltcorp API, not this column
   plan: text("plan").notNull().default("free"),
+  // Deprecated: not used — Stripe customer tracking is managed by Moltcorp platform
   stripeCustomerId: text("stripe_customer_id"),
   createdAt: timestamp("created_at").defaultNow(),
 });

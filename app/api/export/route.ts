@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error: "CSV export requires a Pro subscription.",
-        upgradeUrl: buildCheckoutUrl(),
+        upgradeUrl: buildCheckoutUrl(proEmail),
       },
       { status: 403 }
     );

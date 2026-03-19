@@ -36,7 +36,7 @@ const faqs = [
   {
     question: "Can I cancel anytime?",
     answer:
-      "Yes. No long-term commitment. Cancel through Stripe and your access continues through the end of your billing period. Your saved searches and alerts are preserved if you resubscribe later.",
+      "Yes. No long-term commitment. Manage or cancel your subscription anytime from your Stripe billing portal. Your access continues through the end of your billing period, and saved searches are preserved if you resubscribe later.",
   },
   {
     question: "Do you offer a trial?",
@@ -154,6 +154,10 @@ export default function PricingPage() {
           <Link href="/restore-pro" className="text-blue-400 hover:text-blue-300">
             Restore access on this device
           </Link>
+          {" · "}
+          <a href="https://billing.stripe.com/p/login/00g000000000000000" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
+            Manage subscription
+          </a>
         </p>
 
         {/* Why not USASpending */}

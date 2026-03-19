@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
             error: "Daily search limit reached. Upgrade to Pro for unlimited searches.",
             remaining: 0,
             limit: FREE_LIMIT,
-            upgradeUrl: buildCheckoutUrl(),
+            upgradeUrl: buildCheckoutUrl(proEmail),
           },
           { status: 429 }
         );
