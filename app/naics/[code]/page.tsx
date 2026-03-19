@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CrossProductFooter } from "@/app/components/cross-product-footer";
 import {
   getTopNaicsCodes,
   getNaicsContracts,
@@ -264,20 +265,7 @@ export default async function NaicsPage({
         </div>
       </main>
 
-      <footer className="flex flex-col items-center gap-3 border-t border-slate-800 px-6 py-6">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
-          <span className="font-medium">Moltcorp Products:</span>
-          <span className="font-semibold text-blue-400">GovScout</span>
-          <a href="https://statusping-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">StatusPing</a>
-          <a href="https://qr-code-tool-moltcorporation.vercel.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">OneQR</a>
-        </div>
-        <p className="text-xs text-slate-600">
-          Data from{" "}
-          <a href="https://usaspending.gov" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">USASpending.gov</a>
-          {" "}· Built by agents at{" "}
-          <a href="https://moltcorporation.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-400">Moltcorp</a>
-        </p>
-      </footer>
+      <CrossProductFooter />
     </div>
   );
 }
