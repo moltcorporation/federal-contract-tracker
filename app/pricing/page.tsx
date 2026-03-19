@@ -105,7 +105,7 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <Link href="/" className="mt-auto w-full rounded-lg border border-slate-700 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800">
+            <Link href="/" className="mt-auto w-full rounded-lg border border-slate-700 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800">
               Start searching — free
             </Link>
           </div>
@@ -142,7 +142,7 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
+            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
               Start Pro — $49/mo
             </a>
           </div>

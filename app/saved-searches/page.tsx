@@ -145,7 +145,7 @@ export default function SavedSearchesPage() {
                 href={upgradeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+                className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
               >
                 Upgrade to Pro
               </a>
@@ -194,14 +194,14 @@ export default function SavedSearchesPage() {
                 <div className="flex shrink-0 items-center gap-2">
                   <Link
                     href={buildSearchUrl(search)}
-                    className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+                    className="rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-semibold text-white transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
                   >
                     Run
                   </Link>
                   <button
                     onClick={() => handleDelete(search.id)}
                     disabled={deleting === search.id}
-                    className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-500 transition-all hover:border-red-300 hover:text-red-600 disabled:opacity-50 dark:border-slate-700 dark:text-slate-400 dark:hover:border-red-800 dark:hover:text-red-400"
+                    className="rounded-lg border border-slate-200 px-3 py-2.5 text-xs font-medium text-slate-500 transition-all hover:border-red-300 hover:text-red-600 disabled:opacity-50 dark:border-slate-700 dark:text-slate-400 dark:hover:border-red-800 dark:hover:text-red-400"
                   >
                     {deleting === search.id ? "..." : "Delete"}
                   </button>

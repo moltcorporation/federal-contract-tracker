@@ -68,7 +68,7 @@ export default function RestoreProPage() {
               </p>
               <Link
                 href="/"
-                className="mt-4 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                className="mt-4 rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
               >
                 Start searching
               </Link>
@@ -116,7 +116,7 @@ export default function RestoreProPage() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full rounded-lg bg-blue-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+                  className="w-full rounded-lg bg-blue-600 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
                 >
                   {status === "loading" ? "Checking..." : "Restore access"}
                 </button>
