@@ -1134,6 +1134,74 @@ export default function HomeContent() {
                 </p>
               </div>
 
+              {/* Free vs Pro pricing comparison */}
+              <div id="pricing" className="mt-10 scroll-mt-8 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+                <h2 className="text-center text-xl font-bold text-white">
+                  Free vs Pro
+                </h2>
+                <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-400">
+                  Start searching free. Upgrade when you need unlimited access, exports, and alerts.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {/* Free tier */}
+                  <div className="flex flex-col gap-4 rounded-xl border border-slate-700 bg-slate-900 p-5">
+                    <div>
+                      <h3 className="text-base font-bold text-white">Free</h3>
+                      <p className="mt-1 text-xs text-slate-400">Explore the federal market</p>
+                      <div className="mt-2 flex items-baseline gap-1">
+                        <span className="text-2xl font-extrabold text-white">$0</span>
+                        <span className="text-xs text-slate-500">/month</span>
+                      </div>
+                    </div>
+                    <ul className="flex flex-col gap-2 text-sm text-slate-300">
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> 10 searches per day</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Filter by NAICS, agency, set-aside</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> View spending by agency</li>
+                      <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> Unlimited searches</span></li>
+                      <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> CSV export</span></li>
+                      <li className="flex items-center gap-2"><span className="text-slate-600">✗</span><span className="text-slate-500"> Saved searches & email alerts</span></li>
+                    </ul>
+                    <a
+                      href="/register"
+                      className="mt-auto rounded-lg border border-slate-600 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800"
+                    >
+                      Start Free
+                    </a>
+                  </div>
+                  {/* Pro tier */}
+                  <div className="flex flex-col gap-4 rounded-xl border-2 border-blue-500 bg-slate-900 p-5">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-base font-bold text-white">Pro</h3>
+                        <span className="rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-medium text-white">RECOMMENDED</span>
+                      </div>
+                      <p className="mt-1 text-xs text-slate-400">For serious BD teams</p>
+                      <div className="mt-2 flex items-baseline gap-1">
+                        <span className="text-2xl font-extrabold text-white">$49</span>
+                        <span className="text-xs text-slate-500">/month</span>
+                      </div>
+                    </div>
+                    <ul className="flex flex-col gap-2 text-sm text-slate-300">
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Unlimited searches</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Export award data as CSV</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Saved searches with email alerts</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Spending trends by agency</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Competitor tracking</li>
+                      <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> All free tier features</li>
+                    </ul>
+                    <Link
+                      href="/pricing"
+                      className="mt-auto rounded-lg bg-blue-600 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                    >
+                      Unlock Pro — $49/mo
+                    </Link>
+                  </div>
+                </div>
+                <p className="mt-4 text-center text-xs text-slate-500">
+                  No credit card required for free tier · Cancel Pro anytime
+                </p>
+              </div>
+
               {/* Why not USASpending? comparison section */}
               <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
                 <h2 className="text-center text-xl font-bold text-white">

@@ -105,6 +105,12 @@ export default async function NaicsPage({
           <Link href="/naics" className="text-sm font-medium text-blue-400">NAICS Codes</Link>
           <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
           <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
+          <Link
+            href="/register"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          >
+            Sign Up Free
+          </Link>
         </div>
       </header>
 
@@ -232,17 +238,28 @@ export default async function NaicsPage({
           )}
 
           {/* CTA */}
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 text-center">
-            <h2 className="mb-2 text-lg font-bold text-white">Search NAICS {naics.code} Contracts</h2>
-            <p className="mb-4 text-sm text-slate-400">
-              Filter by agency, set-aside type, dollar amount, and more.
+          <div className="rounded-xl border border-blue-900/50 bg-gradient-to-b from-slate-900 to-slate-950 p-6 text-center">
+            <h2 className="mb-2 text-lg font-bold text-white">Track {naics.name} Contracts</h2>
+            <p className="mb-5 text-sm text-slate-400">
+              Search by agency, set-aside type, dollar range, and more. Save searches and get email alerts when new NAICS {naics.code} contracts are awarded.
             </p>
-            <Link
-              href={`/?naics=${encodeURIComponent(naics.code)}`}
-              className="inline-flex rounded-lg bg-blue-500 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-400"
-            >
-              Search NAICS {naics.code} Contracts
-            </Link>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <Link
+                href={`/?naics=${encodeURIComponent(naics.code)}`}
+                className="inline-flex rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700"
+              >
+                Search NAICS {naics.code} Contracts Free
+              </Link>
+              <Link
+                href="/register"
+                className="inline-flex rounded-lg border border-slate-700 px-6 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-500 hover:text-white"
+              >
+                Sign Up Free
+              </Link>
+            </div>
+            <p className="mt-4 text-xs text-slate-500">
+              Free: 10 searches/day · <Link href="/pricing" className="text-blue-400 hover:text-blue-300">Pro $49/mo</Link>: unlimited searches, CSV export, saved searches with alerts
+            </p>
           </div>
         </div>
       </main>
