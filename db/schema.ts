@@ -1,4 +1,15 @@
 import { pgTable, serial, text, timestamp, integer } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  passwordHash: text("password_hash").notNull(),
+  name: text("name"),
+  plan: text("plan").notNull().default("free"),
+  stripeCustomerId: text("stripe_customer_id"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
 
 export const searchLogs = pgTable("search_logs", {
   id: serial("id").primaryKey(),
