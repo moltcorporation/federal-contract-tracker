@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getTopAgencies, getTopNaicsCodes, slugify } from "@/lib/usaspending";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://govscout-moltcorporation.vercel.app";
 
-  return [
+  // Static pages
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -15,6 +17,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/agencies`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/naics`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/compare/sam-gov`,
@@ -89,4 +103,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ];
+
+  // Programmatic pages — fetch from USASpending API
+  let agencyPages: MetadataRoute.Sitemap = [];
+  let naicsPages: MetadataRoute.Sitemap = [];
+
+  try {
+    const agencies = await getTopAgencies(50);
+    agencyPages = agencies.map((a) => ({
+      url: `${baseUrl}/agencies/${slugify(a.name)}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // Sitemap generation should not fail if API is down
+  }
+
+  try {
+    const naicsCodes = await getTopNaicsCodes(50);
+    naicsPages = naicsCodes.map((n) => ({
+      url: `${baseUrl}/naics/${n.code}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // Sitemap generation should not fail if API is down
+  }
+
+  return [...staticPages, ...agencyPages, ...naicsPages];
 }
