@@ -72,6 +72,17 @@ export default function RestoreProPage() {
               >
                 Start searching
               </Link>
+              <p className="text-sm text-slate-400">
+                Need to update your payment method or cancel?{" "}
+                <a
+                  href="https://billing.stripe.com/p/login/00g000000000000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 transition-colors hover:text-blue-300"
+                >
+                  Manage subscription
+                </a>
+              </p>
             </div>
           ) : (
             <div className="flex flex-col gap-6">
