@@ -52,6 +52,11 @@ const SUGGESTED_SEARCHES = [
   { label: "Cybersecurity contracts over $1M", keyword: "cybersecurity", minAmount: "1000000", naics: "", agency: "" },
   { label: "DoD IT modernization", keyword: "IT modernization", naics: "541512", agency: "Department of Defense" },
   { label: "Small business set-asides in construction", keyword: "", naics: "236220", agency: "", setAside: "SBA" },
+  { label: "NASA engineering services", keyword: "engineering", naics: "541330", agency: "National Aeronautics and Space Administration" },
+  { label: "VA healthcare IT", keyword: "healthcare IT", naics: "541512", agency: "Department of Veterans Affairs" },
+  { label: "Environmental remediation work", keyword: "remediation", naics: "562910", agency: "" },
+  { label: "GSA facilities maintenance", keyword: "maintenance", naics: "561210", agency: "General Services Administration" },
+  { label: "DHS infrastructure security", keyword: "security", naics: "541690", agency: "Department of Homeland Security" },
 ];
 
 const SET_ASIDE_OPTIONS = [
@@ -620,7 +625,7 @@ export default function Home() {
               <form onSubmit={handleSearch} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="keyword" className={labelClass}>Keyword</label>
-                  <input id="keyword" type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="e.g. cybersecurity, cloud migration, construction" className={inputClass} />
+                  <input id="keyword" type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search by keyword, NAICS code, or agency name..." className={inputClass} />
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
