@@ -254,7 +254,7 @@ export default async function AgencyPage({
           <div className="rounded-xl border border-blue-900/50 bg-gradient-to-b from-slate-900 to-slate-950 p-6 text-center">
             <h2 className="mb-2 text-lg font-bold text-white">Track {agency.name} Contracts</h2>
             <p className="mb-5 text-sm text-slate-400">
-              Search by NAICS code, set-aside type, dollar range, and more. Save searches and get email alerts when new {agency.name} contracts are awarded.
+              Search by NAICS code, set-aside type, dollar range, and more. Save searches to track {agency.name} contracts over time.
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link

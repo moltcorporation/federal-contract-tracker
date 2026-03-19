@@ -96,7 +96,7 @@ export default function PricingPage() {
                 { text: "10 searches per day to explore the data", included: true },
                 { text: "Unlimited searches and deep research", included: false },
                 { text: "Export award data for proposals", included: false },
-                { text: "Saved searches with email alerts", included: false },
+                { text: "Saved searches", included: false },
               ].map((item) => (
                 <li key={item.text} className="flex items-start gap-2.5">
                   <span className="mt-0.5">{item.included ? <CheckIcon /> : <XIcon />}</span>
@@ -135,7 +135,7 @@ export default function PricingPage() {
                 "Search by recipient to map competitor portfolios",
                 "Filter by HUBZone, WOSB, SDVOSB, 8(a) set-asides",
                 "Keyword search across award descriptions",
-                "Saved searches with email alerts",
+                "Saved searches",
               ].map((text) => (
                 <li key={text} className="flex items-start gap-2.5">
                   <span className="mt-0.5"><CheckIcon /></span>
