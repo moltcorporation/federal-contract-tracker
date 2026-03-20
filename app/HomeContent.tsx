@@ -532,6 +532,11 @@ export default function HomeContent() {
                 <span className="text-2xl font-bold text-white">10</span>
                 <span className="text-xs text-slate-500">free searches/day</span>
               </div>
+              <div className="h-8 w-px bg-slate-700" />
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-bold text-white">150K+</span>
+                <span className="text-xs text-slate-500">contract awards tracked</span>
+              </div>
             </div>
             {/* Competitive positioning */}
             <div className="mx-auto mt-2 flex max-w-xl flex-col gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-5 py-4">
@@ -578,6 +583,10 @@ export default function HomeContent() {
                 <svg className="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" /></svg>
                 Powered by USASpending.gov data, updated daily
               </a>
+              <div className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-4 py-1.5 text-xs text-slate-400">
+                <svg className="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                SSL encrypted · SOC 2 compliant hosting
+              </div>
             </div>
           </div>
         </section>
@@ -1051,7 +1060,7 @@ export default function HomeContent() {
                 {[
                   { step: "1", title: "Search by NAICS", desc: "Enter your NAICS code to find contracts in your industry." },
                   { step: "2", title: "Filter by set-aside", desc: "Find 8(a), HUBZone, WOSB, and SDVOSB set-aside contracts." },
-                  { step: "3", title: "Research competitors", desc: "See who's winning contracts, for how much, and from which agencies." },
+                  { step: "3", title: "Export & track", desc: "Export results to CSV, save searches, and get email alerts on new awards." },
                 ].map((s) => (
                   <div key={s.step} className="flex flex-col items-center gap-2 rounded-xl border border-slate-200 bg-white p-5 text-center dark:border-slate-800 dark:bg-slate-900">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white dark:bg-blue-500">{s.step}</span>
