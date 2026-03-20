@@ -3,87 +3,81 @@ import { CrossProductFooter } from "@/app/components/cross-product-footer";
 
 const comparisonRows = [
   {
-    feature: "Pricing",
-    ours: "$0 (10 searches/day) or $49/month for unlimited",
-    theirs: "$2,000–$12,000/year depending on modules and seats",
+    feature: "Free tier",
+    ours: "10 searches/day — no signup, no expiration",
+    theirs: "No free tier — 7-day trial only",
   },
   {
-    feature: "Primary purpose",
-    ours: "Research awarded contracts — who won, how much, which agency",
-    theirs: "Full pipeline intelligence — pre-solicitation tracking, forecasts, competitor intel",
+    feature: "Pro pricing",
+    ours: "$49/mo — unlimited searches, trends, CSV export",
+    theirs: "$50/mo Standard — AI search, AI profile, scheduled queries",
+  },
+  {
+    feature: "Higher tiers",
+    ours: "None — flat $49/mo covers everything",
+    theirs: "$150/mo Professional, $500/mo Enterprise (5 seats)",
   },
   {
     feature: "Data source",
     ours: "USASpending.gov (official government data, updated daily)",
-    theirs: "Proprietary research + government data, curated by analysts",
+    theirs: "SAM.gov + USASpending (same public data sources)",
   },
   {
-    feature: "Set-aside filtering",
+    feature: "Set-aside filters",
     ours: "One-click: 8(a), HUBZone, WOSB, SDVOSB, SBA — front and center",
-    theirs: "Available within opportunity search and filtering tools",
+    theirs: "Available in search filters",
   },
   {
-    feature: "NAICS code entry",
-    ours: "Autocomplete — type a keyword and pick from matching codes",
-    theirs: "NAICS filtering available in opportunity search",
+    feature: "NAICS code search",
+    ours: "Autocomplete — type a keyword, pick from matching codes",
+    theirs: "Available in search",
   },
   {
-    feature: "Agency spending view",
+    feature: "AI proposal tools",
+    ours: "Not available — focused on contract research",
+    theirs: "$150/mo tier — AI proposal outlines and editing",
+  },
+  {
+    feature: "SLED coverage",
+    ours: "Federal only",
+    theirs: "$150/mo tier — state, local, and education contracts",
+  },
+  {
+    feature: "Agency spending trends",
     ours: "Top agencies ranked by spending, filterable by NAICS and set-aside",
-    theirs: "Agency profiles and spending data available in higher tiers",
-  },
-  {
-    feature: "Pre-solicitation tracking",
-    ours: "Not available — focused on awarded contracts only",
-    theirs: "Core feature — tracks opportunities from forecast through award",
-  },
-  {
-    feature: "Competitor intelligence",
-    ours: "See who wins contracts in your NAICS codes and set-aside categories",
-    theirs: "Detailed competitor profiles, win rates, teaming relationships",
+    theirs: "Not specifically highlighted",
   },
   {
     feature: "Onboarding",
     ours: "No signup required — start searching immediately",
-    theirs: "Enterprise sales process, demos, and contract negotiation",
-  },
-  {
-    feature: "Contract detail pages",
-    ours: "Financial summary, recipient info, business categories, competition status — one page",
-    theirs: "Detailed opportunity and award records with analyst annotations",
+    theirs: "Email signup required, 7-day trial",
   },
 ];
 
 const faqs = [
   {
-    question: "Is GovScout a replacement for GovWin?",
+    question: "What is govscout.io?",
     answer:
-      "Not entirely. GovWin is a full pipeline intelligence platform — it tracks pre-solicitation opportunities, agency forecasts, and competitor intel across the entire procurement lifecycle. GovScout focuses on awarded contracts: who won, for how much, and from which agency. If you need pipeline tracking and bid intelligence, GovWin is the more complete tool. If you need affordable awarded contract research, GovScout does that job at 1/40th the price.",
+      "govscout.io is an AI-powered federal contract search platform based in Greenville, SC. They offer Standard ($50/mo), Professional ($150/mo), and Enterprise ($500/mo) plans with features like AI opportunity search, proposal generation, and SLED (state/local/education) contract coverage. They offer a 7-day free trial.",
   },
   {
-    question: "Why is GovWin so expensive?",
+    question: "How is GovScout different from govscout.io?",
     answer:
-      "GovWin employs analysts who manually research and curate opportunity intelligence, agency forecasts, and competitive landscape reports. That human research labor is what drives the $2,000–$12,000/year price tag. GovScout uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
+      "Both tools search federal contract data from SAM.gov and USASpending.gov. GovScout offers a permanent free tier (10 searches/day) and flat $49/mo Pro pricing with no upsells. govscout.io has no free tier (7-day trial only) but offers AI proposal generation ($150/mo tier) and state/local/education search ($150/mo tier) that GovScout doesn't have.",
   },
   {
-    question: "Where does GovScout get its data?",
+    question: "Which is better for small businesses?",
     answer:
-      "All data comes from USASpending.gov, the U.S. government's official source for federal spending data. It covers all awarded federal contracts and is updated daily. We use the public API — no scraping, no proprietary data sources.",
+      "For small businesses exploring government contracting, GovScout's free tier lets you research contracts without any commitment. If you need AI-generated proposals or state/local contract search, govscout.io's Professional plan ($150/mo) covers that. For pure federal contract research on a budget, GovScout at $49/mo vs govscout.io at $50/mo is essentially the same price — but GovScout includes a free tier to start.",
   },
   {
-    question: "Can I use both GovWin and GovScout?",
+    question: "Does govscout.io have features GovScout doesn't?",
     answer:
-      "Yes, and many small businesses should. Use GovWin (or a similar pipeline tool) to find and track upcoming opportunities. Use GovScout to research the competitive landscape — who's winning contracts in your NAICS codes, which agencies are spending, and what set-aside contracts are being awarded. The awarded contract research from GovScout complements GovWin's forward-looking pipeline intelligence.",
-  },
-  {
-    question:
-      "I'm a small business and can't afford GovWin. Is GovScout enough?",
-    answer:
-      "It depends on what you need. If your primary goal is understanding who wins contracts in your space — which agencies spend the most, what set-aside awards look like, and who your competitors are — GovScout covers that for $49/month or even free (10 searches/day). You won't get pre-solicitation tracking or bid intelligence, but for competitive research on awarded contracts, it's a practical starting point.",
+      "Yes. govscout.io offers AI proposal outline generation and editing ($150/mo Professional tier), SLED (state/local/education) contract search, AI opportunity chat, and attachment summaries. GovScout focuses on federal awarded contract research with set-aside filters, NAICS autocomplete, and agency spending trends.",
   },
 ];
 
-export default function GovWinComparison() {
+export default function GovScoutIoComparison() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
       <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
@@ -107,19 +101,20 @@ export default function GovWinComparison() {
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-12">
         <div className="flex flex-col items-center gap-5 text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            GovWin Alternative
+            GovScout vs govscout.io
             <span className="block text-blue-400">
-              At 1/40th the Price
+              Same Name, Different Tools
             </span>
           </h1>
           <p className="mx-auto max-w-xl text-lg text-slate-400">
-            GovWin by Deltek is the gold standard for federal pipeline
-            intelligence — and it costs $2,000–$12,000 per year. If you just
-            need to research{" "}
-            <strong className="text-white">
-              who is winning awarded contracts
-            </strong>
-            , GovScout gets you there for $49/month.
+            Both tools search federal contracts using the same government data
+            sources. GovScout starts{" "}
+            <strong className="text-white">free</strong> with 10 searches/day
+            and Pro at{" "}
+            <strong className="text-white">$49/mo</strong> — flat, no upsells.
+            govscout.io starts at{" "}
+            <strong className="text-white">$50/mo</strong> with tiers up to
+            $500/mo for proposal tools and SLED coverage.
           </p>
         </div>
 
@@ -129,18 +124,20 @@ export default function GovWinComparison() {
             An honest comparison
           </h2>
           <p className="text-sm leading-relaxed text-slate-400">
-            GovWin is a comprehensive business development platform. It tracks
-            opportunities from agency forecast through solicitation to award,
-            with analyst-curated intelligence, competitor profiling, and teaming
-            partner discovery. If your BD team relies on pipeline tracking,
-            GovWin earns its price.
+            govscout.io is a more mature product with additional features. Their
+            Professional tier ($150/mo) includes AI proposal generation and
+            state/local/education contract search that GovScout does not offer.
+            They have published testimonials, an active blog, and social media
+            presence. If you need proposal writing assistance or SLED coverage,
+            govscout.io has those capabilities.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            GovScout does one thing: awarded contract research.
-            Who won contracts in your NAICS code? Which agencies spend the most
-            on your services? What set-aside contracts were awarded last year?
-            For small businesses that need competitive intelligence without a
-            five-figure annual commitment, that one thing goes a long way.
+            GovScout is built for small businesses that need affordable federal
+            contract research without tiered upsells. You get a permanent free
+            tier — not a 7-day trial — and a single $49/mo plan that covers
+            everything we offer: unlimited searches, spending trends, set-aside
+            filters, NAICS autocomplete, and CSV export. No sales call, no
+            feature gating.
           </p>
         </div>
 
@@ -155,30 +152,30 @@ export default function GovWinComparison() {
                 $49
               </span>
               <span className="text-xs text-slate-400">
-                /month
+                /month (everything included)
               </span>
             </div>
             <span className="text-sm text-slate-500">
               vs
             </span>
             <div className="flex flex-col">
-              <span className="text-3xl font-extrabold text-slate-500 line-through">
-                $2K–$12K
+              <span className="text-3xl font-extrabold text-slate-500">
+                $50–$500
               </span>
               <span className="text-xs text-slate-400">
-                /year
+                /month (tiered)
               </span>
             </div>
           </div>
           <p className="text-xs text-slate-400">
-            Free tier available — 10 searches/day, no signup required
+            GovScout: free tier (10 searches/day, no expiration) &bull; govscout.io: 7-day trial only
           </p>
         </div>
 
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            GovScout vs GovWin
+            Feature comparison
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
@@ -191,7 +188,7 @@ export default function GovWinComparison() {
                     GovScout
                   </th>
                   <th className="px-4 py-3 text-left font-medium text-slate-500">
-                    GovWin by Deltek
+                    govscout.io
                   </th>
                 </tr>
               </thead>
@@ -228,81 +225,66 @@ export default function GovWinComparison() {
                 Use GovScout when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
-                <li>You want to see who won contracts in your NAICS code</li>
-                <li>You need to filter awarded contracts by set-aside type</li>
-                <li>You want agency spending breakdowns for business development</li>
-                <li>You&apos;re a small business that can&apos;t justify $2K+/year</li>
-                <li>You need a quick answer without an enterprise sales process</li>
+                <li>You want to try federal contract search for free first</li>
+                <li>You need flat pricing with no tiered upsells</li>
+                <li>Set-aside filtering is your primary use case</li>
+                <li>You want agency spending trends and NAICS autocomplete</li>
+                <li>You don&apos;t need proposal writing tools</li>
               </ul>
             </div>
             <div className="flex flex-col gap-2 rounded-lg border bg-slate-900 p-5">
               <h3 className="font-semibold text-slate-300">
-                Use GovWin when...
+                Use govscout.io when...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
-                <li>You need to track opportunities before they&apos;re solicited</li>
-                <li>Your BD team manages a pipeline of upcoming bids</li>
-                <li>You need analyst-curated competitive intelligence</li>
-                <li>You&apos;re looking for teaming partners on large contracts</li>
-                <li>Your organization has the budget for enterprise tools</li>
+                <li>You need AI proposal generation and editing</li>
+                <li>You search state, local, and education contracts</li>
+                <li>You want AI-powered opportunity chat</li>
+                <li>Your team needs multiple seats ($500/mo Enterprise)</li>
+                <li>You prefer a product with established testimonials</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Who this is for */}
-        <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-semibold text-white">
-            Built for small businesses entering federal contracting
-          </h2>
-          <p className="text-sm leading-relaxed text-slate-400">
-            Most small businesses exploring government contracts don&apos;t need a
-            $12,000/year intelligence platform on day one. They need to answer
-            basic questions: Are agencies spending money in my industry? Who&apos;s
-            winning those contracts? Are there set-aside opportunities for my
-            business type? GovScout answers those questions at a
-            price that makes sense for businesses still building their federal
-            pipeline.
-          </p>
-          <p className="text-sm leading-relaxed text-slate-400">
-            As your federal business grows and you need pre-solicitation
-            tracking, bid management, and deeper competitive intelligence, tools
-            like GovWin become worth the investment. GovScout is
-            where you start.
-          </p>
-        </div>
-
         {/* Also compare */}
-        <div className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900 px-5 py-4">
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-slate-800 bg-slate-900 px-5 py-4">
           <span className="text-sm text-slate-400">
             Also compare:
           </span>
           <Link
+            href="/compare/govwin"
+            className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+          >
+            vs GovWin
+          </Link>
+          <span className="text-slate-600">&middot;</span>
+          <Link
             href="/compare/bgov"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            GovScout vs Bloomberg Government
+            vs Bloomberg Government
           </Link>
           <span className="text-slate-600">&middot;</span>
           <Link
             href="/compare/sam-gov"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            GovScout vs SAM.gov
+            vs SAM.gov
+          </Link>
+          <span className="text-slate-600">&middot;</span>
+          <Link
+            href="/compare/usaspending"
+            className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+          >
+            vs USASpending
           </Link>
           <span className="text-slate-600">&middot;</span>
           <Link
             href="/compare/manual-tracking"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            GovScout vs Spreadsheets
-          </Link>
-          <span className="text-slate-600">&middot;</span>
-          <Link
-            href="/compare/govscout-io"
-            className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
-          >
-            vs govscout.io
+            vs Spreadsheets
           </Link>
         </div>
 
@@ -331,11 +313,11 @@ export default function GovWinComparison() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-900/30 bg-blue-950/20 p-8 text-center">
           <h2 className="text-2xl font-bold text-white">
-            Start researching federal contracts
+            Start researching federal contracts — free
           </h2>
           <p className="max-w-md text-sm text-slate-400">
             10 free searches per day. Set-aside filters, NAICS autocomplete,
-            agency spending breakdowns. No registration, no sales call.
+            agency spending breakdowns. No registration, no credit card.
           </p>
           <Link
             href="/"

@@ -256,6 +256,13 @@ export default function ManualTrackingComparison() {
           >
             GovScout vs Bloomberg Government
           </Link>
+          <span className="text-slate-600">&middot;</span>
+          <Link
+            href="/compare/govscout-io"
+            className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+          >
+            vs govscout.io
+          </Link>
         </div>
 
         {/* FAQ */}
