@@ -3,77 +3,53 @@ import { CrossProductFooter } from "@/app/components/cross-product-footer";
 
 const comparisonRows = [
   {
-    feature: "Pricing",
-    ours: "$0 (10 searches/day) or $49/mo unlimited",
-    theirs: "$6,000–$12,000/year",
-  },
-  {
-    feature: "Primary purpose",
-    ours: "Research awarded contracts — who won, how much, which agency",
-    theirs: "Full government intelligence — legislation, regulation, contracts, lobbying",
-  },
-  {
-    feature: "Data source",
-    ours: "USASpending.gov (official, updated daily)",
-    theirs: "Proprietary research + government data, curated by analysts and journalists",
-  },
-  {
-    feature: "Contract search",
-    ours: "NAICS code, set-aside type, agency, keyword — instant results",
-    theirs: "Contract search within broader legislative/regulatory intelligence suite",
-  },
-  {
     feature: "Set-aside filtering",
-    ours: "One-click: 8(a), HUBZone, WOSB, SDVOSB, SBA",
-    theirs: "Available within contract search tools",
+    ours: "One-click: 8(a), HUBZone, WOSB, SDVOSB, SBA — front and center",
+    theirs: "Manual column filtering or separate tabs per set-aside type",
   },
   {
-    feature: "Legislative tracking",
-    ours: "Not available — focused on contracts only",
-    theirs: "Core feature — bill tracking, floor votes, committee markups",
+    feature: "NAICS code lookup",
+    ours: "Autocomplete — type a keyword and pick from matching codes",
+    theirs: "Copy-paste codes from Census Bureau or maintain your own lookup list",
   },
   {
-    feature: "Regulatory analysis",
-    ours: "Not available",
-    theirs: "Core feature — regulatory filings, comment periods, agency actions",
+    feature: "Data freshness",
+    ours: "USASpending.gov API — updated daily, automatic",
+    theirs: "Manual updates whenever you remember to check",
   },
   {
     feature: "Agency spending view",
-    ours: "Top agencies by spending, filterable by NAICS and set-aside",
-    theirs: "Agency profiles with spending, workforce, and budget data",
+    ours: "Top agencies ranked by spending with visual bars, filterable by NAICS and set-aside",
+    theirs: "Pivot tables or manual aggregation across rows",
   },
   {
-    feature: "Onboarding",
-    ours: "No signup required — search immediately",
-    theirs: "Enterprise sales process and subscription",
+    feature: "New award alerts",
+    ours: "Saved searches with email notifications on new matches (Pro)",
+    theirs: "No alerts — you check when you remember",
+  },
+  {
+    feature: "Search across all awards",
+    ours: "Full-text search across all awarded contracts with instant results",
+    theirs: "Limited to whatever you've manually entered or downloaded",
+  },
+  {
+    feature: "Sharing with teammates",
+    ours: "Share a link — anyone can search without setup",
+    theirs: "Email the file, manage versions, hope formulas don't break",
+  },
+  {
+    feature: "Data export",
+    ours: "CSV export of any search result (Pro)",
+    theirs: "Already in a spreadsheet — no export needed",
+  },
+  {
+    feature: "Cost",
+    ours: "Free (10 searches/day) or $49/month unlimited",
+    theirs: "Free (your time is the cost)",
   },
 ];
 
-const faqs = [
-  {
-    question: "Is GovScout a replacement for Bloomberg Government?",
-    answer:
-      "No. BGOV covers legislation, regulation, and contracts. GovScout focuses on awarded contracts only — who won, how much, and which agency. They are different tools for different needs.",
-  },
-  {
-    question: "Why is Bloomberg Government so expensive?",
-    answer:
-      "BGOV employs journalists, analysts, and researchers who produce original intelligence on legislation, regulation, and procurement. That human research labor drives the $6,000–$12,000/year price tag. GovScout uses the free USASpending.gov API for awarded contract data, which keeps costs low enough to offer at $49/month.",
-  },
-  {
-    question: "Can I use both Bloomberg Government and GovScout?",
-    answer:
-      "Yes. Use BGOV for legislative and regulatory intelligence. Use GovScout for affordable awarded contract research — who wins contracts in your NAICS codes, which agencies spend the most, and what set-aside contracts are being awarded.",
-  },
-  {
-    question:
-      "I'm a small business. Is GovScout enough to get started?",
-    answer:
-      "If your goal is understanding who wins contracts in your space, yes. $49/month or free (10 searches/day). You won't get legislative tracking, but for competitive contract research it's a practical starting point.",
-  },
-];
-
-export default function BGOVComparison() {
+export default function ManualTrackingComparison() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
       <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
@@ -97,79 +73,74 @@ export default function BGOVComparison() {
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-12">
         <div className="flex flex-col items-center gap-5 text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Bloomberg Government Alternative
+            Stop Tracking Contracts
             <span className="block text-blue-400">
-              At a Fraction of the Cost
+              In Spreadsheets
             </span>
           </h1>
           <p className="mx-auto max-w-xl text-lg text-slate-400">
-            BGOV charges $6,000–$12,000/year for government intelligence. If
-            you just need to research{" "}
-            <strong className="text-white">
-              awarded federal contracts
-            </strong>
-            , GovScout gets you there for $49/month.
+            Most small businesses start tracking government contracts in Excel
+            or Google Sheets. It works — until you need to filter by set-aside
+            type across 10,000 awards, or check whether a new contract was
+            posted in your NAICS code this week. GovScout does that in seconds.
           </p>
         </div>
 
-        {/* Honest positioning */}
-        <div className="flex flex-col gap-4 rounded-xl border border-blue-900/30 bg-blue-950/20 p-6">
+        {/* The spreadsheet problem */}
+        <div className="flex flex-col gap-4 rounded-xl border border-amber-900/30 bg-amber-950/20 p-6">
           <h2 className="text-xl font-semibold text-white">
-            An honest comparison
+            The spreadsheet problem
           </h2>
           <p className="text-sm leading-relaxed text-slate-400">
-            Bloomberg Government is a comprehensive government intelligence
-            platform. It covers legislation, regulation, and contracts — with
-            analyst-curated research, journalist-written stories, and tools for
-            tracking bills, regulatory filings, and agency actions. If your work
-            spans the full legislative and regulatory landscape, BGOV earns its
-            price.
+            Spreadsheets are great for tracking your own bids and proposals. But
+            they&apos;re the wrong tool for competitive research. You can&apos;t
+            search across all awarded contracts in real time. You can&apos;t
+            filter 8(a) or HUBZone awards with one click. You can&apos;t see
+            which agencies are spending the most in your industry without
+            building pivot tables from raw USASpending.gov downloads.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            GovScout focuses specifically on awarded federal
-            contracts. Who won contracts in your NAICS code? Which agencies
-            spend the most on your services? What set-aside contracts were
-            awarded last year? We don&apos;t cover legislative or regulatory
-            analysis — but for small businesses that need contract research
-            without a five-figure annual commitment, that focus goes a long way.
+            That research is what GovScout automates. Keep your spreadsheet for
+            pipeline tracking — use GovScout for the competitive intelligence
+            that feeds it.
           </p>
         </div>
 
-        {/* Pricing callout */}
+        {/* Time comparison */}
         <div className="flex flex-col items-center gap-3 rounded-xl border border-emerald-900/30 bg-emerald-950/20 p-6 text-center">
           <p className="text-sm font-medium text-emerald-400">
-            Price comparison
+            Time comparison
           </p>
           <div className="flex items-baseline gap-3">
             <div className="flex flex-col">
               <span className="text-3xl font-extrabold text-white">
-                $49
+                10 sec
               </span>
               <span className="text-xs text-slate-400">
-                /month
+                GovScout search
               </span>
             </div>
             <span className="text-sm text-slate-500">
               vs
             </span>
             <div className="flex flex-col">
-              <span className="text-3xl font-extrabold text-slate-500 line-through">
-                $6K–$12K
+              <span className="text-3xl font-extrabold text-slate-500">
+                2–4 hrs
               </span>
               <span className="text-xs text-slate-400">
-                /year
+                manual download + cleanup
               </span>
             </div>
           </div>
           <p className="text-xs text-slate-400">
-            Free tier available — 10 searches/day, no signup required
+            Per research query — NAICS code + set-aside type + agency filter
           </p>
         </div>
 
         {/* Comparison table */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            GovScout vs Bloomberg Government
+            GovScout vs spreadsheet tracking
           </h2>
           <div className="overflow-x-auto rounded-xl border border-slate-800">
             <table className="w-full text-sm">
@@ -182,7 +153,7 @@ export default function BGOVComparison() {
                     GovScout
                   </th>
                   <th className="px-4 py-3 text-left font-medium text-slate-500">
-                    Bloomberg Government
+                    Spreadsheet
                   </th>
                 </tr>
               </thead>
@@ -208,32 +179,34 @@ export default function BGOVComparison() {
           </div>
         </div>
 
-        {/* When to use each */}
+        {/* When spreadsheets still win */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            When to use each tool
+            When spreadsheets still make sense
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-2 rounded-lg border border-blue-900/30 bg-blue-950/20 p-5">
               <h3 className="font-semibold text-blue-400">
-                Use GovScout when...
+                Use GovScout for...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
-                <li>You need awarded contract research — who won, how much, which agency</li>
-                <li>You can&apos;t justify $6K+/year for government intelligence</li>
-                <li>You want quick answers without an enterprise sales process</li>
-                <li>You&apos;re a small business entering federal contracting</li>
+                <li>Finding who wins contracts in your NAICS codes</li>
+                <li>Filtering awards by set-aside type (8(a), HUBZone, WOSB)</li>
+                <li>Tracking agency spending trends over time</li>
+                <li>Getting alerts when new matching awards post</li>
+                <li>Quick competitive research before a bid decision</li>
               </ul>
             </div>
             <div className="flex flex-col gap-2 rounded-lg border bg-slate-900 p-5">
               <h3 className="font-semibold text-slate-300">
-                Use Bloomberg Government when...
+                Keep your spreadsheet for...
               </h3>
               <ul className="flex flex-col gap-1.5 text-sm text-slate-400">
-                <li>You need legislative and regulatory tracking</li>
-                <li>Your BD covers the full procurement lifecycle</li>
-                <li>You need analyst-curated intelligence</li>
-                <li>Your organization has enterprise budget</li>
+                <li>Tracking your own active bids and proposals</li>
+                <li>Managing teaming partner relationships</li>
+                <li>Custom scoring models for go/no-go decisions</li>
+                <li>Internal reporting to leadership</li>
+                <li>Anything specific to your BD process</li>
               </ul>
             </div>
           </div>
@@ -242,27 +215,24 @@ export default function BGOVComparison() {
         {/* Who this is for */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">
-            Built for small businesses entering federal contracting
+            Built for small businesses doing their own research
           </h2>
           <p className="text-sm leading-relaxed text-slate-400">
-            Most small businesses exploring government contracts don&apos;t need a
-            $12,000/year intelligence platform on day one. They need to answer
-            basic questions: Are agencies spending money in my industry? Who&apos;s
-            winning those contracts? Are there set-aside opportunities for my
-            business type? GovScout answers those questions at a
-            price that makes sense for businesses still building their federal
-            pipeline.
+            Enterprise BD teams have Deltek GovWin, Bloomberg Government, and
+            dedicated analysts. Small businesses have spreadsheets and late
+            nights on USASpending.gov. GovScout fills that gap — the
+            competitive research piece that spreadsheets handle poorly, at a
+            price point that makes sense before your first federal win.
           </p>
           <p className="text-sm leading-relaxed text-slate-400">
-            As your federal business grows and you need legislative tracking,
-            regulatory analysis, and deeper government intelligence, tools like
-            Bloomberg Government become worth the investment. Federal Contract
-            Tracker is where you start.
+            Export any search result to CSV when you need it in your
+            spreadsheet. GovScout handles the search and filtering; your
+            spreadsheet handles everything after.
           </p>
         </div>
 
         {/* Also compare */}
-        <div className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900 px-5 py-4">
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-slate-800 bg-slate-900 px-5 py-4">
           <span className="text-sm text-slate-400">
             Also compare:
           </span>
@@ -281,10 +251,10 @@ export default function BGOVComparison() {
           </Link>
           <span className="text-slate-600">&middot;</span>
           <Link
-            href="/compare/manual-tracking"
+            href="/compare/bgov"
             className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
-            GovScout vs Spreadsheets
+            GovScout vs Bloomberg Government
           </Link>
         </div>
 
@@ -294,7 +264,33 @@ export default function BGOVComparison() {
             Frequently asked questions
           </h2>
           <div className="flex flex-col gap-4">
-            {faqs.map((faq, i) => (
+            {[
+              {
+                question: "Can GovScout replace my contract tracking spreadsheet?",
+                answer:
+                  "For competitive research, yes. GovScout searches awarded federal contracts by NAICS code, set-aside type, agency, recipient, and dollar range — all the dimensions you'd manually track in a spreadsheet. Pro users also get saved searches with email alerts on new awards, spending trend charts, and CSV export. You still need your own systems for bid management and proposal tracking, but the competitive intelligence part is covered.",
+              },
+              {
+                question: "How does GovScout get its data?",
+                answer:
+                  "All data comes from USASpending.gov, the U.S. government's official source for federal spending data. It covers all awarded federal contracts and is updated daily. We use the public API — no scraping, no proprietary data sources.",
+              },
+              {
+                question: "Can I export data to a spreadsheet?",
+                answer:
+                  "Yes. Pro users can export search results to CSV with one click. This lets you keep using spreadsheets for your own analysis while GovScout handles the search, filtering, and data collection. You get the best of both: purpose-built search plus spreadsheet flexibility.",
+              },
+              {
+                question: "What does the free tier include?",
+                answer:
+                  "10 searches per day with full access to all filters — NAICS autocomplete, set-aside type, agency, recipient, dollar range. No signup required. The free tier is enough for occasional research. Pro ($49/month) adds unlimited searches, spending trends, CSV export, saved searches, and email alerts.",
+              },
+              {
+                question: "I only track contracts in one NAICS code. Is GovScout overkill?",
+                answer:
+                  "Actually, that's where GovScout saves the most time. Set up a saved search for your NAICS code with your preferred set-aside filters, and GovScout emails you when new awards match. No more manually checking USASpending.gov or updating your spreadsheet. The free tier covers 10 searches/day if you prefer manual checks.",
+              },
+            ].map((faq, i) => (
               <div
                 key={i}
                 className="rounded-lg border border-slate-800 bg-slate-900 p-5"
@@ -313,11 +309,11 @@ export default function BGOVComparison() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4 rounded-xl border border-blue-900/30 bg-blue-950/20 p-8 text-center">
           <h2 className="text-2xl font-bold text-white">
-            Start researching federal contracts
+            Try it — faster than opening a spreadsheet
           </h2>
           <p className="max-w-md text-sm text-slate-400">
             10 free searches per day. Set-aside filters, NAICS autocomplete,
-            agency spending breakdowns. No registration, no sales call.
+            agency spending breakdowns. No registration, no downloads.
           </p>
           <Link
             href="/"
