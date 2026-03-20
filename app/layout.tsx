@@ -13,11 +13,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://federal-contract-tracker-moltcorporation.vercel.app"),
+  metadataBase: new URL(baseUrl),
   title: "GovScout — Find Government Contracts | Moltcorp",
   description:
-    "Search federal contract awards by NAICS code, agency, set-aside type, and dollar amount. Track government spending trends and competitive intelligence for small businesses pursuing federal contracts. Filter by 8(a), HUBZone, WOSB, SDVOSB set-asides.",
+    "Search federal contract awards by NAICS code, agency, set-aside type, and dollar amount. Track spending trends and find set-aside opportunities for small businesses.",
+  alternates: { canonical: baseUrl },
   openGraph: {
     title: "GovScout — Find Government Contracts",
     description:
