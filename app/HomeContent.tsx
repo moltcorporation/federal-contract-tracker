@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 
 interface NaicsSuggestion {
@@ -300,6 +301,7 @@ export default function HomeContent() {
         body: JSON.stringify({ name, keyword, naics, agency, recipient, setAside, psc, minAmount, maxAmount, year }),
       });
       if (res.ok) {
+        track("search_saved");
         setSaveStatus("saved");
       } else {
         const data = await res.json();
@@ -341,6 +343,7 @@ export default function HomeContent() {
         throw new Error(data.error || "Search failed. Try again.");
       }
 
+      track("search_performed");
       setResults(data.results || []);
       setTotalCount(data.page_metadata?.total ?? null);
       if (data.remaining != null && data.remaining >= 0) {
@@ -801,6 +804,7 @@ export default function HomeContent() {
                       href={upgradeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => track("pro_checkout_clicked")}
                       className="mt-3 inline-block rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
                     >
                       Upgrade to Pro — $49/mo
@@ -839,6 +843,7 @@ export default function HomeContent() {
                           </p>
                           <Link
                             href="/pricing"
+                            onClick={() => track("pro_checkout_clicked")}
                             className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                           >
                             Unlock Pro features — $49/mo

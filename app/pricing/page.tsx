@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
 
@@ -143,7 +146,7 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
+            <a href={STRIPE_PAYMENT_LINK_URL} onClick={() => track("pro_checkout_clicked")} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
               Start Pro — $49/mo
             </a>
           </div>
