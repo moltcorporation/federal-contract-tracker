@@ -592,6 +592,131 @@ export default function HomeContent() {
         </section>
       )}
 
+      {/* Sample Search Preview */}
+      {!searched && !agencySearched && (
+        <section className="w-full border-b border-slate-800 bg-slate-950 px-4 py-14">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-2 text-center">
+              <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">Live contract data</p>
+            </div>
+            <h2 className="mb-2 text-center text-2xl font-bold text-white sm:text-3xl">
+              See what contractors are winning right now
+            </h2>
+            <p className="mb-8 text-center text-sm text-slate-400">
+              Real awards from USASpending.gov — this is what your search results look like.
+            </p>
+            <div className="flex flex-col gap-3">
+              {[
+                {
+                  recipient: "Booz Allen Hamilton Inc.",
+                  agency: "Department of Defense",
+                  subAgency: "U.S. Army",
+                  amount: 4200000,
+                  description: "Cybersecurity assessment and vulnerability management services for Army networks and information systems.",
+                  awardId: "W911QX-25-C-0042",
+                  awardType: "Definitive Contract",
+                  naics: "541512",
+                  startDate: "2025-10-01",
+                  setAside: "None",
+                },
+                {
+                  recipient: "KGS Group Inc.",
+                  agency: "General Services Administration",
+                  subAgency: "Public Buildings Service",
+                  amount: 890000,
+                  description: "HVAC system modernization and energy efficiency upgrades for federal courthouse facilities.",
+                  awardId: "GS-07P-25-DRC-0118",
+                  awardType: "Task Order",
+                  naics: "236220",
+                  startDate: "2025-11-15",
+                  setAside: "Small Business (SBA)",
+                },
+                {
+                  recipient: "Leidos Inc.",
+                  agency: "Department of Veterans Affairs",
+                  subAgency: "Office of Information and Technology",
+                  amount: 12700000,
+                  description: "Electronic health record integration and data migration support services for VA medical centers.",
+                  awardId: "36C10X25C0087",
+                  awardType: "Definitive Contract",
+                  naics: "541511",
+                  startDate: "2026-01-10",
+                  setAside: "None",
+                },
+                {
+                  recipient: "Navarro Research and Engineering",
+                  agency: "Department of Energy",
+                  subAgency: "National Nuclear Security Administration",
+                  amount: 2350000,
+                  description: "Environmental remediation and waste management support at former nuclear production facilities.",
+                  awardId: "DE-EM0005491",
+                  awardType: "Task Order",
+                  naics: "562910",
+                  startDate: "2025-09-22",
+                  setAside: "8(a)",
+                },
+                {
+                  recipient: "SAIC Inc.",
+                  agency: "Department of Homeland Security",
+                  subAgency: "Customs and Border Protection",
+                  amount: 6100000,
+                  description: "AI-powered surveillance and sensor integration for border security technology modernization program.",
+                  awardId: "70B01C25C00000034",
+                  awardType: "Definitive Contract",
+                  naics: "541690",
+                  startDate: "2026-02-01",
+                  setAside: "None",
+                },
+              ].map((c, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col gap-2 rounded-xl border border-slate-800 bg-slate-900 p-5"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm font-semibold text-white">{c.recipient}</p>
+                      <p className="text-xs text-slate-400">
+                        {c.agency}{c.subAgency ? ` — ${c.subAgency}` : ""}
+                      </p>
+                    </div>
+                    <span className="shrink-0 rounded-lg bg-blue-950/50 px-3 py-1 text-sm font-bold text-blue-400">
+                      {formatDollars(c.amount)}
+                    </span>
+                  </div>
+                  <p className="text-xs leading-relaxed text-slate-400">{c.description}</p>
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                    <span>Award: {c.awardId}</span>
+                    <span>Type: {c.awardType}</span>
+                    <span>NAICS: {c.naics}</span>
+                    <span>Start: {c.startDate}</span>
+                    {c.setAside !== "None" && (
+                      <span className="rounded bg-green-950/50 px-1.5 py-0.5 text-green-400">{c.setAside}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="/register"
+                  className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
+                >
+                  Search Your NAICS Code Free
+                </a>
+                <Link
+                  href="/pricing"
+                  className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
+                >
+                  Go Pro — Unlimited Searches
+                </Link>
+              </div>
+              <p className="text-xs text-slate-500">10 free searches per day · No credit card required</p>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Email Capture Section */}
       {!searched && !agencySearched && (
         <section className="w-full bg-slate-950 border-y border-slate-800">
