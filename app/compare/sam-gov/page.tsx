@@ -145,7 +145,7 @@ export default function SamGovComparison() {
                     Feature
                   </th>
                   <th className="px-4 py-3 text-left font-medium text-blue-400">
-                    Contract Tracker
+                    GovScout
                   </th>
                   <th className="px-4 py-3 text-left font-medium text-slate-500">
                     SAM.gov
@@ -246,6 +246,12 @@ export default function SamGovComparison() {
               className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
               vs GovWin
+            </Link>
+            <Link
+              href="/compare/manual-tracking"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
+            >
+              vs Spreadsheets
             </Link>
           </div>
         </div>
