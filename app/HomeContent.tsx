@@ -498,12 +498,21 @@ export default function HomeContent() {
               and which competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
             </p>
             <div className="flex flex-col items-center gap-3 pt-2">
-              <a
-                href="/register"
-                className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
-              >
-                Start Free — No Credit Card Required
-              </a>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="/register"
+                  className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
+                >
+                  Start Free — No Credit Card Required
+                </a>
+                <Link
+                  href="/pricing"
+                  onClick={() => track("hero_pricing_clicked")}
+                  className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
+                >
+                  Go Pro — $49/mo
+                </Link>
+              </div>
               <p className="text-xs text-slate-500">
                 Your first 10 searches free today · No credit card required
               </p>
