@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
+import { ProCheckoutLink } from "@/app/components/pro-checkout-link";
 import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
 
 function CheckIcon() {
@@ -143,9 +144,9 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
+            <ProCheckoutLink href={STRIPE_PAYMENT_LINK_URL} source="pricing_page" className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
               Start Pro — $49/mo
-            </a>
+            </ProCheckoutLink>
           </div>
 
         </div>

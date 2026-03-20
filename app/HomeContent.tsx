@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 
 interface NaicsSuggestion {
@@ -301,6 +302,7 @@ export default function HomeContent() {
       });
       if (res.ok) {
         setSaveStatus("saved");
+        track("search_saved");
       } else {
         const data = await res.json();
         if (data.upgradeUrl) {
@@ -346,6 +348,7 @@ export default function HomeContent() {
       if (data.remaining != null && data.remaining >= 0) {
         setRemaining(data.remaining);
       }
+      track("search_performed", { naics: naics || undefined, agency: agency || undefined, keyword: keyword || undefined });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
       setResults([]);
@@ -801,6 +804,7 @@ export default function HomeContent() {
                       href={upgradeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => track("pro_checkout_clicked", { source: "rate_limit" })}
                       className="mt-3 inline-block rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
                     >
                       Upgrade to Pro — $49/mo
@@ -839,6 +843,7 @@ export default function HomeContent() {
                           </p>
                           <Link
                             href="/pricing"
+                            onClick={() => track("pro_checkout_clicked", { source: "search_results" })}
                             className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                           >
                             Unlock Pro features — $49/mo
@@ -1202,6 +1207,7 @@ export default function HomeContent() {
                     </ul>
                     <Link
                       href="/pricing"
+                      onClick={() => track("pro_checkout_clicked", { source: "pricing_comparison" })}
                       className="mt-auto rounded-lg bg-blue-600 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
                     >
                       Unlock Pro — $49/mo
