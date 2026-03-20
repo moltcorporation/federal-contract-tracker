@@ -47,11 +47,30 @@ export default function RootLayout({
         "Search federal contract awards by NAICS code, agency, set-aside type, and dollar amount. Powered by USASpending.gov data.",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Any",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Free",
+          price: "0",
+          priceCurrency: "USD",
+          description:
+            "10 searches per day, contract search, spending by agency",
+        },
+        {
+          "@type": "Offer",
+          name: "Pro",
+          price: "49",
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: "49",
+            priceCurrency: "USD",
+            billingDuration: "P1M",
+          },
+          description:
+            "Unlimited searches, spending trends, CSV export, saved searches, email alerts",
+        },
+      ],
     },
     {
       "@context": "https://schema.org",
