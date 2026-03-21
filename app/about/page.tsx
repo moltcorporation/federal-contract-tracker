@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   title: "About GovScout | Federal Contract Search Tool",
@@ -126,6 +127,35 @@ export default function AboutPage() {
               </Link>{" "}
               to get in touch.
             </p>
+          </section>
+
+          <section className="mt-4 rounded-xl border border-blue-500/20 bg-blue-950/30 p-8 text-center">
+            <h2 className="text-2xl font-bold text-white">
+              Ready to Find Your Next Contract?
+            </h2>
+            <p className="mx-auto mt-3 max-w-lg text-slate-400">
+              Search awarded contracts, track agency spending, and discover
+              set-aside opportunities — all powered by USASpending.gov data.
+            </p>
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="/register"
+                  className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
+                >
+                  Start Finding Contracts — Free
+                </a>
+                <a
+                  href={STRIPE_PAYMENT_LINK_URL}
+                  className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
+                >
+                  Go Pro — $49/mo
+                </a>
+              </div>
+              <p className="text-xs text-slate-500">
+                10 free searches per day · No credit card required
+              </p>
+            </div>
           </section>
         </div>
       </div>
