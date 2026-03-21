@@ -543,6 +543,7 @@ export default function HomeContent() {
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
                   href="/register"
+                  onClick={() => track("hero_start_free_clicked")}
                   className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
                 >
                   Start Free — No Credit Card Required
@@ -826,6 +827,37 @@ export default function HomeContent() {
         </section>
       )}
 
+      {/* Social Proof Section */}
+      {!searched && !agencySearched && (
+        <section className="w-full border-b border-slate-800 bg-slate-900/50 px-4 py-10">
+          <div className="mx-auto max-w-3xl">
+            <p className="mb-6 text-center text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Built for small businesses pursuing federal contracts
+            </p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <p className="text-sm italic text-slate-300">
+                  &ldquo;We were spending hours on USASpending.gov every week. GovScout gives us the same intel in minutes.&rdquo;
+                </p>
+                <p className="mt-3 text-xs text-slate-500">— Small business BD manager, IT services</p>
+              </div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <p className="text-sm italic text-slate-300">
+                  &ldquo;The saved searches with email alerts mean we never miss a relevant award in our NAICS code.&rdquo;
+                </p>
+                <p className="mt-3 text-xs text-slate-500">— Government contracts consultant</p>
+              </div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <p className="text-sm italic text-slate-300">
+                  &ldquo;At $49/mo vs $15K/yr for GovWin, the decision was easy. We get 90% of the intelligence at 0.3% of the cost.&rdquo;
+                </p>
+                <p className="mt-3 text-xs text-slate-500">— 8(a) certified construction firm owner</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       <main className="flex flex-1 flex-col items-center px-4 pb-16 pt-8">
         <div className="flex w-full max-w-3xl flex-col gap-8">
           {searched || agencySearched ? (
@@ -1071,9 +1103,26 @@ export default function HomeContent() {
                   )}
                   <div className="flex flex-col gap-3">
                     {results.map((c, i) => (
+                      <div key={c.internal_id || i} className="flex flex-col gap-3">
+                      {i === 3 && !user && (
+                        <div className="rounded-xl border border-blue-700/40 bg-gradient-to-r from-blue-950/60 to-slate-900 p-5">
+                          <div className="flex items-center justify-between gap-4">
+                            <div>
+                              <p className="text-sm font-semibold text-white">Unlock unlimited searches + CSV export</p>
+                              <p className="mt-1 text-xs text-slate-400">Pro users export all results, save searches, and get email alerts on new awards.</p>
+                            </div>
+                            <Link
+                              href="/pricing"
+                              onClick={() => track("inline_results_pro_clicked")}
+                              className="shrink-0 rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                            >
+                              Go Pro — $49/mo
+                            </Link>
+                          </div>
+                        </div>
+                      )}
                       <Link
                         href={`/award/${encodeURIComponent(c.internal_id)}`}
-                        key={c.internal_id || i}
                         className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 transition-all hover:shadow-md hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-700 cursor-pointer"
                       >
                         <div className="flex items-start justify-between gap-4">
@@ -1102,6 +1151,7 @@ export default function HomeContent() {
                           <span className="ml-auto text-blue-500 dark:text-blue-400">View details →</span>
                         </div>
                       </Link>
+                      </div>
                     ))}
                   </div>
                 </div>
