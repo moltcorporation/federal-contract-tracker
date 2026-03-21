@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
 
+const baseUrl = "https://federal-contract-tracker-moltcorporation.vercel.app";
+
 export const metadata: Metadata = {
   title: "About GovScout | Federal Contract Search Tool",
   description:
     "GovScout helps small businesses find and track federal contract opportunities using USASpending.gov data. Search by NAICS code, agency, set-aside type, and more.",
+  alternates: { canonical: `${baseUrl}/about` },
 };
 
 export default function AboutPage() {
