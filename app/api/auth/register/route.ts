@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm";
 
 export async function POST(request: Request) {
   try {
-    const { email, password, name, utm_source } = await request.json();
+    const { email, password, name, utm_source, utm_medium, utm_campaign } = await request.json();
 
     if (!email || !password) {
       return NextResponse.json(
@@ -37,7 +37,10 @@ export async function POST(request: Request) {
     }
 
     const passwordHash = await hashPassword(password);
-    const utmSource = utm_source ? String(utm_source).trim().slice(0, 200) : null;
+    const sanitizeUtm = (v: unknown) => (typeof v === "string" ? v.trim().slice(0, 200) || null : null);
+    const utmSource = sanitizeUtm(utm_source);
+    const utmMedium = sanitizeUtm(utm_medium);
+    const utmCampaign = sanitizeUtm(utm_campaign);
 
     const [user] = await db
       .insert(users)
@@ -46,6 +49,8 @@ export async function POST(request: Request) {
         passwordHash,
         name: name?.trim() || null,
         ...(utmSource && { utmSource }),
+        ...(utmMedium && { utmMedium }),
+        ...(utmCampaign && { utmCampaign }),
       })
       .returning({ id: users.id });
 
