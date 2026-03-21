@@ -114,7 +114,8 @@ export default function FindGovernmentContractsGuide() {
         <div className="flex items-center gap-4">
           <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
           <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
-          <Link href="/pricing" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Pricing</Link>
+          <Link href="/guides/find-government-contracts" className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Guides</Link>
+          <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
         </div>
       </header>
 
@@ -239,19 +240,19 @@ export default function FindGovernmentContractsGuide() {
               href="/compare/sam-gov"
               className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
-              FCT vs SAM.gov
+              GovScout vs SAM.gov
             </Link>
             <Link
               href="/compare/usaspending"
               className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
-              FCT vs USASpending
+              GovScout vs USASpending
             </Link>
             <Link
               href="/compare/govwin"
               className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
-              FCT vs GovWin
+              GovScout vs GovWin
             </Link>
           </div>
         </div>
