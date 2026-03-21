@@ -198,6 +198,14 @@ export default function DashboardPage() {
             >
               {isPro ? "Pro" : "Free"}
             </span>
+            {isPro && process.env.NEXT_PUBLIC_STRIPE_PORTAL_LINK && (
+              <a
+                href={process.env.NEXT_PUBLIC_STRIPE_PORTAL_LINK}
+                className="text-xs font-medium text-slate-400 transition-colors hover:text-blue-400"
+              >
+                Manage Subscription
+              </a>
+            )}
             {!isPro && (
               <Link
                 href="/pricing"
@@ -294,6 +302,51 @@ export default function DashboardPage() {
             </span>
           </Link>
         </div>
+
+        {/* Account section */}
+        <section className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
+            Account
+          </h2>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${
+                  isPro
+                    ? "bg-blue-900/50 text-blue-300"
+                    : "bg-slate-800 text-slate-400"
+                }`}
+              >
+                {isPro ? "P" : "F"}
+              </div>
+              <div>
+                <p className="text-sm font-medium text-white">
+                  {isPro ? "Pro Plan" : "Free Plan"}
+                </p>
+                <p className="text-xs text-slate-500">
+                  {isPro
+                    ? "Unlimited searches, CSV export, email alerts"
+                    : "10 searches/day"}
+                </p>
+              </div>
+            </div>
+            {isPro && process.env.NEXT_PUBLIC_STRIPE_PORTAL_LINK ? (
+              <a
+                href={process.env.NEXT_PUBLIC_STRIPE_PORTAL_LINK}
+                className="rounded-lg border border-slate-700 px-4 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-300"
+              >
+                Manage Subscription
+              </a>
+            ) : !isPro ? (
+              <Link
+                href="/pricing"
+                className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+              >
+                Upgrade
+              </Link>
+            ) : null}
+          </div>
+        </section>
 
         {/* Saved searches section (Pro users with searches) */}
         {isPro && hasSearches && (
