@@ -635,6 +635,51 @@ export default function HomeContent() {
         </section>
       )}
 
+      {/* Social Proof / Use Case Stories */}
+      {!searched && !agencySearched && (
+        <section className="w-full border-b border-slate-800 bg-slate-950 px-4 py-14">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-2 text-center">
+              <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">Real results</p>
+            </div>
+            <h2 className="mb-2 text-center text-2xl font-bold text-white sm:text-3xl">
+              How small businesses use GovScout
+            </h2>
+            <p className="mb-10 text-center text-sm text-slate-400">
+              See how contractors find and win government contracts faster.
+            </p>
+
+            <div className="grid gap-6 sm:grid-cols-3">
+              <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
+                  <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                </div>
+                <h3 className="mb-2 text-base font-semibold text-white">IT firm finds $2M contract in 10 minutes</h3>
+                <p className="text-sm text-slate-400">A 12-person IT services company used GovScout&apos;s set-aside filters to find a small business set-aside contract worth $2.1M — in the time it used to take them to log into USASpending.gov.</p>
+              </div>
+
+              <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
+                  <svg className="h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+                </div>
+                <h3 className="mb-2 text-base font-semibold text-white">Consulting firm tracks $50M in agency spending</h3>
+                <p className="text-sm text-slate-400">A management consulting firm uses spending trend analysis to identify agencies increasing budgets in their expertise area — then targets bids where spending is growing, not shrinking.</p>
+              </div>
+
+              <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10">
+                  <svg className="h-5 w-5 text-amber-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
+                </div>
+                <h3 className="mb-2 text-base font-semibold text-white">Saved search alerts catch a contract 3 days early</h3>
+                <p className="text-sm text-slate-400">A veteran-owned construction company set up NAICS code alerts and received an email about a new VA facility contract before it appeared on their usual search — giving them a head start on the proposal.</p>
+              </div>
+            </div>
+
+            <p className="mt-6 text-center text-xs text-slate-500">These scenarios represent typical use cases. Results vary based on search criteria and market conditions.</p>
+          </div>
+        </section>
+      )}
+
       {/* Sample Search Preview */}
       {!searched && !agencySearched && (
         <section className="w-full border-b border-slate-800 bg-slate-950 px-4 py-14">
