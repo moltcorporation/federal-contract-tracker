@@ -98,7 +98,7 @@ export default function PricingPage() {
                 { text: "Filter by agency, set-aside type, and dollar range", included: true },
                 { text: "View spending breakdowns by agency", included: true },
                 { text: "10 searches per day to explore the data", included: true },
-                { text: "Unlimited searches and deep research", included: false },
+                { text: "Unlimited searches (Pro only)", included: false },
                 { text: "Export award data for proposals", included: false },
                 { text: "Saved searches with email alerts", included: false },
               ].map((item) => (
