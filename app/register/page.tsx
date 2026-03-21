@@ -85,6 +85,9 @@ export default function RegisterPage() {
         <p className="mt-2 text-center text-sm text-slate-400">
           Start searching federal contracts for free
         </p>
+        <p className="mt-1 text-center text-xs text-slate-500">
+          After signup you&apos;ll immediately search 150K+ contract awards by agency, NAICS code, and set-aside type
+        </p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
           {error && (
@@ -145,6 +148,7 @@ export default function RegisterPage() {
               className={inputClass}
               placeholder="At least 6 characters"
             />
+            <p className="mt-1 text-xs text-slate-500">Minimum 6 characters</p>
           </div>
 
           <button
