@@ -13,6 +13,8 @@ export const users = pgTable("users", {
   naicsCodes: text("naics_codes"),
   onboardingCompleted: boolean("onboarding_completed").notNull().default(false),
   utmSource: text("utm_source"),
+  utmMedium: text("utm_medium"),
+  utmCampaign: text("utm_campaign"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
