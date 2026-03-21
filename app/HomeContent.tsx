@@ -536,8 +536,8 @@ export default function HomeContent() {
               <span className="block text-blue-400">Know Who&apos;s Winning Before You Bid</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-slate-400">
-              Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending,
-              and which competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
+              Stop guessing which contracts to chase. See exactly who&apos;s winning, how much agencies spend,
+              and where your competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
             </p>
             <div className="flex flex-col items-center gap-3 pt-2">
               <div className="flex flex-wrap items-center justify-center gap-3">
@@ -788,12 +788,14 @@ export default function HomeContent() {
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
                   href="/register"
+                  onClick={() => track("mid_cta_free_clicked")}
                   className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
                 >
-                  Find Contracts in Your NAICS Code — Free
+                  Start Finding Contracts — Free
                 </a>
                 <Link
                   href="/pricing"
+                  onClick={() => track("mid_cta_pro_clicked")}
                   className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
                 >
                   Go Pro — Unlimited Searches
@@ -900,6 +902,16 @@ export default function HomeContent() {
               </div>
             </div>
             <p className="mt-4 text-center text-xs text-slate-600">*Illustrative examples based on typical GovScout use cases</p>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <a
+                href="/register"
+                onClick={() => track("testimonial_cta_clicked")}
+                className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
+              >
+                Join Them — Start Free Today
+              </a>
+              <p className="text-xs text-slate-500">No credit card required · Cancel anytime</p>
+            </div>
           </div>
         </section>
       )}
@@ -1460,6 +1472,7 @@ export default function HomeContent() {
                     </ul>
                     <a
                       href="/register"
+                      onClick={() => track("pricing_free_clicked")}
                       className="mt-auto rounded-lg border border-slate-600 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800"
                     >
                       Start Free
@@ -1488,6 +1501,7 @@ export default function HomeContent() {
                     </ul>
                     <Link
                       href="/pricing"
+                      onClick={() => track("pricing_pro_clicked")}
                       className="mt-auto rounded-lg bg-blue-600 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
                     >
                       Unlock Pro — $49/mo
@@ -1553,6 +1567,7 @@ export default function HomeContent() {
                 <div className="mt-6 flex flex-col items-center gap-3">
                   <a
                     href="#search"
+                    onClick={() => track("comparison_cta_clicked")}
                     className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-900/30 transition-all hover:bg-blue-500"
                   >
                     Try a Free Search Now
