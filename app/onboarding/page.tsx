@@ -130,9 +130,7 @@ export default function OnboardingPage() {
         setError(data.error || "Failed to save");
         return;
       }
-      // Redirect to home with first selected NAICS pre-filled
-      const firstCode = Array.from(selected)[0];
-      router.push(firstCode ? `/?naics=${firstCode}` : "/");
+      router.push("/dashboard");
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -151,7 +149,7 @@ export default function OnboardingPage() {
     } catch {
       // Skip failure is non-critical
     }
-    router.push("/");
+    router.push("/dashboard");
   }
 
   // Get label for a code
