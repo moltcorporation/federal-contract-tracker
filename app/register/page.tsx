@@ -85,13 +85,13 @@ export default function RegisterPage() {
         </Link>
 
         <h1 className="text-center text-2xl font-bold text-white">
-          Create your account
+          Start searching contracts free
         </h1>
         <p className="mt-2 text-center text-sm text-slate-400">
-          Start searching federal contracts for free
+          Access 150K+ federal contract awards — no credit card required.
         </p>
         <p className="mt-1 text-center text-xs text-slate-500">
-          After signup you&apos;ll immediately search 150K+ contract awards by agency, NAICS code, and set-aside type
+          Search by agency, NAICS code, and set-aside type immediately after signup.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
