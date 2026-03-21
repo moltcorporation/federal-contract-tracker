@@ -72,6 +72,10 @@ export function CrossProductFooter() {
               Terms
             </Link>
             {" · "}
+            <Link href="/contact" className="transition-colors hover:text-blue-400">
+              Contact
+            </Link>
+            {" · "}
             <Link href="/feedback" className="transition-colors hover:text-blue-400">
               Feedback
             </Link>
