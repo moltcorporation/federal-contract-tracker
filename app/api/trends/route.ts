@@ -37,22 +37,16 @@ export async function POST(req: NextRequest) {
     isPro = await checkProAccess(proEmail);
   }
 
-  if (!isPro) {
-    return NextResponse.json(
-      {
-        error: "Spending trends require a Pro subscription.",
-        upgradeUrl: buildCheckoutUrl(proEmail),
-      },
-      { status: 403 }
-    );
-  }
-
   const body = await req.json();
-  const filters = buildFilters(body);
+  const filters = buildFilters({
+    ...body,
+    years: isPro ? (body.years || 3) : 2,
+  });
 
+  const resultLimit = isPro ? 10 : 5;
   const timelinePayload = { group: "quarter", filters };
-  const recipientsPayload = { filters, category: "recipient", limit: 10, page: 1 };
-  const agenciesPayload = { filters, category: "awarding_agency", limit: 10, page: 1 };
+  const recipientsPayload = { filters, category: "recipient", limit: resultLimit, page: 1 };
+  const agenciesPayload = { filters, category: "awarding_agency", limit: resultLimit, page: 1 };
 
   const fetchWithCache = (route: string, url: string, payload: unknown) =>
     cachedFetch({ route, payload }, async () => {
@@ -80,6 +74,8 @@ export async function POST(req: NextRequest) {
   }
 
   return NextResponse.json({
+    isPro,
+    upgradeUrl: isPro ? undefined : buildCheckoutUrl(proEmail),
     timeline: (timelineData.results || []).map(
       (r: { aggregated_amount: number; time_period: { fiscal_year: string; quarter: string } }) => ({
         amount: r.aggregated_amount,
