@@ -512,7 +512,7 @@ export default function HomeContent() {
         <div className="flex items-center gap-4">
           <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
           <Link href="/saved-searches" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Saved Searches</Link>
-          <Link href="/guides/find-government-contracts" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Guides</Link>
+          <Link href="/guides" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Guides</Link>
           <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
           {authChecked && (
             user ? (

@@ -18,7 +18,7 @@ function HeroFallback() {
         </div>
         <div className="flex items-center gap-4">
           <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
-          <Link href="/guides/find-government-contracts" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Guides</Link>
+          <Link href="/guides" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Guides</Link>
           <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
           <Link href="/login" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Log in</Link>
           <Link
