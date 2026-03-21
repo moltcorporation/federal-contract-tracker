@@ -4,7 +4,32 @@ import HomeContent from "./HomeContent";
 
 function HeroFallback() {
   return (
-    <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 px-4 py-16 sm:py-20">
+    <>
+      <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
+        <div className="flex items-center gap-2">
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
+            <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
+          </svg>
+          <span className="text-lg font-bold tracking-tight text-white">
+            GovScout
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          <Link href="/trends" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Trends</Link>
+          <Link href="/guides/find-government-contracts" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Guides</Link>
+          <Link href="/pricing" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Pricing</Link>
+          <Link href="/login" className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400">Log in</Link>
+          <Link
+            href="/register"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          >
+            Sign Up Free
+          </Link>
+        </div>
+      </header>
+      <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 px-4 py-16 sm:py-20">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
         <div className="inline-flex items-center gap-2 rounded-full border border-blue-800/50 bg-blue-950/50 px-4 py-1.5 text-xs font-medium text-blue-300">
@@ -61,6 +86,7 @@ function HeroFallback() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
