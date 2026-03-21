@@ -201,6 +201,15 @@ export default function HomeContent() {
   const [user, setUser] = useState<{ id: number; email: string; name: string | null; naicsCodes: string[] | null; onboardingCompleted: boolean } | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
   const [naicsApplied, setNaicsApplied] = useState(false);
+  const [showStickyCta, setShowStickyCta] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setShowStickyCta(window.scrollY > 600);
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     fetch("/api/auth/me")
@@ -439,6 +448,39 @@ export default function HomeContent() {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
+      {/* Sticky CTA bar — appears on scroll past hero */}
+      {showStickyCta && !user && (
+        <div className="fixed top-0 left-0 right-0 z-50 border-b border-blue-800/50 bg-slate-900/95 backdrop-blur-sm">
+          <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-2.5">
+            <div className="flex items-center gap-3">
+              <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 text-blue-400" aria-hidden="true">
+                <path d="M3 21V7l9-4 9 4v14" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                <circle cx="12" cy="9.5" r="1.5" fill="currentColor" />
+              </svg>
+              <span className="hidden text-sm font-semibold text-white sm:inline">GovScout</span>
+              <span className="hidden text-sm text-slate-400 sm:inline">— Search federal contracts for free</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="/register"
+                onClick={() => track("sticky_cta_free_clicked")}
+                className="rounded-lg bg-blue-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+              >
+                Start Free
+              </a>
+              <Link
+                href="/pricing"
+                onClick={() => track("sticky_cta_pro_clicked")}
+                className="hidden rounded-lg border border-blue-500/50 px-4 py-1.5 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-950/50 sm:inline-block"
+              >
+                Go Pro — $49/mo
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
         <div className="flex items-center gap-2">
           <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-blue-400" aria-hidden="true">
