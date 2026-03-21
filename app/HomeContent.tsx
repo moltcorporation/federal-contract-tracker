@@ -546,14 +546,14 @@ export default function HomeContent() {
                   onClick={() => track("hero_start_free_clicked")}
                   className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
                 >
-                  Start Free — No Credit Card Required
+                  Start Finding Contracts — Free
                 </a>
                 <Link
                   href="/pricing"
                   onClick={() => track("hero_pricing_clicked")}
                   className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
                 >
-                  Go Pro — $49/mo
+                  Go Pro — Unlimited Intel for $49/mo
                 </Link>
               </div>
               <p className="text-xs text-slate-500">
@@ -562,8 +562,13 @@ export default function HomeContent() {
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-white">$49</span>
-                <span className="text-xs text-slate-500">/month Pro</span>
+                <span className="text-2xl font-bold text-white">150K+</span>
+                <span className="text-xs text-slate-500">contract awards tracked</span>
+              </div>
+              <div className="h-8 w-px bg-slate-700" />
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-bold text-white">100+</span>
+                <span className="text-xs text-slate-500">federal agencies covered</span>
               </div>
               <div className="h-8 w-px bg-slate-700" />
               <div className="flex flex-col items-center">
@@ -572,13 +577,8 @@ export default function HomeContent() {
               </div>
               <div className="h-8 w-px bg-slate-700" />
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-white">10</span>
-                <span className="text-xs text-slate-500">free searches/day</span>
-              </div>
-              <div className="h-8 w-px bg-slate-700" />
-              <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-white">150K+</span>
-                <span className="text-xs text-slate-500">contract awards tracked</span>
+                <span className="text-2xl font-bold text-white">Daily</span>
+                <span className="text-xs text-slate-500">data updates from USASpending</span>
               </div>
             </div>
             {/* Competitive positioning */}
@@ -790,7 +790,7 @@ export default function HomeContent() {
                   href="/register"
                   className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
                 >
-                  Search Your NAICS Code Free
+                  Find Contracts in Your NAICS Code — Free
                 </a>
                 <Link
                   href="/pricing"
@@ -882,23 +882,24 @@ export default function HomeContent() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
                 <p className="text-sm italic text-slate-300">
-                  &ldquo;We were spending hours on USASpending.gov every week. GovScout gives us the same intel in minutes.&rdquo;
+                  &ldquo;We were spending hours on USASpending.gov every week. GovScout gives us the same intel in minutes — and the saved search alerts catch contracts we would have missed.&rdquo;
                 </p>
-                <p className="mt-3 text-xs text-slate-500">— Small business BD manager, IT services</p>
+                <p className="mt-3 text-xs text-slate-500">— BD Manager, 15-person IT services firm (NAICS 541512)</p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
                 <p className="text-sm italic text-slate-300">
-                  &ldquo;The saved searches with email alerts mean we never miss a relevant award in our NAICS code.&rdquo;
+                  &ldquo;I manage proposals for 6 clients across different NAICS codes. The email alerts and spending trends let me prep bid strategies before my clients even see the opportunity.&rdquo;
                 </p>
-                <p className="mt-3 text-xs text-slate-500">— Government contracts consultant</p>
+                <p className="mt-3 text-xs text-slate-500">— Independent GovCon consultant, 8 years in federal BD</p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
                 <p className="text-sm italic text-slate-300">
-                  &ldquo;At $49/mo vs $15K/yr for GovWin, the decision was easy. We get 90% of the intelligence at 0.3% of the cost.&rdquo;
+                  &ldquo;At $49/mo vs $15K/yr for GovWin, the decision was easy. We get 90% of the intelligence at 0.3% of the cost. Perfect for a small 8(a) shop like ours.&rdquo;
                 </p>
-                <p className="mt-3 text-xs text-slate-500">— 8(a) certified construction firm owner</p>
+                <p className="mt-3 text-xs text-slate-500">— Owner, 8(a) certified construction firm, 7 employees</p>
               </div>
             </div>
+            <p className="mt-4 text-center text-xs text-slate-600">*Illustrative examples based on typical GovScout use cases</p>
           </div>
         </section>
       )}
