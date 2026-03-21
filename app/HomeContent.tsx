@@ -557,26 +557,28 @@ export default function HomeContent() {
               Stop guessing which contracts to chase. See exactly who&apos;s winning, how much agencies spend,
               and where your competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
             </p>
-            <div className="flex flex-col items-center gap-3 pt-2">
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href="/register"
-                  onClick={() => track("hero_start_free_clicked")}
-                  className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
-                >
-                  Start Finding Contracts — Free
-                </a>
-                <Link
-                  href="/pricing"
-                  onClick={() => track("hero_pricing_clicked")}
-                  className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
-                >
-                  Go Pro — Unlimited Intel for $49/mo
-                </Link>
+            <div className="flex flex-col items-center gap-4 pt-4">
+              <a
+                href="/register"
+                onClick={() => track("hero_start_free_clicked")}
+                className="rounded-xl bg-blue-600 px-12 py-4 text-lg font-bold text-white shadow-xl shadow-blue-600/30 transition-all hover:bg-blue-500 hover:shadow-blue-500/40 hover:scale-[1.02]"
+              >
+                Start Finding Contracts — Free
+              </a>
+              <Link
+                href="/pricing"
+                onClick={() => track("hero_pricing_clicked")}
+                className="rounded-xl border border-blue-500 bg-blue-950/50 px-10 py-3.5 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
+              >
+                Go Pro — Unlimited Intel for $49/mo
+              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500">
+                <span>Free to search</span>
+                <span className="text-slate-700">·</span>
+                <span>No credit card required</span>
+                <span className="text-slate-700">·</span>
+                <span>Pro from <span className="font-semibold text-blue-400">$49/mo</span> for alerts + export</span>
               </div>
-              <p className="text-xs text-slate-500">
-                Your first 10 searches free today · No credit card required
-              </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
               <div className="flex flex-col items-center">
@@ -658,13 +660,13 @@ export default function HomeContent() {
         <section className="w-full border-b border-slate-800 bg-slate-950 px-4 py-14">
           <div className="mx-auto max-w-4xl">
             <div className="mb-2 text-center">
-              <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">Real results</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">Built for small govcon businesses</p>
             </div>
             <h2 className="mb-2 text-center text-2xl font-bold text-white sm:text-3xl">
-              How small businesses use GovScout
+              Small businesses win with better intel
             </h2>
             <p className="mb-10 text-center text-sm text-slate-400">
-              See how contractors find and win government contracts faster.
+              See how contractors use GovScout to find and win government contracts faster.
             </p>
 
             <div className="grid gap-6 sm:grid-cols-3">
@@ -924,11 +926,11 @@ export default function HomeContent() {
               <a
                 href="/register"
                 onClick={() => track("testimonial_cta_clicked")}
-                className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
+                className="rounded-xl bg-blue-600 px-12 py-4 text-lg font-bold text-white shadow-xl shadow-blue-600/30 transition-all hover:bg-blue-500 hover:shadow-blue-500/40 hover:scale-[1.02]"
               >
-                Join Them — Start Free Today
+                Start Winning Contracts — Free
               </a>
-              <p className="text-xs text-slate-500">No credit card required · Cancel anytime</p>
+              <p className="text-xs text-slate-500">No credit card required · Cancel anytime · Pro from $49/mo</p>
             </div>
           </div>
         </section>

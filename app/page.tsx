@@ -44,24 +44,26 @@ function HeroFallback() {
           Stop guessing which contracts to chase. See exactly who&apos;s winning, how much agencies spend,
           and where your competitors keep showing up — for <span className="font-semibold text-white">$49/mo</span> instead of $15K+/yr for GovWin.
         </p>
-        <div className="flex flex-col items-center gap-3 pt-2">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="/register"
-              className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40"
-            >
-              Start Finding Contracts — Free
-            </a>
-            <Link
-              href="/pricing"
-              className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
-            >
-              Go Pro — Unlimited Intel for $49/mo
-            </Link>
+        <div className="flex flex-col items-center gap-4 pt-4">
+          <a
+            href="/register"
+            className="rounded-xl bg-blue-600 px-12 py-4 text-lg font-bold text-white shadow-xl shadow-blue-600/30 transition-all hover:bg-blue-500 hover:shadow-blue-500/40 hover:scale-[1.02]"
+          >
+            Start Finding Contracts — Free
+          </a>
+          <Link
+            href="/pricing"
+            className="rounded-xl border border-blue-500 bg-blue-950/50 px-10 py-3.5 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white"
+          >
+            Go Pro — Unlimited Intel for $49/mo
+          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500">
+            <span>Free to search</span>
+            <span className="text-slate-700">·</span>
+            <span>No credit card required</span>
+            <span className="text-slate-700">·</span>
+            <span>Pro from <span className="font-semibold text-blue-400">$49/mo</span> for alerts + export</span>
           </div>
-          <p className="text-xs text-slate-500">
-            Your first 10 searches free today · No credit card required
-          </p>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
           <div className="flex flex-col items-center">
@@ -127,15 +129,10 @@ function HeroFallback() {
           ))}
         </div>
         <div className="mt-8 flex flex-col items-center gap-3">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/register" className="rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-blue-600/40">
-              Search for Free — 10/day, No Credit Card
-            </Link>
-            <Link href="/pricing" className="rounded-lg border border-blue-500 bg-blue-950/50 px-8 py-3 text-base font-semibold text-blue-300 transition-all hover:bg-blue-900/50 hover:text-white">
-              Go Pro — Unlimited Searches
-            </Link>
-          </div>
-          <p className="text-xs text-slate-500">10 free searches per day · No credit card required</p>
+          <Link href="/register" className="rounded-xl bg-blue-600 px-12 py-4 text-lg font-bold text-white shadow-xl shadow-blue-600/30 transition-all hover:bg-blue-500 hover:shadow-blue-500/40 hover:scale-[1.02]">
+            Search for Free — No Credit Card
+          </Link>
+          <p className="text-xs text-slate-500">10 free searches per day · Pro from $49/mo for unlimited</p>
         </div>
       </div>
     </section>
