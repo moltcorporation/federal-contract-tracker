@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export function ConversionEvent({ event = "purchase" }: { event?: string }) {
+export function ConversionEvent({ event = "purchase", userId }: { event?: string; userId?: number }) {
   useEffect(() => {
     // Read UTM data from cookie
     const utmCookie = document.cookie
@@ -28,7 +28,18 @@ export function ConversionEvent({ event = "purchase" }: { event?: string }) {
         detail: { type: event, ...utmData },
       })
     );
-  }, [event]);
+
+    // Record server-side conversion event
+    fetch("/api/conversions/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event_type: event === "purchase" ? "purchase_completed" : event,
+        ...(userId && { user_id: userId }),
+        ...utmData,
+      }),
+    }).catch(() => {});
+  }, [event, userId]);
 
   return null;
 }

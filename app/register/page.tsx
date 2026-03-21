@@ -18,16 +18,24 @@ export default function RegisterPage() {
     setError("");
     setLoading(true);
 
-    const utmSource =
-      typeof window !== "undefined"
-        ? new URLSearchParams(window.location.search).get("utm_source")
-        : null;
+    // Read UTM data from cookie (set by UtmTracker component)
+    const utmCookie = document.cookie
+      .split("; ")
+      .find((c) => c.startsWith("utm="));
+    const utmData: Record<string, string> = utmCookie
+      ? JSON.parse(decodeURIComponent(utmCookie.split("=").slice(1).join("=")))
+      : {};
 
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, name, ...(utmSource && { utm_source: utmSource }) }),
+        body: JSON.stringify({
+          email, password, name,
+          ...(utmData.utm_source && { utm_source: utmData.utm_source }),
+          ...(utmData.utm_medium && { utm_medium: utmData.utm_medium }),
+          ...(utmData.utm_campaign && { utm_campaign: utmData.utm_campaign }),
+        }),
       });
 
       const data = await res.json();
@@ -38,6 +46,18 @@ export default function RegisterPage() {
       }
 
       track("signup_completed");
+
+      // Record server-side conversion event
+      fetch("/api/conversions/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_type: "signup_completed",
+          user_id: data.id,
+          ...utmData,
+        }),
+      }).catch(() => {});
+
       router.push("/onboarding");
     } catch {
       setError("Something went wrong. Please try again.");
