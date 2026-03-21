@@ -77,6 +77,15 @@ export const dripUnsubscribes = pgTable("drip_unsubscribes", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const passwordResetTokens = pgTable("password_reset_tokens", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+  tokenHash: text("token_hash").notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  usedAt: timestamp("used_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const conversionEvents = pgTable("conversion_events", {
   id: serial("id").primaryKey(),
   userId: integer("user_id"),
