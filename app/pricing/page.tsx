@@ -185,7 +185,7 @@ export default function PricingPage() {
             Restore access on this device
           </Link>
           {" · "}
-          <a href="https://billing.stripe.com/p/login/00g000000000000000" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
+          <a href={process.env.NEXT_PUBLIC_STRIPE_PORTAL_LINK || "https://billing.stripe.com/p/login/test"} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
             Manage subscription
           </a>
         </p>

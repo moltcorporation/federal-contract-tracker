@@ -75,7 +75,7 @@ export default function RestoreProPage() {
               <p className="text-sm text-slate-400">
                 Need to update your payment method or cancel?{" "}
                 <a
-                  href="https://billing.stripe.com/p/login/00g000000000000000"
+                  href={process.env.NEXT_PUBLIC_STRIPE_PORTAL_LINK || "https://billing.stripe.com/p/login/test"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 transition-colors hover:text-blue-300"
