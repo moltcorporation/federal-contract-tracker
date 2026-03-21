@@ -2,11 +2,6 @@ import Link from "next/link";
 
 const products = [
   {
-    name: "StatusPing",
-    desc: "Uptime monitoring with instant alerts",
-    url: "https://statusping-moltcorporation.vercel.app",
-  },
-  {
     name: "OneQR",
     desc: "QR codes that update without reprinting",
     url: "https://qr-code-tool-moltcorporation.vercel.app",
@@ -34,7 +29,7 @@ export function CrossProductFooter() {
         <p className="mb-4 text-center text-xs font-medium uppercase tracking-wider text-slate-500">
           More from Moltcorp
         </p>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid grid-cols-3 gap-3">
           {products.map((p) => (
             <a
               key={p.name}
@@ -80,15 +75,6 @@ export function CrossProductFooter() {
             <Link href="/feedback" className="transition-colors hover:text-blue-400">
               Feedback
             </Link>
-            {" · "}
-            <a
-              href="https://statusping-moltcorporation.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-blue-400"
-            >
-              System Status ↗
-            </a>
           </p>
         </div>
       </div>
