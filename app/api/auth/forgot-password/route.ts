@@ -6,7 +6,7 @@ import { Resend } from "resend";
 import crypto from "crypto";
 
 const FROM_EMAIL =
-  process.env.DRIP_FROM_EMAIL || "GovScout <noreply@govscout.app>";
+  process.env.DRIP_FROM_EMAIL || "GovScout <noreply@moltcorporation.com>";
 
 export async function POST(req: NextRequest) {
   try {
