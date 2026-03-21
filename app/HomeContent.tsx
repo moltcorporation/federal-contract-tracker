@@ -194,6 +194,90 @@ function NaicsAutocomplete({
   );
 }
 
+const faqItems = [
+  {
+    q: "How fresh is the contract data?",
+    a: "GovScout pulls data directly from the USASpending.gov API and updates daily. You're searching the same federal spending records that agencies report — covering billions in contract awards across every department.",
+  },
+  {
+    q: "How is this different from searching SAM.gov directly?",
+    a: "SAM.gov shows open solicitations. GovScout shows awarded contracts — who won, how much, and from which agency. Plus you get spending trend analysis, competitive intelligence, set-aside filters, saved searches with email alerts, and CSV export. It turns raw government data into actionable business intelligence.",
+  },
+  {
+    q: "Can I cancel anytime?",
+    a: "Yes. There are no long-term contracts or cancellation fees. Cancel your Pro subscription anytime from your account settings and you won't be charged again.",
+  },
+  {
+    q: "Is my search data private?",
+    a: "Yes. Your searches and saved filters are encrypted and never shared with other users or third parties. Only you can see your search history and saved searches.",
+  },
+  {
+    q: "What's included in the free tier?",
+    a: "Free accounts get up to 10 searches per day with basic contract results — award ID, recipient, agency, amount, and dates. No credit card required to start.",
+  },
+  {
+    q: "What does Pro unlock?",
+    a: "Pro gives you unlimited searches, spending trend charts by agency, email alerts for saved searches, CSV export of results, and full competitive intelligence — all for $49/mo.",
+  },
+  {
+    q: "Do you support set-aside filters?",
+    a: "Yes. Filter by 8(a) Business Development, HUBZone, WOSB (Women-Owned Small Business), SDVOSB (Service-Disabled Veteran-Owned), and SBA small business set-asides to find contracts reserved for your certification type.",
+  },
+  {
+    q: "How do email alerts work?",
+    a: "Save any search — keyword, NAICS code, agency, or set-aside type — and GovScout will email you when new matching contract awards appear. Pro subscribers can save unlimited searches with alerts.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "We accept all major credit and debit cards (Visa, Mastercard, Amex, Discover) through Stripe. Apple Pay and Google Pay are also supported.",
+  },
+  {
+    q: "Can I export results?",
+    a: "Pro subscribers can export search results to CSV for use in spreadsheets, proposals, or CRM imports. Free tier users can view results on-screen only.",
+  },
+];
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <div className="mt-10">
+      <h2 className="mb-6 text-center text-2xl font-bold text-white">
+        Frequently Asked Questions
+      </h2>
+      <div className="mx-auto max-w-3xl divide-y divide-slate-800 rounded-2xl border border-slate-800 bg-slate-900/80">
+        {faqItems.map((item, i) => (
+          <div key={i}>
+            <button
+              onClick={() => {
+                setOpenIndex(openIndex === i ? null : i);
+                track("faq_toggled", { question: item.q });
+              }}
+              className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left text-sm font-medium text-white transition-colors hover:bg-slate-800/50"
+            >
+              <span>{item.q}</span>
+              <svg
+                className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-200 ${openIndex === i ? "rotate-180" : ""}`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {openIndex === i && (
+              <div className="px-6 pb-4 text-sm leading-relaxed text-slate-400">
+                {item.a}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -1601,60 +1685,7 @@ export default function HomeContent() {
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-col gap-8">
-                <div className="flex flex-col gap-3">
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                    Win more government contracts
-                  </h2>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                    Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending
-                    in your industry, and which competitors keep showing up. GovScout
-                    turns 5+ years of USASpending.gov data into competitive intelligence you can use —
-                    find patterns in award history, track spending trends by agency, and set up alerts
-                    so you never miss a relevant award. Built for small businesses that can&apos;t afford
-                    $15K/yr enterprise tools but need more than raw government data.
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                    How do set-aside contracts work?
-                  </h2>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                    Federal agencies set aside certain contracts exclusively for small businesses. The
-                    most common set-aside types are SBA small business, 8(a) Business Development for
-                    socially and economically disadvantaged firms, HUBZone for businesses in underutilized
-                    areas, WOSB for women-owned small businesses, and SDVOSB for service-disabled
-                    veteran-owned businesses. Use the set-aside filter above to find contracts reserved
-                    for your certification type.
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                    What data is included?
-                  </h2>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                    Results include the award ID, recipient company name, awarding agency and sub-agency,
-                    contract description, award amount, start and end dates, and award type. Data comes
-                    directly from USASpending.gov and is updated daily. This covers awarded contracts
-                    only — for open solicitations and bidding opportunities, check SAM.gov.
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                    What is a NAICS code?
-                  </h2>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                    NAICS (North American Industry Classification System) codes categorize businesses
-                    by industry. Federal contracts are tagged with NAICS codes so you can find contracts
-                    in your specific field. For example, 541512 is &ldquo;Computer Systems Design Services&rdquo;
-                    and 236220 is &ldquo;Commercial and Institutional Building Construction.&rdquo; You can
-                    find your NAICS code at census.gov/naics.
-                  </p>
-                </div>
-              </div>
+              <FAQSection />
             </>
           )}
         </div>

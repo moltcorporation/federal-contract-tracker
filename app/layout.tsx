@@ -84,26 +84,66 @@ export default function RootLayout({
       mainEntity: [
         {
           "@type": "Question",
-          name: "What is the GovScout?",
+          name: "How fresh is the contract data?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The GovScout lets you search awarded federal contracts using data from USASpending.gov. Filter by NAICS code, awarding agency, dollar amount, set-aside type, and recipient company.",
+            text: "GovScout pulls data directly from the USASpending.gov API and updates daily. You're searching the same federal spending records that agencies report.",
           },
         },
         {
           "@type": "Question",
-          name: "How do set-aside contracts work?",
+          name: "How is this different from searching SAM.gov directly?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Federal agencies set aside certain contracts exclusively for small businesses. Common types include SBA small business, 8(a) Business Development, HUBZone, WOSB (Women-Owned Small Business), and SDVOSB (Service-Disabled Veteran-Owned Small Business).",
+            text: "SAM.gov shows open solicitations. GovScout shows awarded contracts — who won, how much, and from which agency. Plus you get spending trend analysis, competitive intelligence, set-aside filters, saved searches with email alerts, and CSV export.",
           },
         },
         {
           "@type": "Question",
-          name: "What is a NAICS code?",
+          name: "Can I cancel anytime?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "NAICS (North American Industry Classification System) codes categorize businesses by industry. Federal contracts are tagged with NAICS codes so you can find contracts in your specific field. For example, 541512 is Computer Systems Design Services.",
+            text: "Yes. There are no long-term contracts or cancellation fees. Cancel your Pro subscription anytime from your account settings.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What's included in the free tier?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Free accounts get up to 10 searches per day with basic contract results — award ID, recipient, agency, amount, and dates. No credit card required.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What does Pro unlock?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Pro gives you unlimited searches, spending trend charts by agency, email alerts for saved searches, CSV export of results, and full competitive intelligence — all for $49/mo.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you support set-aside filters?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Filter by 8(a) Business Development, HUBZone, WOSB, SDVOSB, and SBA small business set-asides to find contracts reserved for your certification type.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do email alerts work?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Save any search and GovScout will email you when new matching contract awards appear. Pro subscribers can save unlimited searches with alerts.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I export results?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Pro subscribers can export search results to CSV for use in spreadsheets, proposals, or CRM imports. Free tier users can view results on-screen only.",
           },
         },
       ],
