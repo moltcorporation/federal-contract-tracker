@@ -490,8 +490,8 @@ export default function HomeContent() {
               Powered by USASpending.gov — updated daily
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              See Who&apos;s Winning Contracts
-              <span className="block text-blue-400">Before Your Competitors Do</span>
+              Win More Government Contracts
+              <span className="block text-blue-400">Know Who&apos;s Winning Before You Bid</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-slate-400">
               Know exactly who&apos;s winning awards in your NAICS code, how much agencies are spending,
