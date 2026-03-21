@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
-import { STRIPE_PAYMENT_LINK_URL } from "@/lib/stripe";
+import { STRIPE_PAYMENT_LINK_URL, STRIPE_ANNUAL_PAYMENT_LINK_URL } from "@/lib/stripe";
 
 function CheckIcon() {
   return (
@@ -50,6 +51,15 @@ const faqs = [
 ];
 
 export default function PricingPage() {
+  const [isAnnual, setIsAnnual] = useState(false);
+
+  const proPrice = isAnnual ? "$39" : "$49";
+  const proPeriod = isAnnual ? "/mo" : "/month";
+  const proCtaLabel = isAnnual ? "Start Pro — $39/mo" : "Start Pro — $49/mo";
+  const proCheckoutUrl = isAnnual
+    ? (STRIPE_ANNUAL_PAYMENT_LINK_URL || STRIPE_PAYMENT_LINK_URL)
+    : STRIPE_PAYMENT_LINK_URL;
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 font-sans">
       <header className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
@@ -81,7 +91,25 @@ export default function PricingPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
+        {/* Billing toggle */}
+        <div className="mt-10 flex items-center gap-3">
+          <span className={`text-sm font-medium ${!isAnnual ? "text-white" : "text-slate-400"}`}>Monthly</span>
+          <button
+            onClick={() => setIsAnnual(!isAnnual)}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${isAnnual ? "bg-blue-600" : "bg-slate-700"}`}
+            aria-label="Toggle annual billing"
+          >
+            <span className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${isAnnual ? "translate-x-6" : "translate-x-1"}`} />
+          </button>
+          <span className={`text-sm font-medium ${isAnnual ? "text-white" : "text-slate-400"}`}>Annual</span>
+          {isAnnual && (
+            <span className="rounded-full bg-green-600 px-2 py-0.5 text-xs font-semibold text-white">
+              Save 20%
+            </span>
+          )}
+        </div>
+
+        <div className="mt-8 grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
           {/* Free tier */}
           <div className="flex flex-col gap-6 rounded-xl border border-slate-800 bg-slate-900 p-6">
             <div className="flex flex-col gap-1">
@@ -127,9 +155,12 @@ export default function PricingPage() {
               </div>
               <p className="text-xs text-slate-400">For serious BD teams tracking competitors</p>
               <div className="mt-2 flex items-baseline gap-1">
-                <span className="text-3xl font-extrabold text-white">$49</span>
-                <span className="text-sm text-slate-400">/month</span>
+                <span className="text-3xl font-extrabold text-white">{proPrice}</span>
+                <span className="text-sm text-slate-400">{proPeriod}</span>
               </div>
+              {isAnnual && (
+                <p className="mt-1 text-xs text-green-400">$468/yr — save $120 vs monthly</p>
+              )}
             </div>
             <ul className="flex flex-col gap-3">
               {[
@@ -148,17 +179,17 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} onClick={() => {
-              track("pro_checkout_clicked");
+            <a href={proCheckoutUrl} onClick={() => {
+              track("pro_checkout_clicked", { billing: isAnnual ? "annual" : "monthly" });
               const utmCookie = document.cookie.split("; ").find((c) => c.startsWith("utm="));
               const utmData = utmCookie ? JSON.parse(decodeURIComponent(utmCookie.split("=").slice(1).join("="))) : {};
               fetch("/api/conversions/track", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ event_type: "checkout_initiated", ...utmData }),
+                body: JSON.stringify({ event_type: "checkout_initiated", billing: isAnnual ? "annual" : "monthly", ...utmData }),
               }).catch(() => {});
             }} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
-              Start Pro — $49/mo
+              {proCtaLabel}
             </a>
             <div className="flex items-center justify-center gap-2 rounded-lg border border-green-800/50 bg-green-950/30 px-3 py-2">
               <svg className="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

@@ -5,11 +5,25 @@ export const STRIPE_PAYMENT_LINK_URL =
   process.env.STRIPE_PAYMENT_LINK_URL ||
   "https://buy.stripe.com/aFa5kDaNZ6Gd2jb4Ac3Nm02";
 
+export const STRIPE_ANNUAL_PAYMENT_LINK_ID =
+  process.env.STRIPE_ANNUAL_PAYMENT_LINK_ID || "";
+
+export const STRIPE_ANNUAL_PAYMENT_LINK_URL =
+  process.env.STRIPE_ANNUAL_PAYMENT_LINK_URL || "";
+
 export function buildCheckoutUrl(email?: string): string {
   if (email) {
     return `${STRIPE_PAYMENT_LINK_URL}?prefilled_email=${encodeURIComponent(email)}`;
   }
   return STRIPE_PAYMENT_LINK_URL;
+}
+
+export function buildAnnualCheckoutUrl(email?: string): string {
+  const base = STRIPE_ANNUAL_PAYMENT_LINK_URL || STRIPE_PAYMENT_LINK_URL;
+  if (email) {
+    return `${base}?prefilled_email=${encodeURIComponent(email)}`;
+  }
+  return base;
 }
 
 // In-memory cache for Pro access status
