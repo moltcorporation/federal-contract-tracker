@@ -170,6 +170,12 @@ export default function DashboardPage() {
           >
             Pricing
           </Link>
+          <Link
+            href="/contact"
+            className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-400"
+          >
+            Help
+          </Link>
         </div>
       </header>
 
