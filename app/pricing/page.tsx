@@ -160,6 +160,7 @@ export default function PricingPage() {
             }} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
               Start Pro — $49/mo
             </a>
+            <p className="text-center text-xs text-slate-500">7-day money-back guarantee. Cancel anytime.</p>
           </div>
 
         </div>
