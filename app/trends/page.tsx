@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import { CrossProductFooter } from "@/app/components/cross-product-footer";
 
@@ -173,9 +173,10 @@ export default function TrendsPage() {
   const [timeline, setTimeline] = useState<TimelineEntry[]>([]);
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [agencies, setAgencies] = useState<Agency[]>([]);
+  const [isPro, setIsPro] = useState(true);
+  const [upgradeUrl, setUpgradeUrl] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  const fetchTrends = useCallback(async (params: { naics: string; setAside: string; state: string }) => {
     setError("");
     setLoading(true);
     setSearched(true);
@@ -184,7 +185,7 @@ export default function TrendsPage() {
       const res = await fetch("/api/trends", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ naics, setAside, state }),
+        body: JSON.stringify(params),
       });
 
       if (!res.ok) throw new Error("Failed to load trends data.");
@@ -193,11 +194,22 @@ export default function TrendsPage() {
       setTimeline(data.timeline || []);
       setRecipients(data.recipients || []);
       setAgencies(data.agencies || []);
+      setIsPro(data.isPro ?? true);
+      if (data.upgradeUrl) setUpgradeUrl(data.upgradeUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setLoading(false);
     }
+  }, []);
+
+  useEffect(() => {
+    fetchTrends({ naics: "", setAside: "", state: "" });
+  }, [fetchTrends]);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    fetchTrends({ naics, setAside, state });
   }
 
   const maxTimeline =
@@ -308,6 +320,27 @@ export default function TrendsPage() {
             <p className="text-sm text-slate-500 dark:text-slate-400">
               Loading trends data...
             </p>
+          </div>
+        )}
+
+        {!isPro && searched && !loading && timeline.length > 0 && (
+          <div className="flex items-center justify-between rounded-xl border border-blue-800/50 bg-blue-950/50 p-4">
+            <div className="flex flex-col gap-1">
+              <p className="text-sm font-semibold text-blue-200">
+                Free preview — showing 2 years, top 5 results
+              </p>
+              <p className="text-xs text-blue-400">
+                Upgrade to Pro for 3+ years of data, top 10 results, and custom filters.
+              </p>
+            </div>
+            {upgradeUrl && (
+              <a
+                href={upgradeUrl}
+                className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
+              >
+                Upgrade — $49/mo
+              </a>
+            )}
           </div>
         )}
 
@@ -435,13 +468,11 @@ export default function TrendsPage() {
           </div>
         )}
 
-        {!searched && (
-          <div className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              Explore federal contract spending patterns over the last 3 fiscal
-              years. See which agencies spend the most, which contractors win the
-              biggest awards, and how spending changes quarter to quarter. Use
-              filters to narrow by NAICS code, set-aside type, or state.
+        {!searched && !loading && (
+          <div className="flex items-center justify-center gap-3 py-8">
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600 dark:border-blue-800 dark:border-t-blue-400" />
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Loading trends data...
             </p>
           </div>
         )}
