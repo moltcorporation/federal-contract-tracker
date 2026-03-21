@@ -353,6 +353,23 @@ export default function HomeContent() {
       }
 
       track("search_performed");
+
+      // Fire conversion event for search completion
+      const utmCookie = document.cookie
+        .split("; ")
+        .find((c) => c.startsWith("utm="));
+      const utmData = utmCookie
+        ? JSON.parse(decodeURIComponent(utmCookie.split("=").slice(1).join("=")))
+        : {};
+      fetch("/api/conversions/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_type: "search_completed",
+          ...utmData,
+        }),
+      }).catch(() => {});
+
       setResults(data.results || []);
       setTotalCount(data.page_metadata?.total ?? null);
       if (data.remaining != null && data.remaining >= 0) {

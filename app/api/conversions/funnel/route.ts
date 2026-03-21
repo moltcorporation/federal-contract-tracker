@@ -20,10 +20,11 @@ export async function GET(request: Request) {
       ? sql`AND utm_campaign = ${campaign}`
       : sql``;
 
-    // Funnel: signups → checkout initiated → purchase completed
+    // Funnel: signups → searches → checkout initiated → purchase completed
     const funnel = await db.execute(sql`
       SELECT
         COUNT(*) FILTER (WHERE event_type = 'signup_completed') AS signups,
+        COUNT(*) FILTER (WHERE event_type = 'search_completed') AS searches,
         COUNT(*) FILTER (WHERE event_type = 'checkout_initiated') AS checkouts,
         COUNT(*) FILTER (WHERE event_type = 'purchase_completed') AS purchases
       FROM conversion_events
@@ -47,15 +48,19 @@ export async function GET(request: Request) {
       LIMIT 50
     `);
 
-    const row = funnel.rows[0] || { signups: 0, checkouts: 0, purchases: 0 };
+    const row = funnel.rows[0] || { signups: 0, searches: 0, checkouts: 0, purchases: 0 };
 
     return NextResponse.json({
       period_days: days,
       filters: { source: source || "all", campaign: campaign || "all" },
       funnel: {
         signups: Number(row.signups),
+        searches: Number(row.searches),
         checkouts: Number(row.checkouts),
         purchases: Number(row.purchases),
+        signup_to_search_rate: Number(row.signups) > 0
+          ? Math.round((Number(row.searches) / Number(row.signups)) * 10000) / 100
+          : 0,
         signup_to_checkout_rate: Number(row.signups) > 0
           ? Math.round((Number(row.checkouts) / Number(row.signups)) * 10000) / 100
           : 0,

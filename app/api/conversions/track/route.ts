@@ -2,7 +2,7 @@ import { db } from "@/db";
 import { conversionEvents } from "@/db/schema";
 import { NextResponse } from "next/server";
 
-const VALID_EVENTS = ["page_view", "signup_completed", "checkout_initiated", "purchase_completed"];
+const VALID_EVENTS = ["page_view", "signup_completed", "search_completed", "checkout_initiated", "purchase_completed"];
 
 export async function POST(request: Request) {
   try {
