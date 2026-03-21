@@ -62,6 +62,8 @@ function HeroFallback() {
             <span className="text-slate-700">·</span>
             <span>No credit card required</span>
             <span className="text-slate-700">·</span>
+            <span>7-day money-back guarantee</span>
+            <span className="text-slate-700">·</span>
             <span>Pro from <span className="font-semibold text-blue-400">$49/mo</span> for alerts + export</span>
           </div>
         </div>
