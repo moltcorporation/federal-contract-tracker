@@ -148,7 +148,16 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <a href={STRIPE_PAYMENT_LINK_URL} onClick={() => track("pro_checkout_clicked")} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
+            <a href={STRIPE_PAYMENT_LINK_URL} onClick={() => {
+              track("pro_checkout_clicked");
+              const utmCookie = document.cookie.split("; ").find((c) => c.startsWith("utm="));
+              const utmData = utmCookie ? JSON.parse(decodeURIComponent(utmCookie.split("=").slice(1).join("="))) : {};
+              fetch("/api/conversions/track", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ event_type: "checkout_initiated", ...utmData }),
+              }).catch(() => {});
+            }} className="mt-auto w-full rounded-lg bg-blue-600 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700">
               Start Pro — $49/mo
             </a>
           </div>

@@ -74,3 +74,15 @@ export const dripUnsubscribes = pgTable("drip_unsubscribes", {
   userId: integer("user_id").notNull().unique(),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const conversionEvents = pgTable("conversion_events", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id"),
+  eventType: text("event_type").notNull(),
+  utmSource: text("utm_source"),
+  utmMedium: text("utm_medium"),
+  utmCampaign: text("utm_campaign"),
+  utmContent: text("utm_content"),
+  utmTerm: text("utm_term"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
