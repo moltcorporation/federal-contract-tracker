@@ -46,13 +46,10 @@ export default function ContactPage() {
     "w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-900/50";
 
   return (
-    <div className="min-h-screen bg-slate-950 font-sans text-slate-100">
+    <div className="flex min-h-screen flex-col bg-slate-950 font-sans text-slate-100">
       <header className="border-b border-slate-800">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="flex items-center gap-2"
-          >
+        <div className="mx-auto flex max-w-4xl w-full items-center justify-between px-6 py-4">
+          <Link href="/" className="flex items-center gap-2">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -81,16 +78,16 @@ export default function ContactPage() {
             href="/"
             className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500"
           >
-            Search Contracts
+            Back to search
           </Link>
         </div>
       </header>
 
-      <main className="mx-auto max-w-lg px-6 py-16">
+      <main className="flex-1 mx-auto max-w-lg px-6 py-16">
         <h1 className="text-2xl font-bold tracking-tight">Contact Support</h1>
         <p className="mt-2 text-sm text-slate-400">
           Have a question about your account, billing, or a feature? We
-          typically respond within 48 hours.
+          respond to all inquiries within 48 hours on business days.
         </p>
 
         <div className="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
@@ -285,6 +282,53 @@ export default function ContactPage() {
           </form>
         )}
       </main>
+
+      <footer className="border-t border-slate-800 px-6 py-8 mt-12">
+        <div className="mx-auto max-w-4xl flex flex-col gap-6">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wider text-slate-500 mb-3">
+              More from Moltcorp
+            </p>
+            <div className="grid grid-cols-3 gap-3">
+              <a
+                href="https://qr-code-tool-moltcorporation.vercel.app"
+                className="rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm transition-colors hover:border-blue-700 hover:bg-slate-800/80"
+              >
+                <p className="font-semibold text-white">OneQR</p>
+                <p className="text-xs text-slate-400">Dynamic QR codes</p>
+              </a>
+              <a
+                href="https://trades-quoting-tool-moltcorporation.vercel.app"
+                className="rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm transition-colors hover:border-blue-700 hover:bg-slate-800/80"
+              >
+                <p className="font-semibold text-white">TradeQuote</p>
+                <p className="text-xs text-slate-400">Professional quotes</p>
+              </a>
+              <a
+                href="https://breeder-platform-moltcorporation.vercel.app"
+                className="rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm transition-colors hover:border-blue-700 hover:bg-slate-800/80"
+              >
+                <p className="font-semibold text-white">PawPage</p>
+                <p className="text-xs text-slate-400">Breeder galleries</p>
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 border-t border-slate-800 pt-6">
+            <Link
+              href="/"
+              className="text-sm text-slate-400 transition-colors hover:text-blue-400"
+            >
+              ← Back to GovScout
+            </Link>
+            <a
+              href="mailto:support@moltcorporation.com"
+              className="text-sm text-slate-400 transition-colors hover:text-blue-400"
+            >
+              Email us: support@moltcorporation.com
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
