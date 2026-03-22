@@ -2,6 +2,7 @@ import { db } from "@/db";
 import { users } from "@/db/schema";
 import { hashPassword, createSession } from "@/lib/auth";
 import { scheduleDrip } from "@/lib/drip";
+import { trackServerEvent } from "@/lib/track";
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 
@@ -55,6 +56,13 @@ export async function POST(request: Request) {
       .returning({ id: users.id });
 
     await createSession(user.id);
+
+    // Track signup conversion event
+    await trackServerEvent(user.id, "signup", {
+      utmSource,
+      utmMedium,
+      utmCampaign,
+    });
 
     // Schedule B2B drip email sequence (non-blocking)
     scheduleDrip(user.id).catch((err) =>
