@@ -15,6 +15,13 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    title: "Capability Statement Template",
+    description:
+      "Free capability statement template for government contractors. Section-by-section guide with examples, tips, and a ready-to-use layout.",
+    href: "/guides/capability-statement-template",
+    tag: "Templates",
+  },
+  {
     title: "How to Find Government Contracts",
     description:
       "Step-by-step guide to finding federal contracts — from SAM.gov registration to competitive research.",
