@@ -272,13 +272,13 @@ export default function EightAGuide() {
               href="/compare/sam-gov"
               className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
-              FCT vs SAM.gov
+              GovScout vs SAM.gov
             </Link>
             <Link
               href="/compare/govwin"
               className="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-blue-600 hover:text-blue-400"
             >
-              FCT vs GovWin
+              GovScout vs GovWin
             </Link>
             <Link
               href="/trends"
