@@ -15,6 +15,13 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    title: "SAM.gov Registration Guide",
+    description:
+      "Free step-by-step guide to registering on SAM.gov. Get your UEI, gather documents, and complete your entity registration.",
+    href: "/guides/sam-gov-registration",
+    tag: "Getting Started",
+  },
+  {
     title: "Capability Statement Template",
     description:
       "Free capability statement template for government contractors. Section-by-section guide with examples, tips, and a ready-to-use layout.",
