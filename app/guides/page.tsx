@@ -22,10 +22,17 @@ const guides = [
     tag: "Getting Started",
   },
   {
-    title: "Capability Statement Template",
+    title: "Capability Statement Templates",
     description:
-      "Free capability statement template for government contractors. Section-by-section guide with examples, tips, and a ready-to-use layout.",
-    href: "/guides/capability-statement-template",
+      "Free capability statement templates in Word, PDF, and step-by-step guide. Download and customize for your business.",
+    href: "/capability-statement-templates",
+    tag: "Templates",
+  },
+  {
+    title: "Small Business Capability Statement",
+    description:
+      "Complete beginner guide for small businesses new to federal contracting. Step-by-step with examples and common mistakes.",
+    href: "/small-business-capability-statement",
     tag: "Templates",
   },
   {

@@ -299,6 +299,27 @@ export default function CapabilityStatementTemplatePage() {
           </Link>
         </div>
 
+        {/* Template downloads */}
+        <div className="flex flex-col gap-4">
+          <h2 className="text-xl font-semibold text-white">Download capability statement templates</h2>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { name: "Word Template", desc: "Editable .docx format", href: "/capability-statement-template-word" },
+              { name: "PDF Template", desc: "Print-ready with fillable fields", href: "/capability-statement-template-pdf" },
+              { name: "Small Business Guide", desc: "Beginner-friendly walkthrough", href: "/small-business-capability-statement" },
+            ].map((tpl) => (
+              <Link
+                key={tpl.href}
+                href={tpl.href}
+                className="rounded-lg border border-blue-900/30 bg-blue-950/20 p-4 text-center transition-colors hover:border-blue-600"
+              >
+                <h3 className="font-semibold text-white">{tpl.name}</h3>
+                <p className="mt-1 text-xs text-slate-400">{tpl.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Related guides */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-white">Related guides</h2>
