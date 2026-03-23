@@ -264,6 +264,75 @@ export default function PricingPage() {
           </div>
         </div>
 
+        {/* Competitor comparison */}
+        <div className="mt-16 w-full max-w-3xl">
+          <h2 className="text-center text-2xl font-bold text-white">
+            How GovScout compares
+          </h2>
+          <p className="mt-4 text-center text-sm text-slate-400">
+            Enterprise govcon tools charge thousands per year. GovScout delivers the same award data at a fraction of the cost.
+          </p>
+          <div className="mt-8 overflow-x-auto rounded-xl border border-slate-800">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-slate-800 bg-slate-900/60">
+                  <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Feature</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-slate-400">GovWin (Deltek)</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-slate-400">BGOV</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-blue-400">GovScout Pro</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800">
+                <tr className="bg-slate-900/30">
+                  <td className="px-4 py-3 font-medium text-white">Annual price</td>
+                  <td className="px-4 py-3 text-center text-slate-400">~$2,400/yr</td>
+                  <td className="px-4 py-3 text-center text-slate-400">~$3,000+/yr</td>
+                  <td className="px-4 py-3 text-center font-semibold text-blue-400">$588/yr ($49/mo)</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-white">Contract award search</td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-blue-400 font-semibold">✓ Unlimited</span></td>
+                </tr>
+                <tr className="bg-slate-900/30">
+                  <td className="px-4 py-3 font-medium text-white">Set-aside filters (8a, HUBZone, WOSB)</td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center text-slate-500">Limited</td>
+                  <td className="px-4 py-3 text-center"><span className="text-blue-400 font-semibold">✓</span></td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-white">Spending trend analysis</td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-blue-400 font-semibold">✓</span></td>
+                </tr>
+                <tr className="bg-slate-900/30">
+                  <td className="px-4 py-3 font-medium text-white">CSV data export</td>
+                  <td className="px-4 py-3 text-center text-slate-500">Add-on</td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-blue-400 font-semibold">✓ Included</span></td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-white">Email alerts for new awards</td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-green-400">✓</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-blue-400 font-semibold">✓</span></td>
+                </tr>
+                <tr className="bg-slate-900/30">
+                  <td className="px-4 py-3 font-medium text-white">Free tier available</td>
+                  <td className="px-4 py-3 text-center"><span className="text-red-400">✗</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-red-400">✗</span></td>
+                  <td className="px-4 py-3 text-center"><span className="text-blue-400 font-semibold">✓ 10 searches/day</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-center text-xs text-slate-500">
+            Competitor pricing based on publicly available information. GovWin and BGOV are trademarks of their respective owners.
+          </p>
+        </div>
+
         {/* FAQ */}
         <div className="mt-16 flex w-full max-w-2xl flex-col gap-6">
           <h2 className="text-center text-2xl font-bold text-white">
