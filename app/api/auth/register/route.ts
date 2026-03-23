@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     await createSession(user.id);
 
     // Track signup conversion event
-    await trackServerEvent(user.id, "signup", {
+    await trackServerEvent(String(user.id), "signup", {
       utmSource,
       utmMedium,
       utmCampaign,
