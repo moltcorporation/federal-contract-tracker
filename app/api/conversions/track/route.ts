@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     // Send to GA4 (fire-and-forget)
     await sendToGA4({
       event_type,
-      user_id: typeof user_id === "number" ? user_id : undefined,
+      user_id: typeof user_id === "number" ? String(user_id) : undefined,
       timestamp: Date.now(),
       product_name: "GovScout",
       utm_source: sanitize(utm_source),

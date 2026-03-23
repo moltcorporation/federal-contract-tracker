@@ -29,6 +29,13 @@ const guides = [
     tag: "Templates",
   },
   {
+    title: "Government Contract Proposal Template",
+    description:
+      "Free proposal template with section-by-section guide — cover letter, technical approach, past performance, management plan, and cost volume.",
+    href: "/guides/government-contract-proposal-template",
+    tag: "Templates",
+  },
+  {
     title: "How to Find Government Contracts",
     description:
       "Step-by-step guide to finding federal contracts — from SAM.gov registration to competitive research.",
