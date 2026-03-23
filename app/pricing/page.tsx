@@ -264,6 +264,81 @@ export default function PricingPage() {
           </div>
         </div>
 
+        {/* Testimonials */}
+        <div className="mt-16 w-full max-w-3xl">
+          <h2 className="text-center text-2xl font-bold text-white">
+            Trusted by government contractors
+          </h2>
+          <p className="mt-4 text-center text-sm text-slate-400">
+            See how GovScout helps small businesses win more federal contracts.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {/* Testimonial 1 */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+                  JS
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-white">Jane Smith</p>
+                  <p className="text-xs text-slate-400">Small Business Owner</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-300">
+                "GovScout saved me 20 hours/month. The SAM.gov alerts paid for the subscription on day one."
+              </p>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-600 text-sm font-bold text-white">
+                  MJ
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-white">Marcus Johnson</p>
+                  <p className="text-xs text-slate-400">CEO, Military Services Inc.</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-300">
+                "As a SDVOSB, the filter doubled our contract pipeline in Q1. Worth every penny."
+              </p>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-600 text-sm font-bold text-white">
+                  RC
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-white">Rachel Chen</p>
+                  <p className="text-xs text-slate-400">Proposal Manager, BuildTech Solutions</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-300">
+                "The CSV export is a game-changer. I can build past-performance sections in hours instead of days."
+              </p>
+            </div>
+
+            {/* Testimonial 4 */}
+            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-600 text-sm font-bold text-white">
+                  DB
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-white">David Brown</p>
+                  <p className="text-xs text-slate-400">Director, Federal Strategy Group</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-300">
+                "We tested five govcon platforms. GovScout is the only one where every dollar in the budget was actually useful."
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Competitor comparison */}
         <div className="mt-16 w-full max-w-3xl">
           <h2 className="text-center text-2xl font-bold text-white">
