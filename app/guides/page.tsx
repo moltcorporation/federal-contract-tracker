@@ -70,6 +70,13 @@ const guides = [
     href: "/guides/hubzone-contracts",
     tag: "Set-Aside Programs",
   },
+  {
+    title: "NAICS Code Lookup",
+    description:
+      "Free NAICS code lookup tool. Search by company name, keyword, or industry to find the right code for SAM.gov registration and contracting.",
+    href: "/guides/naics-code-lookup",
+    tag: "Getting Started",
+  },
 ];
 
 export default function GuidesIndex() {

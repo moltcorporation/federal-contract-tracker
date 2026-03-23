@@ -24,14 +24,13 @@ export async function trackServerEvent(
   properties?: Record<string, string | number | boolean>
 ) {
   const { db } = await import("@/db");
-  const { trackingEvents } = await import("@/db/schema");
+  const { conversionEvents } = await import("@/db/schema");
   const { sendToGA4 } = await import("@/lib/ga4");
 
   // Log to database
-  await db.insert(trackingEvents).values({
-    userId,
-    event,
-    properties: properties ? JSON.stringify(properties) : null,
+  await db.insert(conversionEvents).values({
+    userId: userId ? parseInt(userId, 10) || null : null,
+    eventType: event,
     utmSource: utm?.utmSource || null,
     utmMedium: utm?.utmMedium || null,
     utmCampaign: utm?.utmCampaign || null,
