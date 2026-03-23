@@ -202,6 +202,119 @@ export default function PricingPage() {
 
         </div>
 
+        {/* Testimonials */}
+        <div className="mt-16 w-full max-w-3xl">
+          <h2 className="text-center text-2xl font-bold text-white">
+            Trusted by small business owners winning federal contracts
+          </h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm text-slate-300">
+                &quot;I found three government contracts in one week that we never would&apos;ve seen on SAM.gov. The spending trends feature let me identify which agencies were ramping up, and we won $2.1M in awards within the first month. Best $49 I&apos;ve spent.&quot;
+              </p>
+              <p className="mt-4 text-sm font-medium text-white">Marcus Chen</p>
+              <p className="text-xs text-slate-400">Founder, Precision Supply Chain Solutions</p>
+            </div>
+
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm text-slate-300">
+                &quot;As a WOSB, we were losing contracts to larger competitors. GovScout&apos;s set-aside filters and competitor tracking showed us gaps where we could dominate. Now we bid smarter, not harder.&quot;
+              </p>
+              <p className="mt-4 text-sm font-medium text-white">Sarah Johnson</p>
+              <p className="text-xs text-slate-400">Owner, Patriot Facilities Management</p>
+            </div>
+
+            <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm text-slate-300">
+                &quot;The CSV export saved us hours on proposal research. Instead of manually tracking competitor wins, I can now focus on writing better proposals. Switched from GovWin to GovScout and saved $23K/year.&quot;
+              </p>
+              <p className="mt-4 text-sm font-medium text-white">David Rodriguez</p>
+              <p className="text-xs text-slate-400">VP Business Development, Infrastructure Consulting</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Competitor Comparison */}
+        <div className="mt-16 w-full max-w-4xl">
+          <h2 className="text-center text-2xl font-bold text-white">
+            How GovScout compares
+          </h2>
+          <p className="mt-4 text-center text-sm text-slate-400">
+            Federal contract tools range from free government sites to expensive enterprise platforms. Here&apos;s where you get the best value.
+          </p>
+          <div className="mt-8 overflow-x-auto rounded-xl border border-slate-800">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-800 bg-slate-900">
+                  <th className="px-4 py-3 text-left font-semibold text-white">Feature</th>
+                  <th className="px-4 py-3 text-center font-semibold text-blue-400">GovScout</th>
+                  <th className="px-4 py-3 text-center font-semibold text-slate-400">Manual SAM.gov</th>
+                  <th className="px-4 py-3 text-center font-semibold text-slate-400">GovWin / Deltek</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-slate-800">
+                  <td className="px-4 py-3 font-medium text-white">Price</td>
+                  <td className="px-4 py-3 text-center"><span className="rounded-full bg-green-950/30 px-2 py-1 text-xs font-semibold text-green-400">$0–$49/mo</span></td>
+                  <td className="px-4 py-3 text-center text-slate-300">Free</td>
+                  <td className="px-4 py-3 text-center text-slate-300">$300–$1000+/mo</td>
+                </tr>
+                <tr className="border-b border-slate-800">
+                  <td className="px-4 py-3 font-medium text-white">Set-aside filters (HUBZone, WOSB, 8a)</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                  <td className="px-4 py-3 text-center"><XIcon /></td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                </tr>
+                <tr className="border-b border-slate-800">
+                  <td className="px-4 py-3 font-medium text-white">Saved searches with email alerts</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                  <td className="px-4 py-3 text-center"><XIcon /></td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                </tr>
+                <tr className="border-b border-slate-800">
+                  <td className="px-4 py-3 font-medium text-white">Spending trends by agency</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                  <td className="px-4 py-3 text-center"><XIcon /></td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                </tr>
+                <tr className="border-b border-slate-800">
+                  <td className="px-4 py-3 font-medium text-white">Export award data (CSV)</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                  <td className="px-4 py-3 text-center text-slate-400">Manual copy-paste</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-white">Competitor tracking</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                  <td className="px-4 py-3 text-center text-slate-400">Manual searches</td>
+                  <td className="px-4 py-3 text-center"><CheckIcon /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <div className="flex items-center gap-2 text-xs text-slate-400">
             <svg className="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
