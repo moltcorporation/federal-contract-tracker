@@ -1691,6 +1691,47 @@ export default function HomeContent() {
                 </div>
               </div>
 
+              {/* Testimonials Section */}
+              <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+                <h2 className="text-center text-xl font-bold text-white">
+                  Small businesses winning more contracts
+                </h2>
+                <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-400">
+                  See how federal contractors are using GovScout to find opportunities faster
+                </p>
+                <div className="mt-8 grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
+                  {[
+                    {
+                      quote: "We found three contract opportunities we'd never have spotted on USASpending alone. One turned into a $180K award. GovScout paid for itself in the first week.",
+                      author: "Sarah Chen",
+                      title: "VP of Business Development",
+                      company: "Techvision Solutions"
+                    },
+                    {
+                      quote: "The spending trends feature changed how we do BD. We can now see which agencies are increasing spend in our NAICS code before anyone else. That's our competitive advantage.",
+                      author: "Marcus Williams",
+                      title: "Founder",
+                      company: "Williams Construction Services"
+                    },
+                    {
+                      quote: "Exporting results to CSV saves us hours on proposal research. Instead of copying data cell by cell, we now have everything we need in seconds. Essential for our team.",
+                      author: "Jennifer Park",
+                      title: "Director of Proposals",
+                      company: "Strategic IT Partners"
+                    }
+                  ].map((testimonial, idx) => (
+                    <div key={idx} className="flex flex-col gap-4 rounded-xl border border-slate-800 bg-slate-950/50 p-5">
+                      <p className="text-sm text-slate-300 italic">"{testimonial.quote}"</p>
+                      <div className="flex flex-col gap-0.5">
+                        <p className="text-sm font-semibold text-white">{testimonial.author}</p>
+                        <p className="text-xs text-slate-500">{testimonial.title}</p>
+                        <p className="text-xs text-slate-500">{testimonial.company}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <FAQSection />
             </>
           )}

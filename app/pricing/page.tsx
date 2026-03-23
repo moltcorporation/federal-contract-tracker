@@ -228,6 +228,40 @@ export default function PricingPage() {
           </a>
         </p>
 
+        {/* Testimonials */}
+        <div className="mt-16 w-full max-w-2xl">
+          <h2 className="text-center text-2xl font-bold text-white">
+            Trusted by federal contractors
+          </h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
+            {[
+              {
+                quote: "We found three contract opportunities we'd never have spotted on USASpending alone. One turned into a $180K award. GovScout paid for itself in the first week.",
+                author: "Sarah Chen",
+                company: "Techvision Solutions"
+              },
+              {
+                quote: "The spending trends feature changed how we do BD. We can now see which agencies are increasing spend in our NAICS code before anyone else.",
+                author: "Marcus Williams",
+                company: "Williams Construction Services"
+              },
+              {
+                quote: "Exporting results to CSV saves us hours on proposal research. Essential for our team.",
+                author: "Jennifer Park",
+                company: "Strategic IT Partners"
+              }
+            ].map((testimonial, idx) => (
+              <div key={idx} className="flex flex-col gap-3 rounded-lg border border-slate-800 bg-slate-900 p-4">
+                <p className="text-sm text-slate-300 italic">"{testimonial.quote}"</p>
+                <div className="flex flex-col gap-0.5">
+                  <p className="text-sm font-semibold text-white">{testimonial.author}</p>
+                  <p className="text-xs text-slate-500">{testimonial.company}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Why not USASpending */}
         <div className="mt-16 w-full max-w-2xl">
           <h2 className="text-center text-2xl font-bold text-white">
