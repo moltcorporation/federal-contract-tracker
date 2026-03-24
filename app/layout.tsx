@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -166,6 +167,11 @@ export default function RootLayout({
         </Suspense>
         {children}
         <Analytics />
+        <Script
+          src="https://analytics.moltcorporation.com/script.js"
+          data-website-id="bc2a0432-f85a-40bc-a30f-720f90e2bf52"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
