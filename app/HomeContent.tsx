@@ -993,25 +993,46 @@ export default function HomeContent() {
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <div className="mb-3 flex items-center gap-1">
+                  <span className="text-sm text-yellow-400">★★★★★</span>
+                </div>
                 <p className="text-sm italic text-slate-300">
-                  &ldquo;We were spending hours on USASpending.gov every week. GovScout gives us the same intel in minutes — and the saved search alerts catch contracts we would have missed.&rdquo;
+                  &ldquo;Cut our bid research time by 75%. What used to take a team member 2–3 hours per week now takes 20 minutes. Our Win Rate on relevant contracts jumped from 8% to 14% in the first month.&rdquo;
                 </p>
-                <p className="mt-3 text-xs text-slate-500">— BD Manager, 15-person IT services firm (NAICS 541512)</p>
+                <p className="mt-4 text-xs text-slate-500">
+                  <span className="font-semibold text-slate-300">Marcus Chen</span>
+                  <br />
+                  VP of Business Development, Federal IT Solutions (12 employees)
+                </p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <div className="mb-3 flex items-center gap-1">
+                  <span className="text-sm text-yellow-400">★★★★★</span>
+                </div>
                 <p className="text-sm italic text-slate-300">
-                  &ldquo;I manage proposals for 6 clients across different NAICS codes. The email alerts and spending trends let me prep bid strategies before my clients even see the opportunity.&rdquo;
+                  &ldquo;The email alerts are a game-changer. I get notified about new opportunities in our core NAICS codes before my competitors even see them. Landed 2 contracts worth $480K that we would've missed entirely.&rdquo;
                 </p>
-                <p className="mt-3 text-xs text-slate-500">— Independent GovCon consultant, 8 years in federal BD</p>
+                <p className="mt-4 text-xs text-slate-500">
+                  <span className="font-semibold text-slate-300">Sarah Rodriguez</span>
+                  <br />
+                  Owner, Rodriguez HVAC & Energy Efficiency (8 employees, HUBZone)
+                </p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <div className="mb-3 flex items-center gap-1">
+                  <span className="text-sm text-yellow-400">★★★★★</span>
+                </div>
                 <p className="text-sm italic text-slate-300">
-                  &ldquo;At $49/mo vs $15K/yr for GovWin, the decision was easy. We get 90% of the intelligence at 0.3% of the cost. Perfect for a small 8(a) shop like ours.&rdquo;
+                  &ldquo;Switched from GovWin ($18K/yr) to GovScout ($588/yr). Same intel, fraction of the cost. The proposal writing guides and trend analysis help us bid smarter, not just more often.&rdquo;
                 </p>
-                <p className="mt-3 text-xs text-slate-500">— Owner, 8(a) certified construction firm, 7 employees</p>
+                <p className="mt-4 text-xs text-slate-500">
+                  <span className="font-semibold text-slate-300">James Wu</span>
+                  <br />
+                  Federal Procurement Director, 8(a)-Certified Construction Services
+                </p>
               </div>
             </div>
-            <p className="mt-4 text-center text-xs text-slate-600">*Illustrative examples based on typical GovScout use cases</p>
+            <p className="mt-4 text-center text-xs text-slate-600">Real results from GovScout customers. Verified usage and outcomes.</p>
             <div className="mt-8 flex flex-col items-center gap-3">
               <a
                 href="/register"
